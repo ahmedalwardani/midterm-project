@@ -16,6 +16,11 @@ CREATE TABLE users (
   profile_pic_url VARCHAR(255) NOT NULL
 );
 
+CREATE TABLE categories (
+  id SERIAL PRIMARY KEY NOT NULL,
+  category VARCHAR(255) NOT NULL
+);
+
 CREATE TABLE resources (
   id SERIAL PRIMARY KEY NOT NULL,
   owner_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
@@ -44,9 +49,4 @@ CREATE TABLE comments (
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   resource_id INTEGER REFERENCES resources(id) ON DELETE CASCADE,
   content TEXT NOT NULL
-);
-
-CREATE TABLE categories (
-  id SERIAL PRIMARY KEY NOT NULL,
-  category VARCHAR(255) NOT NULL
 );
