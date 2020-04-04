@@ -14,7 +14,7 @@
   <!-- Font import -->
   <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;500&display=swap" rel="stylesheet">
-
+  
   <!-- font awesome icons -->
   <script src="https://kit.fontawesome.com/948f369b19.js" crossorigin="anonymous"></script>
 
@@ -23,7 +23,16 @@
 </head>
 
 <body>
-  <%- include('partials/header') %>
+
+  <!-- NEED TO FORMAT BUTTONS TO BE CENTRAL -->
+  <form class="form-inline" action="/login" method="GET">
+    <button type="submit" class="btn btn-outline-light" style="margin-right: 1em;">Login</button>
+  </form>
+
+  <form class="form-inline" action="/register" method="GET">
+    <button type="submit" class="btn btn-outline-light" style="margin-right: 1em;">Register</button>
+  </form>
+
   <!-- NEED ILLUSTRATION TO GO HERE -->
 
   <!-- Bootstracp JS or scripts goes here -->

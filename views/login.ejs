@@ -24,6 +24,16 @@
 
 <body>
   <%- include('partials/header') %>
+  <main>
+    <div class="card-footer text-center">
+      <h2>Login</h2>
+      <form class="form-inline" action="/login" method="POST">
+        <input class="form-control" type="email" name="email" placeholder="email">
+        <input class="form-control" type="password" name="password" placeholder="password">
+        <button type="submit" class="btn btn-success">Submit</button>
+      </form>
+    </div>
+  </main>
   <!-- NEED ILLUSTRATION TO GO HERE -->
 
   <!-- Bootstracp JS or scripts goes here -->
