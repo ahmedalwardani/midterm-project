@@ -1,0 +1,30 @@
+<header>
+  <nav class="navbar navbar-expand-md navbar-dark bg-success">
+
+    <!-- TO BE ADD LOGO ONCE CREATED point to my resources if logged in and if logged out then points to landing page; need to change href -->
+    <a class="navbar-brand" href="">dogEared</a>
+
+    <!-- search bar; action needs to point to search results -->
+    <form class="form-inline" action="" method="GET">
+      <input class="form-control" type="text" name="keyword">
+      <button type="submit" class="" ><i class="fas fa-search"></i></button>
+    </form>
+
+    <!-- log in buttons; need to change "loggedIn" variable; need to be placed on the right side -->
+    <% if(loggedIn !== true){ %>
+      <form class="form-inline" action="/login" method="GET">
+        <button type="submit" class="btn btn-outline-light" style="margin-right: 1em;">Login</button>
+      </form>
+
+      <form class="form-inline" action="/register" method="GET">
+        <button type="submit" class="btn btn-outline-light" style="margin-right: 1em;">Register</button>
+      </form>
+    <% } else { %>
+    <form class="form-inline" action="/logout" method="POST">
+      <label for="submit" style="margin-right: 1em;">Logged in as: <%= email %></label>
+      <button type="submit" class="btn btn-outline-dark">Logout</button>
+    </form>
+    <% } %>
+
+  </nav>
+</header>
