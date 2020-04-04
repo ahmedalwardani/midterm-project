@@ -5,8 +5,7 @@ VALUES ('Alice', 'alice@gmail.com', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh7
 ('Michale', 'michale@gmail.com', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.', 'http://mypicture.jpeg'
 );
 
-INSERT INTO categories (category)
-VALUES ('language');
+
 
 
 
