@@ -1,5 +1,6 @@
 const express = require('express');
 const router  = express.Router();
+const bcrypt = require("bcrypt");
 const {getUserByEmail, users, generateRandomString} = require("../helpers");
 
 
@@ -16,7 +17,7 @@ module.exports = () => {
       users[randomID] = {
         id: randomID,
         email: req.body.email,
-        password: req.body.password
+        password: bcrypt.hashSync(req.body.password, 10)
       };
       req.session.user_id = randomID; //create session
       res.redirect("/");
