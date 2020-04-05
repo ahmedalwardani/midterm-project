@@ -24,7 +24,32 @@
 
 <body>
   <%- include('partials/header') %>
-  <!-- NEED ILLUSTRATION TO GO HERE -->
+
+  <!-- style notes: two column -->
+  <main>
+    <h1><% resource.title %> </h1>
+    <div>
+      <img src="<% resource.thumbnail %>"  alt="">
+      <a href="<% resource.url %>" >Visit</a>
+    </div>
+    <p><% resource.description %></p>
+    <!-- put icons for average rating here OMG NEED TO FIGURE THIS OUT TOO -->
+
+    <!-- form to submit rating and comment -->
+    <form action="" method="POST">
+      <!-- how do i do star comment? ugh need tofigure this out -->
+      <input class="comment_form" type="text" name="comment">
+          <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </main>
+
+  <!-- side section to add rating and comments -->
+  <section>
+    <% for (let rating in ratings) { %>
+      <!-- how do i display stars corresponding to number of rating -->
+      <p><% rating.comment %></p>
+    <% } %>
+  </section>
 
   <!-- Bootstracp JS or scripts goes here -->
 </body>
