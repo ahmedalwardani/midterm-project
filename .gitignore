@@ -1,4 +1,4 @@
-`    =-09node_modules/
+node_modules/
 public/styles
 .env
 *.log
