@@ -1,12 +1,11 @@
 const express = require('express');
 const router  = express.Router();
-const {getUserByEmail} = require("../helpers");
-const {users} = require("../helpers");
+const {getUserByEmail, users, generateRandomString} = require("../helpers");
 
 
 module.exports = () => {
   router.post("/", (req,res) => {
-    const randomID = Math.random() * (100 - 1) + 1;
+    const randomID = generateRandomString();
     if (req.body.email === "" || req.body.password === "") {
       res.statusCode = 400;
       res.send("Error: Please provide a valid username/password");

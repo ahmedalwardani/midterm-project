@@ -10,6 +10,7 @@ const sass       = require("node-sass-middleware");
 const app        = express();
 const morgan     = require('morgan');
 const cookieSession = require("cookie-session");
+const users = require("./helpers");
 
 
 // PG database client/connection setup
@@ -45,7 +46,9 @@ const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
 const signupRoutes = require("./routes/signup");
 const signinRoutes = require("./routes/signin");
-
+const resourcesRoutes = require("./routes/resources");
+const newResourceRoutes = require("./routes/new");
+const searchRoutes = require("./routes/search");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -53,6 +56,9 @@ app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
 app.use("/signup", signupRoutes());
 app.use("/signin", signinRoutes());
+app.use("/resources", resourcesRoutes());
+app.use("/new", newResourceRoutes());
+app.use("/search", searchRoutes());
 
 // Note: mount other resources here, using the same pattern above
 

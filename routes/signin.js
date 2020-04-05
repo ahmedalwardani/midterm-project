@@ -6,11 +6,28 @@ module.exports = () => {
   router.get("/", (req, res) => {
     const currentUser = users[req.session.user_id];
     if (currentUser) {
-      res.redirect("/urls");
+      res.redirect("/");
     } else {
       let templateVars = {user: currentUser};
-      res.render("login", templateVars);
+      res.render("signin", templateVars);
+    }
+  });
+
+  router.post("/", (req, res) => {
+    let insuccessful = true;
+    for (let key in users) {
+      if (users[key].email === req.body.email && req.body.password === users[key].password) {
+        req.session.user_id = users[key].id;
+        res.redirect("/");
+        insuccessful = false;
+      }
+    }
+
+    if (insuccessful) {
+      res.statusCode = 403;
+      res.send("Error: Please provide a valid username/password");
     }
   });
   return router;
 };
+
