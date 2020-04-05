@@ -1,5 +1,9 @@
 //Returns an object corresponding to a provided string, otherwise returns undefined
 const getUserByEmail = (string, object) => {
+console.log(string)
+console.log(object)
+
+
   for (const obj in object) {
     if (object.hasOwnProperty(obj)) {
       if (object[obj].email === string) {
