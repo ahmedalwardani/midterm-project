@@ -1,5 +1,6 @@
 const express = require("express");
 const router  = express.Router();
+const bcrypt = require("bcrypt");
 const {users} = require("../helpers");
 
 module.exports = () => {
@@ -11,12 +12,13 @@ module.exports = () => {
       let templateVars = {user: currentUser};
       res.render("signin", templateVars);
     }
+    console.log(users);
   });
 
   router.post("/", (req, res) => {
     let insuccessful = true;
     for (let key in users) {
-      if (users[key].email === req.body.email && req.body.password === users[key].password) {
+      if (users[key].email === req.body.email && bcrypt.compareSync(req.body.password, users[key].password)) {
         req.session.user_id = users[key].id;
         res.redirect("/");
         insuccessful = false;
