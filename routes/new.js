@@ -1,11 +1,11 @@
 const express = require('express');
 const router  = express.Router();
-const {users, generateRandomString, resourcesDatabase} = require("../helpers");
+const {addResource} = require("../helpers");
 
 
-module.exports = () => {
+module.exports = (db) => {
   router.get("/", (req, res) => {
-    const currentUser = users[req.session.user_id];
+    const currentUser = req.session.user_id;
     if (currentUser) {
       let templateVars = {user: currentUser};
       res.render("new", templateVars);
@@ -14,16 +14,14 @@ module.exports = () => {
     }
   });
 
-  router.post("/", (req, res) => {
-    const currentUser = users[req.session.user_id];
-    const testURL = generateRandomString();
-    resourcesDatabase[testURL] = {
-      resourceURL: req.body.resourceURL,
-      userID: currentUser.id
-    };
-    res.redirect("/resources");
-  });
+  // router.post("/", (req, res) => {
+  //   const currentUser = req.session.user_id;
+  //   addResource(db, resource);
 
+  //   // addnewresource(db, info).then(resp => {
+
+  //   res.redirect("/resources");
+  // });
   return router;
 };
 

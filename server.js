@@ -61,11 +61,11 @@ app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
 app.use("/register", signupRoutes(db));
 app.use("/signin", signinRoutes(db));
-app.use("/resources", resourcesRoutes());
+app.use("/resources", resourcesRoutes(db));
 app.use("/new", newResourceRoutes(db));
-app.use("/search", searchRoutes());
-app.use("/signout", signoutRoutes());
-app.use("/description", descriptionRoutes());
+app.use("/search", searchRoutes(db));
+app.use("/signout", signoutRoutes(db));
+app.use("/description", descriptionRoutes(db));
 
 
 
