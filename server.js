@@ -1,14 +1,19 @@
 // load .env data into process.env
 require('dotenv').config();
+const users = require("./helpers");
+
 
 // Web server config
 const PORT       = process.env.PORT || 8080;
-const ENV        = process.env.ENV || "development";
+const ENV        = process.env.ENV || "dev  elopment";
 const express    = require("express");
 const bodyParser = require("body-parser");
 const sass       = require("node-sass-middleware");
 const app        = express();
 const morgan     = require('morgan');
+const cookieSession = require("cookie-session");
+
+
 
 // PG database client/connection setup
 const { Pool } = require('pg');
@@ -31,25 +36,66 @@ app.use("/styles", sass({
 }));
 app.use(express.static("public"));
 
+app.use(cookieSession({
+  name: "session",
+  keys: ["user_id"],
+  maxAge: 60 * 60 * 1000
+}));
+
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
+const signupRoutes = require("./routes/signup");
+const signinRoutes = require("./routes/signin");
+const resourcesRoutes = require("./routes/resources");
+const newResourceRoutes = require("./routes/new");
+const searchRoutes = require("./routes/search");
+const signoutRoutes = require("./routes/signout");
+const descriptionRoutes = require("./routes/description");
+
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
+app.use("/signup", signupRoutes());
+app.use("/signin", signinRoutes());
+app.use("/resources", resourcesRoutes());
+app.use("/new", newResourceRoutes());
+app.use("/search", searchRoutes());
+app.use("/signout", signoutRoutes());
+app.use("/description", descriptionRoutes());
+
+
+
 // Note: mount other resources here, using the same pattern above
 
 
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
+
+
+
+
 app.get("/", (req, res) => {
-  res.render("index");
+  // if logged in => render home page else redirect to login or something
+  const currentUser = users[req.session.user_id];
+  let templateVars = {user: currentUser};
+  if (currentUser) {
+    res.render("index", templateVars);
+  } else {
+    res.render("index", {user: null});
+  }
 });
+
+
+
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
+
+
+

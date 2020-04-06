@@ -9,33 +9,39 @@ list of resource object:
 
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <title>dogEared</title>
+    <!-- Normalization -->
+    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
 
-<head>
-  <title>dogEared</title>
-  <!-- Normalization -->
-  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+    <script type="text/javascript" src="/scripts/app.js"></script>
 
-  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-  <script type="text/javascript" src="/scripts/app.js"></script>
+    <!-- Font import -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;500&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- Font import -->
-  <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@600;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;500&display=swap" rel="stylesheet">
+    <!-- font awesome icons -->
+    <script
+      src="https://kit.fontawesome.com/948f369b19.js"
+      crossorigin="anonymous"
+    ></script>
 
-  <!-- font awesome icons -->
-  <script src="https://kit.fontawesome.com/948f369b19.js" crossorigin="anonymous"></script>
+    <!-- Styles -->
+  </head>
 
-  <!-- Styles -->
+  <body>
+    <%- include('partials/_header') %>
+    <!-- NEED ILLUSTRATION TO GO HERE -->
 
-</head>
-
-<body>
-  <%- include('partials/header') %>
-  <!-- NEED ILLUSTRATION TO GO HERE -->
-
-  <!-- Bootstracp JS or scripts goes here -->
-</body>
-
+    <!-- Bootstracp JS or scripts goes here -->
+  </body>
 </html>
