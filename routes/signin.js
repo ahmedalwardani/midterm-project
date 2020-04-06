@@ -20,18 +20,15 @@ const login = (email, password, db) => {
 module.exports = (db) => {
   router.get("/", (req, res) => {
     const currentUser = users[req.session.user_id];// need to change to db
-    console.log(currentUser)
     if (currentUser) {
       res.redirect("/");
     } else {
       let templateVars = {user: currentUser};
       res.render("signin", templateVars);
     }
-    console.log(users);
   });
 
   router.post("/", (req, res) => {
-    console.log(req.body)
     let password = req.body.password;
     let email = req.body.email;
     login(email, password, db)
