@@ -84,7 +84,7 @@ app.get("/", (req, res) => {
   if (currentUser) {
     res.render("index", templateVars);
   } else {
-    res.render("index", { user: null });
+    res.render("landing_page", {user: null});
   }
 });
 
