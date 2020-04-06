@@ -57,8 +57,8 @@ const signoutRoutes = require("./routes/signout");
 // Note: Feel free to replace the example routes below with your own
 app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
-app.use("/signup", signupRoutes());
-app.use("/signin", signinRoutes());
+app.use("/signup", signupRoutes(db));
+app.use("/signin", signinRoutes(db));
 app.use("/resources", resourcesRoutes());
 app.use("/new", newResourceRoutes());
 app.use("/search", searchRoutes());

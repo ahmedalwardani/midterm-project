@@ -1,26 +1,32 @@
 const express = require('express');
 const router  = express.Router();
 const bcrypt = require("bcrypt");
-const {getUserByEmail, users, generateRandomString} = require("../helpers");
+const {addUser, getUserByEmail, users, generateRandomString} = require("../helpers");
 
 
-module.exports = () => {
+
+module.exports = (db) => {
   router.post("/", (req,res) => {
     const randomID = generateRandomString();
     if (req.body.email === "" || req.body.password === "") {
       res.statusCode = 400;
       res.send("Error: Please provide a valid username/password");
-    } else if (getUserByEmail(req.body.email, users)) {
+    } else if (getUserByEmail(req.body.email, db)) { //I need this as a promiss 
       res.statusCode = 400;
       res.send("Error: The e-mail address you entered is already taken. Please enter another e-mail!");
     } else {
-      users[randomID] = {
-        id: randomID,
-        email: req.body.email,
-        password: bcrypt.hashSync(req.body.password, 10)
-      };
-      req.session.user_id = randomID; //create session
-      res.redirect("/");
+
+      // users[randomID] = {
+      //   id: randomID,
+        let email = req.body.email;
+        let password = bcrypt.hashSync(req.body.password, 10);
+      //};
+      addUser({email, password})
+      .then(user => {
+        req.session.user_id = user.id;
+        res.redirect("/");
+      })
+
     }
   });
 
