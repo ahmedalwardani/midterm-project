@@ -52,6 +52,8 @@ const resourcesRoutes = require("./routes/resources");
 const newResourceRoutes = require("./routes/new");
 const searchRoutes = require("./routes/search");
 const signoutRoutes = require("./routes/signout");
+const descriptionRoutes = require("./routes/description");
+
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -63,6 +65,8 @@ app.use("/resources", resourcesRoutes());
 app.use("/new", newResourceRoutes(db));
 app.use("/search", searchRoutes());
 app.use("/signout", signoutRoutes());
+app.use("/description", descriptionRoutes());
+
 
 
 // Note: mount other resources here, using the same pattern above

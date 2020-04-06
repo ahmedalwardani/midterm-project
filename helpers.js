@@ -69,6 +69,10 @@ const resourcesForUser = function (id, db){
  const resourcesDatabase = {
   b2xVn2: { resourceURL: "http://www.lighthouselabs.ca", userID: "test1" },
   qsm5xK: { resourceURL: "http://www.google.com", userID: "test2" }
+const resourcesDatabase = {
+  b2xVn2: {title: "test resource 1", resourceURL:"http://www.lighthouselabs.ca", userID: "test 1", thumbnail: "thumbnail 1", owner: "owner 1", isSaved: true, averageRating: 5, ratings: [{rating: 5, comment: "awesome"}, {rating: 5, comment: "cool"}, {rating: 5, comment: "original"},]},
+
+  qsm5xK: {title: "test resource 2", resourceURL:"http://www.google.ca", userID: "test 2", thumbnail: "thumbnail 2", owner: "owner 2", isSaved: false, averageRating: 3, ratings: [{rating: 3, comment: "not bad"}, {rating: 3, comment: "bad"}, {rating: 3, comment: "average"},]},
 };
 
 
@@ -89,16 +93,19 @@ const generateRandomString = () => {
 
 const users = {
   "Ahmed": {
+    name: "Ahmed",
     id: "1",
     email: "ahmed@ahmed.com",
     password: "password"
   },
   "Linh": {
+    name: "Linh",
     id: "2",
     email: "linh@linh.com",
     password: "password"
   },
   "Andrii": {
+    name: "Andrii",
     id: "3",
     email: "andrii@andrii.com",
     password: "password"
