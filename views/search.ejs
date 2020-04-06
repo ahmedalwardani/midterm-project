@@ -1,83 +1,66 @@
-<!-- INFO NEEDED FOR THIS PAGE
-log in- or not
-the user ID
-user email (for display in nav)-->
+<!DOCTYPE html>
+<html lang="en">
 
-<!-- INFO OUT GOING:
+<head>
+  <title>dogEared</title>
+  <!-- Normalization -->
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
 
- -->
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  <script type="text/javascript" src="/scripts/app.js"></script>
 
- <!DOCTYPE html>
- <html lang="en">
+  <!-- Font import -->
+  <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;500&display=swap" rel="stylesheet">
 
- <head>
-   <title>dogEared</title>
-   <!-- Normalization -->
-   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <!-- font awesome icons -->
+  <script src="https://kit.fontawesome.com/948f369b19.js" crossorigin="anonymous"></script>
 
-   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-   <script type="text/javascript" src="/scripts/app.js"></script>
+  <!-- Styles -->
 
-   <!-- Font import -->
-   <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@600;700&display=swap" rel="stylesheet">
-   <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;500&display=swap" rel="stylesheet">
+</head>
 
-   <!-- font awesome icons -->
-   <script src="https://kit.fontawesome.com/948f369b19.js" crossorigin="anonymous"></script>
+<body>
+  <%- include('partials/header') %>
 
-   <!-- Styles -->
+  <main style="margin: 1em;">
+    <h3>SEARCH</h3>
 
- </head>
+    <form class="form-inline" action="" method="POST">
 
- <body>
-   <%- include('partials/header') %>
+      <div class="input-label-pair">
+        <label for="keyword">Keyword:</label>
+        <input class="form-control" type="text" name="keyword">
+      </div>
 
-   <!-- style notes: new page and add button centered, other two fields stack on top in columns, toggle add new topic  -->
-   <main style="margin: 1em;">
-     <h3>New Page</h3>
+      <!-- DROP DOWN MENU TOPIC NAME -->
+      <select name="topic" id="topic_dropdown">
+        <option value="" selected disabled>-- Select Topic --</option>
+        <!-- loop through names of topics as it is structured in tempvars and make it an option MIGHT NEED TO CHANGE LATER -->
+        <% const keys = Object.keys(topics); %>
+        <% for (const topic of keys) { %>
+        <option value="<% keys.indexOf(topic) %> "><% topics[topic] %></option>
+        <% } %>
+      </select>
 
-     <form class="form-inline" action="" method="POST">
-       <div class="input-label-pair">
-         <label for="title">Title:</label>
-         <input class="form-control" type="text" name="title">
-       </div>
-       <div class="input-label-pair">
-         <label for="url">Page URL:</label>
-         <input class="form-control" type="text" name="url" placeholder="http://">
-       </div>
-       <div class="input-label-pair">
-         <label for="thumbnail_url">Thumbnail URL:</label>
-         <input class="form-control" type="text" name="thumbnail_url">
-       </div>
-       <div class="input-label-pair topic">
+      <!-- DROP DOWN MENU MINIMUM AVERAGE RATING -->
+      <select name="min_rating" id="min_rating">
+        <option value="" selected disabled>-- Minimum Rating --</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
 
-         <!-- DROP DOWN MENU -->
-         <select name="topic" id="topic_dropdown">
-           <option value="" selected disabled>-- Select Topic --</option>
-           <!-- loop through names of topics as it is structured in tempvars and make it an option MIGHT NEED TO CHANGE LATER -->
-           <% const keys = Object.keys(topics); %>
-           <% for (const topic of keys) { %>
-             <option value="<% keys.indexOf(topic) %> "><% topics[topic] %></option>
-           <% } %>
-         </select>
+      <!-- button to submit search for resource -->
+      <button type="submit" class="btn"><i class="fas fa-search"></i></button>
+    </form>
+  </main>
 
-         <!-- Toggle form to add a new topic name -->
-         <i class="fas fa-plus-circle"></i>
-         <form class="form-inline" action="/new-topic" method="POST">
-           <label for="topic_name">New Topic:</label>
-           <input class="form-control" type="text" name="topic_name">
-           <button type="submit" class="btn">Add</button>
-         </form>
-       </div>
+  <!-- Bootstracp JS or scripts goes here -->
+</body>
 
-       <!-- button to submit new resource -->
-       <button type="submit" class="btn">Add Resource</button>
-     </form>
-   </main>
-
-   <!-- Bootstracp JS or scripts goes here -->
- </body>
-
- </html>
+</html>
