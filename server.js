@@ -1,16 +1,18 @@
 // load .env data into process.env
 require('dotenv').config();
+const users = require("./helpers");
+
 
 // Web server config
-const PORT       = process.env.PORT || 8080;
-const ENV        = process.env.ENV || "development";
-const express    = require("express");
+const PORT = process.env.PORT || 8080;
+const ENV = process.env.ENV || "dev  elopment";
+const express = require("express");
 const bodyParser = require("body-parser");
-const sass       = require("node-sass-middleware");
-const app        = express();
-const morgan     = require('morgan');
+const sass = require("node-sass-middleware");
+const app = express();
+const morgan = require('morgan');
 const cookieSession = require("cookie-session");
-const users = require("./helpers");
+
 
 
 // PG database client/connection setup
@@ -49,16 +51,19 @@ const signinRoutes = require("./routes/signin");
 const resourcesRoutes = require("./routes/resources");
 const newResourceRoutes = require("./routes/new");
 const searchRoutes = require("./routes/search");
+const signoutRoutes = require("./routes/signout");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
-app.use("/signup", signupRoutes());
-app.use("/signin", signinRoutes());
+app.use("/register", signupRoutes(db));
+app.use("/signin", signinRoutes(db));
 app.use("/resources", resourcesRoutes());
-app.use("/new", newResourceRoutes());
+app.use("/new", newResourceRoutes(db));
 app.use("/search", searchRoutes());
+app.use("/signout", signoutRoutes());
+
 
 // Note: mount other resources here, using the same pattern above
 
@@ -68,13 +73,16 @@ app.use("/search", searchRoutes());
 // Separate them into separate routes files (see above).
 
 
-
-
 app.get("/", (req, res) => {
-  res.render("index");
+  // if logged in => render home page else redirect to login or something
+  const currentUser = users[req.session.user_id];
+  let templateVars = { user: currentUser };//???
+  if (currentUser) {
+    res.render("index", templateVars);
+  } else {
+    res.render("index", { user: null });
+  }
 });
-
-
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
