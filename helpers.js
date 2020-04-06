@@ -1,4 +1,11 @@
 //Returns an object corresponding to a provided string, otherwise returns undefined
+
+  const queryFunction = (statement, values, callback) => {
+    return pool.query(statement, values)
+      .then(res => callback(res.rows));
+  }
+
+
 const getUserByEmail = (email, db) => {
   return db
   .query(`
@@ -15,8 +22,8 @@ const getUserByEmail = (email, db) => {
 const addUser = function (user, db) {
   let arr = ['bob', user.email, user.password];   //change bob to user.name
   return db
-    .query(
-      `INSERT INTO users (name, email, password)
+    .query(`
+    INSERT INTO users (name, email, password)
       VALUES ($1, $2, $3) RETURNING *;
   `, arr)
     .then(res => {
@@ -55,6 +62,16 @@ const resourcesForUser = function (id, db){
     .catch(err => console.error('query error', err.stack));
   };
 
+const singleResource = function(id, db) {
+  return db.queryFunction(
+    `
+    SELECT* FROM resources
+    WHERE resources.id = $1;
+    `
+  , [id], rows => console.log(rows[0]));
+};
+
+
 // const resourcesForUser = (id, resourcesDatabase) => {
 
 //   const resourcesObject = {};
@@ -66,9 +83,7 @@ const resourcesForUser = function (id, db){
 //   return resourcesObject;
 // };
 
- const resourcesDatabase = {
-  b2xVn2: { resourceURL: "http://www.lighthouselabs.ca", userID: "test1" },
-  qsm5xK: { resourceURL: "http://www.google.com", userID: "test2" }
+
 const resourcesDatabase = {
   b2xVn2: {title: "test resource 1", resourceURL:"http://www.lighthouselabs.ca", userID: "test 1", thumbnail: "thumbnail 1", owner: "owner 1", isSaved: true, averageRating: 5, ratings: [{rating: 5, comment: "awesome"}, {rating: 5, comment: "cool"}, {rating: 5, comment: "original"},]},
 
@@ -120,6 +135,7 @@ module.exports = {
   resourcesForUser,
   resourcesDatabase,
   generateRandomString,
-
+  singleResource,
+  queryFunction
 };
 
