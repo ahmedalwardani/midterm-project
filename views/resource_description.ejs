@@ -1,3 +1,18 @@
+<!-- INFO NEEDED FOR THIS PAGE
+log in- or not
+the user ID
+user email (for display in nav)
+resource object:
+title, thumbnail, url, description, average rating
+all rating and all comments associated with this resource
+-->
+
+<!-- INFO OUT GOING:
+edit field
+delete resource
+comment or rating
+ -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,8 +59,10 @@
   </main>
 
   <!-- side section to add rating and comments -->
+
+  <!-- [{ratin: 5, comment: blahblah}, {ratin: 5, comment: blahblah}, {ratin: 5, comment: blahblah}] -->
   <section>
-    <% for (let rating in ratings) { %>
+    <% for (const rating in ratings) { %>
       <!-- how do i display stars corresponding to number of rating -->
       <p><% rating.comment %></p>
     <% } %>

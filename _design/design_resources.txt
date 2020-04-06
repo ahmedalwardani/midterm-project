@@ -1,0 +1,15 @@
+Design Inspiration
+https://www.wix.com/website-template/view/html/2175?siteId=f079a559-b478-4643-a17b-13edb1ee067b&metaSiteId=f9bf8eee-6569-46fa-b4e8-e6b8ca8990c1&originUrl=https%3A%2F%2Fwww.wix.com%2Fwebsite%2Ftemplates%2Fhtml%2Fonline-store
+
+Icons
+https://fontawesome.com/icons/plus-circle?style=solid
+
+
+Creating Icons
+https://rafaltomal.com/how-to-create-and-use-your-own-icon-fonts/
+
+
+Fonts
+https://fonts.google.com/specimen/Titillium+Web?category=Sans+Serif,Display,Monospace&preview.size=84&selection.family=Titillium+Web:wght@600;700&sidebar.open
+
+https://fonts.google.com/specimen/Fira+Sans?category=Sans+Serif,Display,Monospace&selection.family=Fira+Sans:wght@300;500&sidebar.open
