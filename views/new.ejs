@@ -37,25 +37,36 @@ user email (for display in nav)-->
   <!-- style notes: new page and add button centered, other two fields stack on top in columns, toggle add new topic  -->
   <main style="margin: 1em;">
     <h3>New Page</h3>
+
     <form class="form-inline" action="" method="POST">
-      <div class="">
-        <label for="longURL">Page URL:</label>
-        <input class="form-control" type="text" name="URL" placeholder="http://">
+      <div class="input-label-pair">
+        <label for="title">Title:</label>
+        <input class="form-control" type="text" name="title">
       </div>
-      <div class="">
-        <label for="longURL">Topic:</label>
-        <!-- needs to be DROP DOWN MENU -->
-        <input class="form-control" type="text" name="topic">
+      <div class="input-label-pair">
+        <label for="url">Page URL:</label>
+        <input class="form-control" type="text" name="url" placeholder="http://">
+      </div>
+      <div class="input-label-pair">
+        <label for="thumbnail_url">Thumbnail URL:</label>
+        <input class="form-control" type="text" name="thumbnail_url">
+      </div>
+      <div class="input-label-pair topic">
+
+        <!-- DROP DOWN MENU TOPIC NAME -->
+        <%- include('partials/topic_dropdown') %>
 
         <!-- Toggle form to add a new topic name -->
         <i class="fas fa-plus-circle"></i>
-        <form class="form-inline" action="" method="POST">
-          <label for="longURL">New Topic:</label>
+        <form class="form-inline" action="/new-topic" method="POST">
+          <label for="topic_name">New Topic:</label>
           <input class="form-control" type="text" name="topic_name">
-          <button type="submit" class="btn">Add Topic</button>
+          <button type="submit" class="btn">Add</button>
         </form>
       </div>
-      <button type="submit" class="btn">Add</button>
+
+      <!-- button to submit new resource -->
+      <button type="submit" class="btn">Add Resource</button>
     </form>
   </main>
 
