@@ -4,13 +4,13 @@ const users = require("./helpers");
 
 
 // Web server config
-const PORT       = process.env.PORT || 8080;
-const ENV        = process.env.ENV || "dev  elopment";
-const express    = require("express");
+const PORT = process.env.PORT || 8080;
+const ENV = process.env.ENV || "dev  elopment";
+const express = require("express");
 const bodyParser = require("body-parser");
-const sass       = require("node-sass-middleware");
-const app        = express();
-const morgan     = require('morgan');
+const sass = require("node-sass-middleware");
+const app = express();
+const morgan = require('morgan');
 const cookieSession = require("cookie-session");
 
 
@@ -57,10 +57,10 @@ const signoutRoutes = require("./routes/signout");
 // Note: Feel free to replace the example routes below with your own
 app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
-app.use("/signup", signupRoutes(db));
+app.use("/register", signupRoutes(db));
 app.use("/signin", signinRoutes(db));
 app.use("/resources", resourcesRoutes());
-app.use("/new", newResourceRoutes());
+app.use("/new", newResourceRoutes(db));
 app.use("/search", searchRoutes());
 app.use("/signout", signoutRoutes());
 
@@ -73,21 +73,16 @@ app.use("/signout", signoutRoutes());
 // Separate them into separate routes files (see above).
 
 
-
-
 app.get("/", (req, res) => {
   // if logged in => render home page else redirect to login or something
   const currentUser = users[req.session.user_id];
-  let templateVars = {user: currentUser};
+  let templateVars = { user: currentUser };//???
   if (currentUser) {
     res.render("index", templateVars);
   } else {
-    res.render("index", {user: null});
+    res.render("index", { user: null });
   }
 });
-
-
-
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);

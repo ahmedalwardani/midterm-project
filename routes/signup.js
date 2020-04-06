@@ -11,7 +11,7 @@ module.exports = (db) => {
     if (req.body.email === "" || req.body.password === "") {
       res.statusCode = 400;
       res.send("Error: Please provide a valid username/password");
-    } else if (getUserByEmail(req.body.email, db)) { //I need this as a promiss 
+    } else if (getUserByEmail(req.body.email, db)) { //I need this as a promiss
       res.statusCode = 400;
       res.send("Error: The e-mail address you entered is already taken. Please enter another e-mail!");
     } else {
