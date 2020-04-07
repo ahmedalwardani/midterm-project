@@ -3,45 +3,60 @@ log in- or not -->
 
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <title>dogEared</title>
+    <!-- Normalization -->
+    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
 
-<head>
-  <title>dogEared</title>
-  <!-- Normalization -->
-  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+    <script type="text/javascript" src="/scripts/app.js"></script>
 
-  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-  <script type="text/javascript" src="/scripts/app.js"></script>
+    <!-- Font import -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;500&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- Font import -->
-  <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@600;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;500&display=swap" rel="stylesheet">
+    <!-- font awesome icons -->
+    <script
+      src="https://kit.fontawesome.com/948f369b19.js"
+      crossorigin="anonymous"
+    ></script>
 
-  <!-- font awesome icons -->
-  <script src="https://kit.fontawesome.com/948f369b19.js" crossorigin="anonymous"></script>
+    <!-- Styles -->
+  </head>
 
-  <!-- Styles -->
+  <!-- CHECK IF SIGN IN METHODE IS GET -->
 
-</head>
+  <body>
+    <main>
+      <div class="card-footer text-center">
+        <h2>Login</h2>
+        <form class="form-inline" action="/signin" method="POST">
+          <input
+            class="form-control"
+            type="email"
+            name="email"
+            placeholder="email"
+          />
+          <input
+            class="form-control"
+            type="password"
+            name="password"
+            placeholder="password"
+          />
+          <button type="submit" class="btn btn-success">Submit</button>
+        </form>
+      </div>
+    </main>
+    <!-- NEED ILLUSTRATION TO GO HERE -->
 
-<!-- CHECK IF SIGN IN METHODE IS GET -->
-
-<body>
-
-  <main>
-    <div class="card-footer text-center">
-      <h2>Login</h2>
-      <form class="form-inline" action="/signin" method="GET">
-        <input class="form-control" type="email" name="email" placeholder="email">
-        <input class="form-control" type="password" name="password" placeholder="password">
-        <button type="submit" class="btn btn-success">Submit</button>
-      </form>
-    </div>
-  </main>
-  <!-- NEED ILLUSTRATION TO GO HERE -->
-
-  <!-- Bootstracp JS or scripts goes here -->
-</body>
-
+    <!-- Bootstracp JS or scripts goes here -->
+  </body>
 </html>
