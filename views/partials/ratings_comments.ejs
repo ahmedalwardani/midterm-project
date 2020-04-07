@@ -1,1 +1,6 @@
-<%  %>
+<% for (const entry of ratings) { %>
+<div class="rating-comment">
+  <p><%= entry.rating %></p>
+  <p><%= entry.comment %></p>
+</div>
+<% } %>

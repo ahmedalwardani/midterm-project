@@ -27,7 +27,7 @@
       <% } else { %>
       <form class="form-inline" action="/signout" method="POST">
         <button type="submit" class="btn btn-outline-dark">Logout</button>
-        <label for="submit" style="margin-right: 1em;">Logged in as: <% loggedin.email %> </label>
+        <label for="submit" style="margin-right: 1em;">Logged in as: <%= loggedin.email %> </label>
       </form>
       <% } %>
     </div>
