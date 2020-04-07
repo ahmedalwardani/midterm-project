@@ -27,29 +27,7 @@
     <section class="resource-info">
       <!-- information about resource -->
       <%- include('partials/resource_info') %>
-
-      <!-- show editing and deleting capabilities if user is resoure is owner and if resources is already saved -->
-      <% if (resource_info.owner) { %>
-      <!-- NEED TO CHECK ROUTES -->
-      <form action="/edit" method="GET">
-        <button type="submit" class="btn btn-primary">Edit</button>
-      </form>
-      <form action="/delete" method="GET">
-        <button type="submit" class="btn btn-primary">Delete</button>
-      </form>
-      <!-- show save resource option if not owner -->
-      <% } else {
-         if(resouce_info.saved) { %>
-      <form action="/unsave" method="GET">
-        <button type="submit" class="btn btn-primary">Unsave</button>
-      </form>
-      <% } else { %>
-      <form action="/save" method="GET">
-        <button type="submit" class="btn btn-primary">Save</button>
-      </form>
-      <%   }
-        } %>
-
+      <%- include('partials/edit_delete_saved') %>
     </section>
     <section class="ratings">
       <%- include('partials/ratings_form') %>
