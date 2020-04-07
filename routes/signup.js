@@ -1,13 +1,30 @@
 const express = require('express');
-const router  = express.Router();
+const router = express.Router();
 const bcrypt = require("bcrypt");
-const {addUser, getUserByEmail} = require("../helpers");
+const { addUser, getUserByEmail } = require("../helpers");
 
 
 
 module.exports = (db) => {
+  router.get("/", (req, res) => {
+   // const currentUser = req.session.user_id;
 
-  router.post("/", (req,res) => {
+  res.render("signup");
+
+    // if (currentUser) {
+    //   res.redirect("/");
+    // } else {
+    //   let templateVars = {
+    //     loggedin: {
+    //       loggedin: false,
+    //       email: null
+    //     }
+    //   };
+    //   res.render("signup", templateVars);
+    // }
+  });
+
+  router.post("/", (req, res) => {
     if (req.body.email === "" || req.body.password === "") {
       res.statusCode = 400;
       res.send("Error: Please provide a valid username/password");
@@ -21,7 +38,7 @@ module.exports = (db) => {
         } else {
           let email = req.body.email;
           let password = bcrypt.hashSync(req.body.password, 10);
-          addUser({email, password}, db)
+          addUser({ email, password }, db)
             .then(user => {
               req.session.user_id = user.id;
               res.redirect("/");
@@ -29,16 +46,6 @@ module.exports = (db) => {
         }
       })
       .catch(err => console.log(err));
-  });
-
-  router.get("/", (req, res) => {
-    const currentUser = req.session.user_id;
-    if (currentUser) {
-      res.redirect("/");
-    } else {
-      let templateVars = {user: currentUser};
-      res.render("signup", templateVars);
-    }
   });
   return router;
 };

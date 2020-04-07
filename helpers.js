@@ -38,7 +38,7 @@ const addResource = function(user, resource, db) {
     .catch(err => console.error('query error', err.stack));
 };
 
-
+//WHAT ABOUT THE SAVED RESOURCES HOW ARE YOU GOING TO GET THAT THIS NEEDS TO BE MODIFIED SO BOTH OWNED AND SAVED RESOURCES SHOW UP
 //function resourcesForUser has not connected yet
 const resourcesForUser = function(id, db) {
   return db
