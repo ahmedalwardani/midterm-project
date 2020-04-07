@@ -16,7 +16,6 @@ module.exports = (db) => {
               email: null
             }
           };
-      console.log(templateVars);
       res.render("signin", templateVars);
     }
   });

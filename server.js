@@ -61,6 +61,7 @@ app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
 app.use("/register", signupRoutes(db));
 app.use("/signin", signinRoutes(db));
+app.use("/signup", signupRoutes(db));
 app.use("/resources", resourcesRoutes(db));
 app.use("/new", newResourceRoutes(db));
 app.use("/search", searchRoutes(db));
