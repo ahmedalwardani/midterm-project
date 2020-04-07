@@ -16,10 +16,11 @@ module.exports = (db) => {
         thumbnail: null,
         description: resp.description,
         active: resp.active,
-        //saved: use query to see whether user saved resource in the saved_resources table
+        // saved: use query to see whether user saved resource in the saved_resources table,
         owner: currentUser === resp.owner_id ? true : false,
         ratings: ratingsArray
       };
+
 
       res.render("description", {resource});
 

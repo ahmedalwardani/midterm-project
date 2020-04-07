@@ -1,0 +1,21 @@
+<!-- show editing and deleting capabilities if user is resoure is owner and if resources is already saved -->
+<% if (resource.owner) { %>
+  <!-- NEED TO CHECK ROUTES -->
+  <form action="/edit" method="GET">
+    <button type="submit" class="btn btn-primary">Edit</button>
+  </form>
+  <form action="/delete" method="GET">
+    <button type="submit" class="btn btn-primary">Delete</button>
+  </form>
+  <!-- show save resource option if not owner -->
+  <% } else {
+     if(resouce.saved) { %>
+  <form action="/unsave" method="GET">
+    <button type="submit" class="btn btn-primary">Unsave</button>
+  </form>
+  <% } else { %>
+  <form action="/save" method="GET">
+    <button type="submit" class="btn btn-primary">Save</button>
+  </form>
+  <%   }
+    } %>

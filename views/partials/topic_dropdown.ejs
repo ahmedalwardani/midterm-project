@@ -3,6 +3,6 @@
   <!-- loop through names of topics as it is structured in tempvars and make it an option MIGHT NEED TO CHANGE LATER -->
   <% const keys = Object.keys(topics); %>
   <% for (const topic of keys) { %>
-  <option value="<% keys.indexOf(topic) %>"><% topics[topic] %></option>
+  <option value="<%= keys.indexOf(topic) %>"><%= topics[topic] %></option>
   <% } %>
 </select>
