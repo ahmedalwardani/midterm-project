@@ -7,18 +7,13 @@ const { addUser, getUserByEmail } = require("../helpers");
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
-    const currentUser = req.session.user_id;
-    if (currentUser) {
-      res.redirect("/");
-    } else {
-      const templateVars = {
-            loggedin: {
-              loggedin: false,
-              email: null
-            }
-          };
-      res.render("signup", templateVars);
-    }
+    const templateVars = {
+      loggedin: {
+        loggedin: false,
+        email: null
+      }
+    };
+    res.render("signup", templateVars)
   });
 
   router.post("/", (req, res) => {

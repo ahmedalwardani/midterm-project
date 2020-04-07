@@ -1,23 +1,18 @@
 const express = require("express");
-const router  = express.Router();
+const router = express.Router();
 const bcrypt = require("bcrypt");
-const {getUserByEmail} = require("../helpers");
+const { getUserByEmail } = require("../helpers");
 
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
-    const currentUser = req.session.user_id;
-    if (currentUser) {
-      res.redirect("/");
-    } else {
-      const templateVars = {
-            loggedin: {
-              loggedin: false,
-              email: null
-            }
-          };
-      res.render("signin", templateVars);
-    }
+    const templateVars = {
+      loggedin: {
+        loggedin: false,
+        email: null
+      }
+    };
+    res.render("signin", templateVars)
   });
 
   router.post("/", (req, res) => {
@@ -34,7 +29,7 @@ module.exports = (db) => {
 
         if (bcrypt.compareSync(password, user.password)) {
           req.session.user_id = user.id;
-          res.render('index',{user});
+          res.render('index', { user });
         } else {
           res.statusCode = 403;
           res.send("Error: Please provide a valid username/password");
