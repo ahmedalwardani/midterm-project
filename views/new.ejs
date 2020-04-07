@@ -40,15 +40,15 @@ user email (for display in nav)-->
     <form class="form-inline" action="/edit" method="POST">
       <div class="input-label-pair">
         <label for="title">Title:</label>
-        <input class="form-control" type="text" name="title" value="<% resource.title %>" >
+        <input class="form-control" type="text" name="title" value="<%= resource.title %>" >
       </div>
       <div class="input-label-pair">
         <label for="url">Page URL:</label>
-        <input class="form-control" type="text" name="url" value="<% resource.url %>">
+        <input class="form-control" type="text" name="url" value="<%= resource.url %>">
       </div>
       <div class="input-label-pair">
         <label for="thumbnail_url">Thumbnail URL:</label>
-        <input class="form-control" type="text" name="thumbnail_url" value="<% resource.thumbnail_url %>">
+        <input class="form-control" type="text" name="thumbnail_url" value="<%= resource.thumbnail_url %>">
       </div>
 
       <div class="input-label-pair topic">
