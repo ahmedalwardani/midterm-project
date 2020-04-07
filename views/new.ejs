@@ -37,22 +37,21 @@ user email (for display in nav)-->
   <!-- style notes: new page and add button centered, other two fields stack on top in columns, toggle add new topic  -->
   <main style="margin: 1em;">
     <h3>Edit Page</h3>
-
-    <form class="form-inline" action="" method="POST">
+    <form class="form-inline" action="/edit" method="POST">
       <div class="input-label-pair">
         <label for="title">Title:</label>
-        <input class="form-control" type="text" name="title">
+        <input class="form-control" type="text" name="title" value="<% resource.title %>" >
       </div>
       <div class="input-label-pair">
         <label for="url">Page URL:</label>
-        <input class="form-control" type="text" name="url" placeholder="http://">
+        <input class="form-control" type="text" name="url" value="<% resource.url %>">
       </div>
       <div class="input-label-pair">
         <label for="thumbnail_url">Thumbnail URL:</label>
-        <input class="form-control" type="text" name="thumbnail_url">
+        <input class="form-control" type="text" name="thumbnail_url" value="<% resource.thumbnail_url %>">
       </div>
-      <div class="input-label-pair topic">
 
+      <div class="input-label-pair topic">
         <!-- DROP DOWN MENU TOPIC NAME -->
         <%- include('partials/topic_dropdown') %>
 
