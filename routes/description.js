@@ -4,7 +4,6 @@ const { singleResource, isSaved } = require("../helpers");
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
-    const ratingsArray = [];
     const currentUser = req.session.user_id;
     singleResource(db, currentUser).then((resp) => {
 
@@ -15,11 +14,12 @@ module.exports = (db) => {
           //HARDCODING EMAIL
           email: 'example@gmail.com'
         },
+
         resource: {
           title: resp.title,
           type: resp.type,
           url: resp.url,
-          thumbnail: null,
+          thumbnail: resp.thumbnail_url,
           description: resp.description,
           active: resp.active,
           owner: currentUser === resp.owner_id ? true : false,
@@ -32,7 +32,7 @@ module.exports = (db) => {
       };
 
 
-      res.render("description", { templateVars });
+      resp.render("description", { templateVars });
 
     }).catch(err => console.log(err));
 

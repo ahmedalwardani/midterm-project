@@ -26,13 +26,16 @@
 
   <!-- check if this is an object - CODED FOR AN OBJECT OF RESOURCES -->
   <% for (const resource of resources) { %>
-  <div class="resource-square">
+
+    <div class="resource-square">
     <!-- need route for resource description page -->
     <h5><a href="<%= resource.url %>"><%= resource.title %></a></h5>
     <div class="overlay">
-      <img class="thumbnail" src="<%= resource.thumbnail_url %>" alt="thumbnail url">
+    <img  style="width: 200px"class="thumbnail" src="<%= resource.thumbnail_url %>" alt="thumbnail url">
+    <a class="btn btn-primary" href="<%= `/resources/${resource.id}`%>">More Details</a>
     </div>
     <% } %>
+
     <!-- Bootstracp JS or scripts goes here -->
   </body>
 </html>

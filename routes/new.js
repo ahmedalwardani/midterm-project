@@ -21,7 +21,7 @@ module.exports = (db) => {
           category_id: "react"
         }
       };
-      res.render("new",  {templateVars});
+      res.render("new", templateVars);
     } else {
       res.redirect("/signin");
     }
