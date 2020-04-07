@@ -5,11 +5,15 @@ const { resourcesForUser } = require("../helpers");
 module.exports = (db) => {
   router.get("/", (req, res) => {
     const currentUser = req.session.user_id;
+    console.log("i am in resources file");
+
     if (currentUser) {
+      console.log("i am outside promise");
+
       resourcesForUser(currentUser, db).then(resp => {
         //res.json(resp); // TODO This is just for testing until resources.ejs is created, then I would need to render
         //need to see what the response is
-        console.log(resp);
+        console.log("resp", resp);
 
         //HARDCORDING TEMPLATE VARS FOR NOW
         const templateVars = {
@@ -40,11 +44,13 @@ module.exports = (db) => {
               saved: true,
               owner: false
             }
-          ]
+          ]//hereeee👀eeee
 
-        }
+        };
 
-        res.render("index", templateVars);
+        console.log( "inside promise temp vars done",templateVars);
+
+        resp.render("index", {templateVars});
 
       })
         .catch(err => console.log(err));

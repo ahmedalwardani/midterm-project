@@ -76,6 +76,7 @@ const resourcesForUser = function(id, db) {
     .catch(err => console.error('query error', err.stack));
 };
 
+//this is suppose to get a a single resource where id is the id of the resource not the owner id
 const singleResource = function(db, id) {
   return db.query(
     `
