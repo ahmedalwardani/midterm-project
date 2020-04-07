@@ -5,29 +5,72 @@ const saveResource = function (user, resource, db){
   return db
   .query(
     `INSERT INTO saved_resources (user_id, resource_id)
-      VALUES (${user}, ${resource}) RETURNING *;
+      VALUES ($1, $2) RETURNING *;
     `, [user, resource])
     .then(res => {
-      return res.rows[0]
+      return res.rows;
     })
     .catch(err => console.error('query error', err.stack));
-}
+};
 
 // delete resource from saved!!
-const deleteResource = function (user, resource, db){
+const deleteResourceFromSaved = function (user, resource, db){
   return db
   .query(
     `DELETE FROM saved_resources
-      WHERE user_id = ${user} AND resource_id = ${resource};
+      WHERE user_id = $1 AND resource_id = $2;
     `, [user, resource])
     .then(res => {
-      return res.rows[0]
+      return res.rows;
     })
     .catch(err => console.error('query error', err.stack));
+}
+// get all resources by user:
+const getAllResourcesByUser = function(user, db){
+  return db
+  .query(
+    `SELECT resources.*
+    FROM resources
+    WHERE owner_id = $1;
+    `, user)
+    .then(res => {
+      return res.rows;
+    })
+    .catch(err => console.error('query error', err.stack));
+};
+// get list of all resurces in db
+const getAllResources = function(db){
+  return db
+  .query(
+    `SELECT resources.*
+    FROM resources;
+    `,)
+    .then(res => {
+      return res.rows;
+    })
+    .catch(err => console.error('query error', err.stack));
+};
+
+// make resource unactive
+const deleteResource = function(user, resourceId, db){
+return db
+.query(
+`
+UPDATE resources
+SET active = false
+WHERE owner_id = $1 AND id = $2
+`, [user, resourceId])
+.then(res => {
+  return res.rows;
+})
+.catch(err => console.error('query error', err.stack));
 }
 
 
 module.exports = {
  saveResource,
- deleteResource
+ deleteResource,
+ getAllResources,
+ getAllResourcesByUser,
+ deleteResourceFromSaved
 };
