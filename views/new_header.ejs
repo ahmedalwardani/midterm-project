@@ -1,0 +1,46 @@
+<header>
+  <nav class="navbar navbar-expand-md navbar-dark bg-success">
+    -->
+    <div class="logo-search">
+      <!-- asked Ahmed if href is correct -->
+      <h4>dogEared</h4>
+      <div><img src="../../styles/assets/logo.png" alt="dogEared logo" /></div>
+      <% if(loggedin.loggedin) { %>
+      <!-- action needs to point to search form -->
+      <form class="form-inline" action="/search" method="GET">
+        <button type="submit" class="">SEARCH</button>
+      </form>
+    </div>
+    <div class="user-login">
+      <!-- Check if user is logged in -->
+      <% if(!loggedin.loggedin) { %>
+      <form class="form-inline" action="/signin" method="GET">
+        <button
+          type="submit"
+          class="btn btn-outline-light"
+          style="margin-right: 1em;"
+        >
+          Login
+        </button>
+      </form>
+      <form class="form-inline" action="/signup" method="GET">
+        <button
+          type="submit"
+          class="btn btn-outline-light"
+          style="margin-right: 1em;"
+        >
+          Register
+        </button>
+      </form>
+      <!-- if user is loggedin -->
+      <% } else { %>
+      <form class="form-inline" action="/signout" method="POST">
+        <button type="submit" class="btn btn-outline-dark">Logout</button>
+        <label for="submit" style="margin-right: 1em;"
+          >Logged in as: <% loggedin.email %>
+        </label>
+      </form>
+      <% } %>
+    </div>
+  </nav>
+</header>
