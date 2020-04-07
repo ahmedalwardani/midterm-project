@@ -4,7 +4,7 @@ const users = require("./helpers");
 
 
 // Web server config
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
 const ENV = process.env.ENV || "dev  elopment";
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -53,7 +53,7 @@ const newResourceRoutes = require("./routes/new");
 const searchRoutes = require("./routes/search");
 const signoutRoutes = require("./routes/signout");
 const descriptionRoutes = require("./routes/description");
-
+const editRoutes = require("./routes/edit");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -66,6 +66,7 @@ app.use("/new", newResourceRoutes(db));
 app.use("/search", searchRoutes(db));
 app.use("/signout", signoutRoutes(db));
 app.use("/description", descriptionRoutes(db));
+// app.use("/edit", editRoutes(db));
 
 
 
