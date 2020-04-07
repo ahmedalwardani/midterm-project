@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { singleResource } = require("../helpers");
+const { singleResource, isSaved } = require("../helpers");
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
@@ -24,7 +24,7 @@ module.exports = (db) => {
           active: resp.active,
           owner: currentUser === resp.owner_id ? true : false,
           //HARDCODING SAVED AND AVERAGE RATING
-          saved: false,
+          saved: isSaved(),
           average_rating: 3
         },
         //HARD CODING IN RATINGS ARRAY
