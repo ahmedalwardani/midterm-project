@@ -10,7 +10,17 @@ const getUserByEmail = (db, email) => {
     })
     .catch(err => console.error('query error', err.stack));
 };
-
+const getUserByID = (db, id) => {
+  return db.query(`
+    SELECT *
+    FROM users
+    WHERE id = $1
+  `, [id])
+    .then(res => {
+      return res.rows[0];
+    })
+    .catch(err => console.error('query error', err.stack));
+};
 const addUser = function(user, db) {
   let arr = [user.name, user.email, user.password];
   return db
@@ -38,7 +48,6 @@ const addResource = function(user, resource, db) {
     })
     .catch(err => console.error('query error', err.stack));
 };
-
 
 const deleteResource = function(resource, db) {
   return db //just deleting from users as we don't use it
@@ -81,7 +90,7 @@ const singleResource = function(db, id) {
   return db.query(
     `
     SELECT * FROM resources
-    WHERE resources.owner_id = $1;
+    WHERE resources.id = $1;
     `, [Number(id)])
     .then(resp => resp.rows[0])
     .catch(err => console.error('query error', err.stack));
@@ -94,6 +103,7 @@ const singleResource = function(db, id) {
 module.exports = {
   addUser,
   addResource,
+  getUserByID,
   getUserByEmail,
   resourcesForUser,
   singleResource,
