@@ -1,7 +1,6 @@
 -- Drop and recreate Users table (Example)
 
 DROP TABLE IF EXISTS users CASCADE;
-DROP TABLE IF EXISTS comments CASCADE;
 
 
 CREATE TABLE users (

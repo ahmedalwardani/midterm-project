@@ -41,10 +41,10 @@ module.exports = (db) => {
               owner: false
             }
           ]
-          
+
         }
 
-        res.render("index", { templateVars })
+        res.render("index", templateVars);
 
       })
         .catch(err => console.log(err));
