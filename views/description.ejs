@@ -15,58 +15,55 @@ comment or rating
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>dogEared</title>
-    <!-- Normalization -->
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
 
-    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="/scripts/app.js"></script>
+<head>
+  <title>dogEared</title>
+  <!-- Normalization -->
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
 
-    <!-- Font import -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;500&display=swap"
-      rel="stylesheet"
-    />
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  <script type="text/javascript" src="/scripts/app.js"></script>
 
-    <!-- font awesome icons -->
-    <script
-      src="https://kit.fontawesome.com/948f369b19.js"
-      crossorigin="anonymous"
-    ></script>
+  <!-- Font import -->
+  <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;500&display=swap" rel="stylesheet" />
 
-    <!-- Styles -->
-  </head>
+  <!-- font awesome icons -->
+  <script src="https://kit.fontawesome.com/948f369b19.js" crossorigin="anonymous"></script>
 
-  <body>
-    <!-- style notes: two column -->
-    <main>
-      <h1><%= resource.title %></h1>
-      <div>
-        <img src="<%= resource.thumbnail %>" alt="" />
-        <a href="<%= resource.url %>">Visit</a>
-      </div>
-      <p><%= resource.description %></p>
-      <!-- put icons for average rating here OMG NEED TO FIGURE THIS OUT TOO -->
+  <!-- Styles -->
+</head>
 
-      <!-- form to submit rating and comment -->
-      <form action="" method="POST">
-        <!-- how do i do star comment? ugh need tofigure this out -->
-        <input class="comment_form" type="text" name="comment" />
-        <button type="submit" class="btn btn-primary">Submit</button>
+<body>
+  <!-- style notes: two column -->
+  <main>
+    <section class="resource-info">
+      <!-- information about resource -->
+      <%- include('partials/resource_info') %>
+      <!-- show editing and deleting capabilities if user is resoure is owner -->
+      <% if (resource_info.owner) { %>
+
+      <!-- NEED TO CHECK ROUTES -->
+      <form action="/edit" method="GET">
+        <button type="submit" class="btn btn-primary">Edit</button>
       </form>
-    </main>
+      <form action="/delete" method="GET">
+        <button type="submit" class="btn btn-primary">Delete</button>
+      </form>
+      <!-- show save resource option if not owner -->
+      <% } else { %>
+        <form action="/save" method="GET">
+          <button type="submit" class="btn btn-primary">Save Resource</button>
+        </form>
+      <% } %>
+    </section>
+    <section class="ratings">
+      <%- include('partials/ratings_form') %>
+      <%- include('partials/ratings_comments') %>
+    </section>
+  </main>
+</body>
 
-    <!-- side section to add rating and comments -->
-
-    <!-- [{ratin: 5, comment: blahblah}, {ratin: 5, comment: blahblah}, {ratin: 5, comment: blahblah}] -->
-
-    <!-- Bootstracp JS or scripts goes here -->
-  </body>
 </html>
