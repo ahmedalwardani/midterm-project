@@ -59,6 +59,7 @@ const editRoutes = require("./routes/edit");
 // Note: Feel free to replace the example routes below with your own
 app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
+app.use("/signup", signupRoutes(db));
 app.use("/signin", signinRoutes(db));
 app.use("/signup", signupRoutes(db));
 app.use("/resources", resourcesRoutes(db));

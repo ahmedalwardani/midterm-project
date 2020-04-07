@@ -21,6 +21,35 @@ const getUserByID = (db, id) => {
     })
     .catch(err => console.error('query error', err.stack));
 };
+
+
+const getAllResources = db => {
+  return db
+    .query(
+      `SELECT resources.*
+    FROM resources;
+    `,)
+    .then(res => {
+      return res.rows;
+    })
+    .catch(err => console.error('query error', err.stack));
+};
+
+const isSaved = (resourceToCheck, allResources, savedResources) => {         //this will use a for in loop and .index() function as well as the spread (...) operator
+  for (const resourceAll of allResources) {
+    for (const resourceSaved of savedResources) {
+      if (resourceAll.id === resourceSaved.id) {
+        return true;
+      }
+      return false;
+    }
+  }
+};
+
+
+//select resources.id from RESOURCES JOIN saved_resources ON resources.id=saved_resources.resource_id WHERE user.id =
+
+
 const addUser = function(user, db) {
   let arr = [user.name, user.email, user.password];
   return db
@@ -107,7 +136,7 @@ module.exports = {
   getUserByEmail,
   resourcesForUser,
   singleResource,
-  deleteResource,
-  editResource
+  isSaved,
+  getAllResources
 };
 
