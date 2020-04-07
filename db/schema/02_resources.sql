@@ -8,5 +8,7 @@ CREATE TABLE resources (
   type VARCHAR(255) NOT NULL,
   url VARCHAR(255),
   description TEXT,
-  active BOOLEAN NOT NULL DEFAULT TRUE
+  active BOOLEAN NOT NULL DEFAULT TRUE,
+  thumbnail_url VARCHAR(255) NOT NULL,
+  category_id INTEGER REFERENCES categories(id) ON DELETE CASCADE
 );
