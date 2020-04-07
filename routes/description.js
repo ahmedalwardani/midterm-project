@@ -1,28 +1,38 @@
 const express = require('express');
-const router  = express.Router();
-const {singleResource} = require("../helpers");
+const router = express.Router();
+const { singleResource } = require("../helpers");
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
     const ratingsArray = [];
     const currentUser = req.session.user_id;
     singleResource(db, currentUser).then((resp) => {
-      const resource = {
-        id: resp.id,
-        owner_id: resp.owner_id,
-        title: resp.title,
-        type: resp.type,
-        url: resp.url,
-        thumbnail: null,
-        description: resp.description,
-        active: resp.active,
-        // saved: use query to see whether user saved resource in the saved_resources table,
-        owner: currentUser === resp.owner_id ? true : false,
-        ratings: ratingsArray
+
+      const templateVars = {
+
+        loggedin: {
+          loggedin: true,
+          //HARDCODING EMAIL
+          email: 'example@gmail.com'
+        },
+        resource: {
+          title: resp.title,
+          type: resp.type,
+          url: resp.url,
+          thumbnail: null,
+          description: resp.description,
+          active: resp.active,
+          owner: currentUser === resp.owner_id ? true : false,
+          //HARDCODING SAVED AND AVERAGE RATING
+          saved: false,
+          average_rating: 3
+        },
+        //HARD CODING IN RATINGS ARRAY
+        ratings: [{rating: 4, comment: "awesome"}, {rating: 4, comment: "awesome"}, {rating: 1, comment: " not awesome"}]
       };
 
 
-      res.render("description", {resource});
+      res.render("description", { templateVars });
 
     }).catch(err => console.log(err));
 

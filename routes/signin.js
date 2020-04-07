@@ -10,7 +10,13 @@ module.exports = (db) => {
     if (currentUser) {
       res.redirect("/");
     } else {
-      let templateVars = {user: currentUser};
+      const templateVars = {
+            loggedin: {
+              loggedin: false,
+              email: null
+            }
+          };
+      console.log(templateVars);
       res.render("signin", templateVars);
     }
   });
