@@ -33,12 +33,34 @@ const addResource = function(user, resource, db) {
     VALUES($1, $2, $3, $4, $5) RETURNING *;
   `, [Number(user), ...resourceValues, "TEST NOT YET IMPLEMENETED"])
     .then(res => {
-      return true;
+      //console.log(res.rows); need to check what we are getting and probabbly change accordingly
+      return res.rows;
     })
     .catch(err => console.error('query error', err.stack));
 };
 
-//WHAT ABOUT THE SAVED RESOURCES HOW ARE YOU GOING TO GET THAT THIS NEEDS TO BE MODIFIED SO BOTH OWNED AND SAVED RESOURCES SHOW UP
+
+const deleteResource = function(resource, db) {
+  return db //just deleting from users as we don't use it
+    .query(
+      `UPDATE resources SET active=false
+      WHERE resources.id=${resource}
+  `)
+    .then(res => true)
+    .catch(err => console.error('query error', err.stack));
+};
+
+const editResource = function(resource, field, value, db) {
+  return db.query(
+    `UPDATE resources SET ${field}=$1
+    WHERE resources.id=${resource}
+    `
+    , [value])
+    .then(res => res.rows[0])
+    .catch(err => console.error("query error", err.stack));
+};
+
+
 //function resourcesForUser has not connected yet
 const resourcesForUser = function(id, db) {
   return db
@@ -74,5 +96,7 @@ module.exports = {
   getUserByEmail,
   resourcesForUser,
   singleResource,
+  deleteResource,
+  editResource
 };
 
