@@ -1,15 +1,14 @@
 const express = require('express');
 const router  = express.Router();
-const {users, resourcesForUser, resourcesDatabase} = require("../helpers");
+const {resourcesForUser} = require("../helpers");
 
-module.exports = () => {
+module.exports = (db) => {
   router.get("/", (req, res) => {
     const currentUser = req.session.user_id;
-    const userObject = users[currentUser];
-    const resourcesObject = resourcesForUser(currentUser, resourcesDatabase);
-    // console.log(resourcesObject);
-    const templateVars = {resources: resourcesObject, user: userObject};
-    res.render("resources", templateVars);
+    resourcesForUser(currentUser, db).then(resp => {
+      res.json(resp); // TODO This is just for testing until resources.ejs is created, then I would need to render
+    })
+      .catch(err => console.log(err));
   });
   return router;
 };

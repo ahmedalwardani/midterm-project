@@ -12,7 +12,7 @@ const getUserByEmail = (db, email) => {
 };
 
 const addUser = function(user, db) {
-  let arr = ['bob', user.email, user.password];   //change bob to user.name
+  let arr = [user.name, user.email, user.password];
   return db
     .query(`
     INSERT INTO users (name, email, password)
@@ -24,16 +24,16 @@ const addUser = function(user, db) {
     .catch(err => console.error('query error', err.stack));
 };
 
-const addResource = function(resource, db) {
+const addResource = function(user, resource, db) {
   let resourceValues = Object.values(resource);
   return db
     .query(
       `INSERT INTO resources (
     owner_id, title, type, url, description)
     VALUES($1, $2, $3, $4, $5) RETURNING *;
-  `, resourceValues)
+  `, [Number(user), ...resourceValues, "TEST NOT YET IMPLEMENETED"])
     .then(res => {
-      return res.rows[0];
+      return true;
     })
     .catch(err => console.error('query error', err.stack));
 };
@@ -49,7 +49,7 @@ const resourcesForUser = function(id, db) {
     WHERE users.id = $1;
     `, [id])
     .then(res => {
-      console.log(res.rows[0]);
+      return res.rows;
     })
     .catch(err => console.error('query error', err.stack));
 };

@@ -14,17 +14,19 @@ module.exports = (db) => {
     }
   });
 
-  // router.post("/", (req, res) => {
-  //   const currentUser = req.session.user_id;
-  //   addResource(db, resource);
-
-  //   // addnewresource(db, info).then(resp => {
-
-  //   res.redirect("/resources");
-  // });
+  router.post("/", (req, res) => {
+    console.log("reached");
+    const currentUser = req.session.user_id;
+    addResource(currentUser, req.body, db).then(resp => {
+      console.log(resp);
+      if (resp) {
+        console.log("added");
+        res.redirect("/resources");
+      } else {
+        console.log("cannot add");
+      }
+    })
+      .catch(err => console.log(err));
+  });
   return router;
 };
-
-
-
-
