@@ -1,6 +1,6 @@
 const express = require('express');
-const router  = express.Router();
-const {users} = require("../helpers");
+const router = express.Router();
+const { users } = require("../helpers");
 
 module.exports = () => {
   router.get("/", (req, res) => {
@@ -20,10 +20,12 @@ module.exports = () => {
           category_id: "react"
         }
       };
-      res.render("search",  {templateVars});
+      res.render("search", { templateVars });
     } else {
       res.redirect("/signin");
     }
   });
+
+  //NEED TO WRITE POST REQUEST GET THE LIST OF RESOURCES BACK THAT MATCHES THE SEARCH AND PASS IT TO INDEX.EJS
   return router;
 };

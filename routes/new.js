@@ -27,6 +27,7 @@ module.exports = (db) => {
     }
   });
 
+  //what the heck is this?????
   router.post("/", (req, res) => {
     console.log("reached");
     const currentUser = req.session.user_id;
