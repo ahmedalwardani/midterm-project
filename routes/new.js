@@ -33,11 +33,11 @@ module.exports = (db) => {
     const resource = {
       title: req.body.title,
       url: req.body.url,
-      thumbnail_url: req.body.thumbnail_url,
       description: req.body.description,
-      
+      thumbnail_url: req.body.thumbnail_url,
+      topic_id: req.body.topic,
     }
-    addResource(currentUser, req.body, db).then(resp => {
+    addResource(currentUser, resource, db).then(resp => {
       console.log(resp);
       if (resp) {
         console.log("added");

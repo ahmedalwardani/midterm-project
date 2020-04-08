@@ -6,7 +6,7 @@ CREATE TABLE resources (
   owner_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   title VARCHAR(255) NOT NULL,
   type VARCHAR(255),
-  url VARCHAR(255),
+  url VARCHAR(255) NOT NULL,
   description TEXT,
   active BOOLEAN NOT NULL DEFAULT TRUE,
   thumbnail_url VARCHAR(255) NOT NULL,

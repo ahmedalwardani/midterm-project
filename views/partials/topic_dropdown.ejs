@@ -2,7 +2,7 @@
   <option value="" selected disabled>-- Select Topic --</option>
 
   <% for (const topic of topics) { %>
-  <option value="<%= topics.indexOf(topic) %>"><%= topic.name %></option>
+  <option value="<%= topics.indexOf(topic) + 1 %>"><%= topic.name %></option>
   <% } %>
 
 </select>

@@ -46,18 +46,21 @@ app.use(cookieSession({
 // Note: Feel free to replace the example routes below with your own
 // const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
+const usersRoutes = require("./routes/users");
 const signupRoutes = require("./routes/signup");
 const signinRoutes = require("./routes/signin");
 const resourcesRoutes = require("./routes/resources");
 const newResourceRoutes = require("./routes/new");
 const searchRoutes = require("./routes/search");
 const signoutRoutes = require("./routes/signout");
-//const descriptionRoutes = require("./routes/description");
 const testRoutes = require("./routes/test");
+const userRoutes = require("./routes/users");
+
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
-//app.use("/api/users", usersRoutes(db));
+
 app.use("/api/widgets", widgetsRoutes(db));
+app.use("/api/users", usersRoutes(db));
 app.use("/signup", signupRoutes(db));
 app.use("/signin", signinRoutes(db));
 app.use("/signup", signupRoutes(db));
@@ -65,8 +68,8 @@ app.use("/resources", resourcesRoutes(db));
 app.use("/new", newResourceRoutes(db));
 app.use("/search", searchRoutes(db));
 app.use("/signout", signoutRoutes(db));
-//app.use("/description", descriptionRoutes(db));
 app.use("/test", testRoutes(db));
+
 
 
 
