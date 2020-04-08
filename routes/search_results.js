@@ -26,8 +26,6 @@ module.exports = (db) => {
             category_id: req.body.topic
           };
           
-          console.log(options);
-          console.log(req.body, "body");
           searchResources(options, db).then(resp => {
             res.json(resp);
 

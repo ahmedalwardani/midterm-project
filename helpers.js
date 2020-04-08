@@ -225,12 +225,9 @@ const searchResources = function (options, db) {
   queryString += ` GROUP BY resources.id`;
 
   if(options.minimum_rating) {
-    queryParams.push(`${Number(options.minimum_rating)}`);
+    queryParams.push(`${options.minimum_rating}`);
     queryString += ` HAVING avg(ratings.rating) >= $${queryParams.length}`
   }
-  console.log(queryParams, "params");
-
-  console.log(queryString, "string");
   return db.query(queryString, queryParams)
     .then(res => res.rows)
     .catch(err => console.error('query error', err.stack));
