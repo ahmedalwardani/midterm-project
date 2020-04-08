@@ -10,6 +10,7 @@ const getUserByEmail = (db, email) => {
     })
     .catch(err => console.error('query error', err.stack));
 };
+
 const getUserByID = (db, id) => {
   return db.query(`
     SELECT *
@@ -95,6 +96,23 @@ const addResource = function(user, resource, db) {
     .catch(err => console.error('query error', err.stack));
 };
 
+
+// const isSaved = (resourceToCheck, allResources, savedResources) => {         //this will use a for in loop and .index() function as well as the spread (...) operator
+//   for (const resourceAll of allResources) {
+//     for (const resourceSaved of savedResources) {
+//       if (resourceAll.id === resourceSaved.id) {
+//         return true;
+//       }
+//       return false;
+//     }
+//   }
+// };
+
+
+// //select resources.id from RESOURCES JOIN saved_resources ON resources.id=saved_resources.resource_id WHERE user.id =
+
+
+
 const deleteResource = function(resource, db) {
   return db //just deleting from users as we don't use it
     .query(
@@ -117,7 +135,7 @@ const editResource = function(resource, field, value, db) {
 
 
 //function resourcesForUser has not connected yet
-const resourcesForUser = function(id, db) {
+const resourcesOwnedByUser = function(id, db) {
   return db
     .query(
       `SELECT resources.*
@@ -130,6 +148,8 @@ const resourcesForUser = function(id, db) {
     })
     .catch(err => console.error('query error', err.stack));
 };
+
+//NEED A FUNCTION FOR ALL ALL RESOURCES
 
 //this is suppose to get a a single resource where id is the id of the resource not the owner id
 const singleResource = function(db, id) {
@@ -151,14 +171,11 @@ module.exports = {
   addResource,
   getUserByID,
   getUserByEmail,
-  resourcesForUser,
+  resourcesOwnedByUser,
   singleResource,
   isSaved,
   getAllResources,
-<<<<<<< HEAD
   deleteResource
-=======
   getAllSavedResourcesByUser
->>>>>>> master
 };
 
