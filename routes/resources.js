@@ -22,10 +22,11 @@ module.exports = (db) => {
         }).catch(err => console.log(err));
       })
     } else {
-      res.send('user not logged in!');
+      res.redirect("/");
     }
   });
 
+  //must get user information, get the single resource, get the comments associated with the resource, feed everything to tempvars and res.render description page
   router.get("/:id", (req,res) => {
     console.log(' ===========>', req.params.id);
     singleResource(db, req.params.id).then( resource => {
