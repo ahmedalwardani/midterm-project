@@ -70,7 +70,7 @@ const getAllSavedResourceByUser = (user, db) => {
 const getAllResourcesIDOwnedByUser = (user, db) => {
   return db
     .query(
-      `SELECT owner_id
+      `SELECT id
       FROM resources
       WHERE owner_id=$1;
       `, [user])
@@ -213,23 +213,21 @@ const getCategoryNames = db => {
 
 const searchResources = function (options, db) {
   const queryParams = [];
-  queryParams.push(`%${options.keyword}%`);
+  queryParams.push(`'%${options.keyword}%'`);
   let queryString = `
-SELECT resources.*
-FROM resources
-JOIN ratings ON resources.id=ratings.resource_id
-WHERE resources.active = true AND resources.title LIKE $1 OR resources.description LIKE $1 `;
+  SELECT resources.*, avg(ratings.rating) as average_rating FROM resources JOIN ratings ON resources.id=ratings.resource_id WHERE resources.active = true AND resources.title LIKE $1 OR resources.description LIKE $1 `;
 
-  if (options.categories) {
+  if (options.category_id) {
     queryParams.push(`${Number(options.categories)}`);
     queryString += `AND resource.category_id =  $${queryParams.length} `;
   }
 
+  queryString += `GROUP BY resources.id`;
+
   if(options.minimum_rating) {
     queryParams.push(`${Number(options.minimum_rating)}`);
-    queryString += `AND resource.rating >= $${queryParams.length}`
+    queryString += `HAVING avg(ratings.rating) >= $${queryParams.length}`
   }
-
 
   return db.query(queryString, queryParams)
     .then(res => res.rows)

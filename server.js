@@ -55,6 +55,7 @@ const searchRoutes = require("./routes/search");
 const signoutRoutes = require("./routes/signout");
 const testRoutes = require("./routes/test");
 const userRoutes = require("./routes/users");
+const searchResultsRoutes = require("./routes/search_results")
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -69,6 +70,7 @@ app.use("/new", newResourceRoutes(db));
 app.use("/search", searchRoutes(db));
 app.use("/signout", signoutRoutes(db));
 app.use("/test", testRoutes(db));
+app.use("/search_results", searchResultsRoutes(db));
 
 
 
