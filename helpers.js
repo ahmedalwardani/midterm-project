@@ -53,17 +53,6 @@ const getAllSavedResourceIDByUser = (user, db) => {
 };
 
 
-const getAllResourcesOwnedByUser = (user, db) => {
-  return db
-    .query(
-      `SELECT *
-      FROM resources
-      WHERE owner_id=$1;
-      `, [user])
-    .then(res => res.rows)
-    .catch(err => console.error("query error", err.stack));
-};
-
 const getAllSavedResourceByUser = (user, db) => {
   return db
     .query(
@@ -76,6 +65,32 @@ const getAllSavedResourceByUser = (user, db) => {
     .then(res => res.rows)
     .catch(err => console.error("query error", err.stack));
 };
+
+
+const getAllResourcesIDOwnedByUser = (user, db) => {
+  return db
+    .query(
+      `SELECT owner_id
+      FROM resources
+      WHERE owner_id=$1;
+      `, [user])
+    .then(res => res.rows)
+    .catch(err => console.error("query error", err.stack));
+};
+
+const getAllResourcesOwnedByUser = (user, db) => {
+  return db
+    .query(
+      `SELECT *
+      FROM resources
+      WHERE owner_id=$1;
+      `, [user])
+    .then(res => res.rows)
+    .catch(err => console.error("query error", err.stack));
+};
+
+
+
 
 const isSaved = function (user, id, db) {
   return db
@@ -244,6 +259,7 @@ module.exports = {
   deleteResourceFromSaved,
   getCommentRating,
   getCategoryNames,
-  searchResources
+  searchResources,
+  getAllResourcesIDOwnedByUser
 };
 
