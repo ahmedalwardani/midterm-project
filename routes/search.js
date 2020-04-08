@@ -6,6 +6,10 @@ module.exports = () => {
   router.get("/", (req, res) => {
     const currentUser = req.session.user_id;
     if (currentUser) {
+
+
+
+      
       let templateVars = {
         loggedin: {
           loggedin: true,
@@ -20,7 +24,7 @@ module.exports = () => {
           category_id: "react"
         }
       };
-      res.render("search", { templateVars });
+      res.render("/search", { templateVars });
     } else {
       res.redirect("/signin");
     }
