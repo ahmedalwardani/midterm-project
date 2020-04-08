@@ -91,6 +91,7 @@ const isSaved = function(user, id, db) {
 
 const addUser = function(user, db) {
   let arr = [user.name, user.email, user.password];
+  console.log("Inside Add User= " + arr); // just wnat to see that the data even comes here
   return db
     .query(`
     INSERT INTO users (name, email, password)
@@ -98,7 +99,6 @@ const addUser = function(user, db) {
   `, arr)
     .then(res => {
       console.log("success");
-
     })
     .catch(err => console.error('query error', err.stack));
 };
