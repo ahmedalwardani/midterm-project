@@ -29,10 +29,7 @@ module.exports = (db) => {
 
         if (bcrypt.compareSync(password, user.password)) {
           req.session.user_id = user.id;
-
-//REALLY NEED TO FIX THISSSS -
           res.redirect('/resources');
-
         } else {
           res.statusCode = 403;
           res.send("Error: Please provide a valid username/password");

@@ -97,7 +97,8 @@ const addUser = function(user, db) {
       VALUES ($1, $2, $3) RETURNING *;
   `, arr)
     .then(res => {
-      return res.rows[0];
+      console.log("success");
+
     })
     .catch(err => console.error('query error', err.stack));
 };

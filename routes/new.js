@@ -25,30 +25,6 @@ module.exports = (db) => {
     } else {
       res.redirect("/");
     }
-
-
-
-
-    // const currentUser = req.session.user_id;
-    // if (currentUser) {
-    //   let templateVars = {
-    //     loggedin: {
-    //       loggedin: true,
-    //       //HARDCODING EMAIL
-    //       email: 'example@gmail.com'
-    //     },
-
-    //     //HARD CODING CATEGORY ID *********NEED QUERIES FOR CATEGORY NAME*****************
-    //     topics: {
-    //       category_id: "javascript",
-    //       category_id: "php",
-    //       category_id: "react"
-    //     }
-    //   };
-    //   res.render("new", templateVars);
-    // } else {
-    //   res.redirect("/signin");
-    // }
   });
 
   //what the heck is this?????
