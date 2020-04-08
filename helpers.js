@@ -137,6 +137,7 @@ module.exports = {
   resourcesForUser,
   singleResource,
   isSaved,
-  getAllResources
+  getAllResources,
+  deleteResource
 };
 
