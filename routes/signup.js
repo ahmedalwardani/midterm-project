@@ -31,7 +31,7 @@ module.exports = (db) => {
         } else {
           const _password = bcrypt.hashSync(req.body.password, 10);
           user = {
-            name: req.params.name,
+            name: req.body.name,
             email: req.body.email,
             password: _password
           }

@@ -91,14 +91,13 @@ const isSaved = function(user, id, db) {
 
 const addUser = function(user, db) {
   let arr = [user.name, user.email, user.password];
-  console.log("Inside Add User= " + arr); // just wnat to see that the data even comes here
   return db
     .query(`
     INSERT INTO users (name, email, password)
       VALUES ($1, $2, $3) RETURNING *;
   `, arr)
     .then(res => {
-      console.log("success");
+     return true;
     })
     .catch(err => console.error('query error', err.stack));
 };
@@ -111,7 +110,7 @@ const addResource = function(user, resource, db) {
       `INSERT INTO resources (
     owner_id, title, type, url, description)
     VALUES($1, $2, $3, $4, $5) RETURNING *;
-  `, [Number(user), ...resourceValues, "TEST NOT YET IMPLEMENETED"])
+  `, [Number(user), ...resourceValues])
     .then(res => {
       //console.log(res.rows); need to check what we are getting and probabbly change accordingly
       return res.rows;

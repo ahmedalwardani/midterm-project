@@ -27,10 +27,16 @@ module.exports = (db) => {
     }
   });
 
-  //what the heck is this?????
   router.post("/", (req, res) => {
-    console.log("reached");
+
     const currentUser = req.session.user_id;
+    const resource = {
+      title: req.body.title,
+      url: req.body.url,
+      thumbnail_url: req.body.thumbnail_url,
+      description: req.body.description,
+      
+    }
     addResource(currentUser, req.body, db).then(resp => {
       console.log(resp);
       if (resp) {
