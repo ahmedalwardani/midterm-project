@@ -4,7 +4,7 @@ const users = require("./helpers");
 
 
 // Web server config
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 const ENV = process.env.ENV || "dev  elopment";
 const express = require("express");
 const bodyParser = require("body-parser");

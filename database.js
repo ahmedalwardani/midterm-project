@@ -60,17 +60,38 @@ UPDATE resources
 SET active = false
 WHERE owner_id = $1 AND id = $2
 `, [user, resourceId])
+.then(res => {
+  return res.rows;
+})
+.catch(err => console.error('query error', err.stack));
+}
+// comments and ratings for resource
+const getCommentRating = (resourceId, db) => {
+  return db
+  .query(
+    ` SELECT rating, comment
+    FROM ratings
+    WHERE resource_id = $1;
+  `, [resourceId])
     .then(res => {
-      return res.rows;
+      return res.rows[0];
     })
     .catch(err => console.error('query error', err.stack));
 };
 
+//search, need to know what I am getting in option - object?
+const searchResources = function(options, db){
+
+}
+
+
+
 
 module.exports = {
-  saveResource,
-  deleteResource,
-  getAllResources,
-  getAllResourcesByUser,
-  deleteResourceFromSaved
+ saveResource,
+ deleteResource,
+ getAllResources,
+ getAllResourcesByUser,
+ deleteResourceFromSaved,
+ getCommentRating
 };

@@ -155,6 +155,10 @@ module.exports = {
   singleResource,
   isSaved,
   getAllResources,
+<<<<<<< HEAD
+  deleteResource
+=======
   getAllSavedResourcesByUser
+>>>>>>> master
 };
 
