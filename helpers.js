@@ -23,6 +23,51 @@ const getUserByID = (db, id) => {
     .catch(err => console.error('query error', err.stack));
 };
 
+
+const getAllResources = db => {
+  return db
+    .query(
+      `SELECT resources.*
+    FROM resources;
+    `)
+    .then(res => {
+      return res.rows;
+    })
+    .catch(err => console.error('query error', err.stack));
+};
+
+const getAllSavedResourcesByUser = (db, user) => {
+  return db
+    .query(
+      `SELECT saved_resources.resource_id
+      FROM resources
+      JOIN saved_resources
+      ON resources.id=saved_resources.resource_id
+      WHERE user_id=$1;
+      `, [user])
+    .then(res => res.rows)
+    .catch(err => console.error("query error", err.stack));
+};
+
+const isSaved = (db, user, id) => {
+  let found = false;
+  getAllSavedResourcesByUser(db, user)
+    .then(resp => {
+      for (let i = 0; i < resp.length; i++) {
+        if (resp[i].resource_id === id) {
+          found = true;
+          break;
+        }
+      }
+      return found;
+    });
+};
+
+
+
+//select resources.id from RESOURCES JOIN saved_resources ON resources.id=saved_resources.resource_id WHERE user.id =
+
+
 const addUser = function(user, db) {
   let arr = [user.name, user.email, user.password];
   return db
@@ -129,6 +174,8 @@ module.exports = {
   resourcesOwnedByUser,
   singleResource,
   isSaved,
-  getAllResources
+  getAllResources,
+  deleteResource
+  getAllSavedResourcesByUser
 };
 
