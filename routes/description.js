@@ -34,10 +34,7 @@ module.exports = (db) => {
           resp.render("description", { templateVars });
         });
         // })
-
-
-
-      }).catch(err => console.log(err));
+      }).catch(err => console.log(err)));
 
   });
   return router;
