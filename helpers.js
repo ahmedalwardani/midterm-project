@@ -213,22 +213,24 @@ const getCategoryNames = db => {
 
 const searchResources = function (options, db) {
   const queryParams = [];
-  queryParams.push(`'%${options.keyword}%'`);
+  queryParams.push(`%${options.keyword}%`);
   let queryString = `
-  SELECT resources.*, avg(ratings.rating) as average_rating FROM resources JOIN ratings ON resources.id=ratings.resource_id WHERE resources.active = true AND resources.title LIKE $1 OR resources.description LIKE $1 `;
+  SELECT resources.*, avg(ratings.rating) as average_rating FROM resources JOIN ratings ON resources.id=ratings.resource_id WHERE resources.active = true AND resources.title LIKE $1 OR resources.description LIKE $1`;
 
   if (options.category_id) {
-    queryParams.push(`${Number(options.categories)}`);
-    queryString += `AND resource.category_id =  $${queryParams.length} `;
+    queryParams.push(`${options.category_id}`);
+    queryString += ` AND resources.category_id =  $${queryParams.length} `;
   }
 
-  queryString += `GROUP BY resources.id`;
+  queryString += ` GROUP BY resources.id`;
 
   if(options.minimum_rating) {
     queryParams.push(`${Number(options.minimum_rating)}`);
-    queryString += `HAVING avg(ratings.rating) >= $${queryParams.length}`
+    queryString += ` HAVING avg(ratings.rating) >= $${queryParams.length}`
   }
+  console.log(queryParams, "params");
 
+  console.log(queryString, "string");
   return db.query(queryString, queryParams)
     .then(res => res.rows)
     .catch(err => console.error('query error', err.stack));

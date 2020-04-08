@@ -4,7 +4,7 @@ const { getUserByID, searchResources, getAllResourcesIDOwnedByUser, getAllSavedR
 
 
 module.exports = (db) => {
-  router.get("/", (req, res) => {
+  router.post("/", (req, res) => {
   const currentUser = req.session.user_id;
   if (currentUser) {
     getUserByID(currentUser, db).then(resp => {
@@ -25,9 +25,12 @@ module.exports = (db) => {
             minimum_rating: req.body.min_rating,
             category_id: req.body.topic
           };
+          
           console.log(options);
+          console.log(req.body, "body");
           searchResources(options, db).then(resp => {
             res.json(resp);
+
             const templateVars = {
               user: {
                 loggedin: true,
