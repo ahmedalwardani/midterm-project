@@ -7,7 +7,7 @@ const { getUserByEmail } = require("../helpers");
 module.exports = (db) => {
   router.get("/", (req, res) => {
     const templateVars = {
-      loggedin: {
+      user: {
         loggedin: false,
         email: null
       }
@@ -20,7 +20,7 @@ module.exports = (db) => {
     let email = req.body.email;
 
 
-    getUserByEmail(db, email)
+    getUserByEmail(email, db)
       .then(user => {
         if (!user) {
           res.statusCode = 403;

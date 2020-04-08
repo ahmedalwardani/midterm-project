@@ -8,7 +8,7 @@ const { addUser, getUserByEmail } = require("../helpers");
 module.exports = (db) => {
   router.get("/", (req, res) => {
     const templateVars = {
-      loggedin: {
+      user: {
         loggedin: false,
         email: null
       }

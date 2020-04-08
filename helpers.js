@@ -1,5 +1,6 @@
+
 //Returns an object corresponding to a provided string, otherwise returns undefined
-const getUserByEmail = (db, email) => {
+const getUserByEmail = (email, db) => {
   return db.query(`
     SELECT *
     FROM users
@@ -11,7 +12,7 @@ const getUserByEmail = (db, email) => {
     .catch(err => console.error('query error', err.stack));
 };
 
-const getUserByID = (db, id) => {
+const getUserByID = (id, db) => {
   return db.query(`
     SELECT *
     FROM users
@@ -24,7 +25,7 @@ const getUserByID = (db, id) => {
 };
 
 
-const getAllResources = db => {
+const getAllResources = (db) => {
   return db
     .query(
       `SELECT resources.*
@@ -36,7 +37,9 @@ const getAllResources = db => {
     .catch(err => console.error('query error', err.stack));
 };
 
-const getAllSavedResourcesByUser = (db, user) => {
+
+
+const getAllSavedResourceIDByUser = (user, db) => {
   return db
     .query(
       `SELECT saved_resources.resource_id
@@ -49,9 +52,34 @@ const getAllSavedResourcesByUser = (db, user) => {
     .catch(err => console.error("query error", err.stack));
 };
 
-const isSaved = (db, user, id) => {
+
+const getAllResourcesOwnedByUser = (user, db) => {
+  return db
+    .query(
+      `SELECT *
+      FROM resources
+      WHERE owner_id=$1;
+      `, [user])
+    .then(res => res.rows)
+    .catch(err => console.error("query error", err.stack));
+};
+
+const getAllSavedResourceByUser = (user, db) => {
+  return db
+    .query(
+      `SELECT *
+      FROM resources
+      JOIN saved_resources
+      ON resources.id=saved_resources.resource_id
+      WHERE user_id=$1;
+      `, [user])
+    .then(res => res.rows)
+    .catch(err => console.error("query error", err.stack));
+};
+
+const isSaved = (user, id, db) => {
   let found = false;
-  getAllSavedResourcesByUser(db, user)
+  getAllSavedResourceIDByUser(db, user)
     .then(resp => {
       for (let i = 0; i < resp.length; i++) {
         if (resp[i].resource_id === id) {
@@ -62,11 +90,6 @@ const isSaved = (db, user, id) => {
       return found;
     });
 };
-
-
-
-//select resources.id from RESOURCES JOIN saved_resources ON resources.id=saved_resources.resource_id WHERE user.id =
-
 
 const addUser = function(user, db) {
   let arr = [user.name, user.email, user.password];
@@ -81,6 +104,7 @@ const addUser = function(user, db) {
     .catch(err => console.error('query error', err.stack));
 };
 
+//this might need to change
 const addResource = function(user, resource, db) {
   let resourceValues = Object.values(resource);
   return db
@@ -97,22 +121,6 @@ const addResource = function(user, resource, db) {
 };
 
 
-// const isSaved = (resourceToCheck, allResources, savedResources) => {         //this will use a for in loop and .index() function as well as the spread (...) operator
-//   for (const resourceAll of allResources) {
-//     for (const resourceSaved of savedResources) {
-//       if (resourceAll.id === resourceSaved.id) {
-//         return true;
-//       }
-//       return false;
-//     }
-//   }
-// };
-
-
-// //select resources.id from RESOURCES JOIN saved_resources ON resources.id=saved_resources.resource_id WHERE user.id =
-
-
-
 const deleteResource = function(resource, db) {
   return db //just deleting from users as we don't use it
     .query(
@@ -123,36 +131,9 @@ const deleteResource = function(resource, db) {
     .catch(err => console.error('query error', err.stack));
 };
 
-const editResource = function(resource, field, value, db) {
-  return db.query(
-    `UPDATE resources SET ${field}=$1
-    WHERE resources.id=${resource}
-    `
-    , [value])
-    .then(res => res.rows[0])
-    .catch(err => console.error("query error", err.stack));
-};
-
-
-//function resourcesForUser has not connected yet
-const resourcesOwnedByUser = function(id, db) {
-  return db
-    .query(
-      `SELECT resources.*
-    FROM resources
-    JOIN users ON owner_id = users.id
-    WHERE users.id = $1;
-    `, [id])
-    .then(res => {
-      return res.rows;
-    })
-    .catch(err => console.error('query error', err.stack));
-};
-
-//NEED A FUNCTION FOR ALL ALL RESOURCES
 
 //this is suppose to get a a single resource where id is the id of the resource not the owner id
-const singleResource = function(db, id) {
+const singleResource = function(id, db) {
   return db.query(
     `
     SELECT * FROM resources
@@ -161,6 +142,86 @@ const singleResource = function(db, id) {
     .then(resp => resp.rows[0])
     .catch(err => console.error('query error', err.stack));
 };
+
+//add resource to saved
+//insert into saved_resources table user_id and resource_id
+const saveResource = function(user, resource, db) {
+  return db
+    .query(
+      `INSERT INTO saved_resources (user_id, resource_id)
+      VALUES ($1, $2) RETURNING *;
+    `, [user, resource])
+    .then(res => {
+      return res.rows;
+    })
+    .catch(err => console.error('query error', err.stack));
+};
+
+// delete resource from saved!!
+const deleteResourceFromSaved = function(user, resource, db) {
+  return db
+    .query(
+      `DELETE FROM saved_resources
+      WHERE user_id = $1 AND resource_id = $2;
+    `, [user, resource])
+    .then(res => {
+      return res.rows;
+    })
+    .catch(err => console.error('query error', err.stack));
+};
+
+
+
+// comments and ratings for resource
+const getCommentRating = (resourceId, db) => {
+  return db
+  .query(
+    ` SELECT rating, comment
+    FROM ratings
+    WHERE resource_id = $1;
+  `, [resourceId])
+    .then(res => {
+      return res.rows[0];
+    })
+    .catch(err => console.error('query error', err.stack));
+};
+
+//get category names functions
+const getCategoryNames = (db) => {
+  return db
+  .query(
+    ` SELECT *
+    FROM categories`
+  )
+}
+
+const searchResources = function(options, db){
+  const queryParams = [];
+  let queryString = `
+SELECT resources.*
+FROM resources
+`
+if(options.title){
+  queryParams.push(`%${options.title}%`);
+  queryString += `WHERE title LIKE $${queryParams.length} AND active = true`; //need to check if this working in combination with other search input
+}
+if(options.type){
+  queryParams.push(`%${options.type}%`);
+  queryString += `WHERE type LIKE $${queryParams.length} AND active = true`;
+}
+if(options.description){
+  queryParams.push(`%${options.description}%`);
+  queryString += `WHERE description LIKE $${queryParams.length} AND active = true`;
+}
+if(options.categoties){
+  queryParams.push(`%${options.categories}%`);
+  queryString += `WHERE category_id =  $${queryParams.length} AND active = true`;
+}
+return db.query(queryString, queryParams)
+  .then(res => res.rows)
+  .catch(err => console.error('query error', err.stack));
+}
+
 
 
 
@@ -171,11 +232,17 @@ module.exports = {
   addResource,
   getUserByID,
   getUserByEmail,
-  resourcesOwnedByUser,
   singleResource,
   isSaved,
+  deleteResource,
+  getAllSavedResourceIDByUser,
+  getAllSavedResourceByUser,
+  saveResource,
   getAllResources,
-  deleteResource
-  getAllSavedResourcesByUser
+  getAllResourcesOwnedByUser,
+  deleteResourceFromSaved,
+  getCommentRating,
+  getCategoryNames,
+  searchResources
 };
 

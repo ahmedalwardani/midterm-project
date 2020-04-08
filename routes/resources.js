@@ -1,30 +1,28 @@
 const express = require('express');
 const router = express.Router();
-const { resourcesForUser, getUserByID, singleResource } = require("../helpers");
+const { resourcesForUser, getUserByID, singleResource, getAllResourcesOwnedByUser, getAllSavedResourceByUser, getCommentRating} = require("../helpers");
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
     const currentUser = req.session.user_id;
     if (currentUser) {
-      getUserByID(db, currentUser).then(resp => {
+      getUserByID(currentUser, db).then(resp => {
         return resp;
       }).then(user => {
-        resourcesForUser(currentUser, db).then(resp => {
+        getAllResourcesOwnedByUser(currentUser, db).then(resp => {
           return resp;
-        }).then(_resources => {
-
-          //IS SAVED ARRAY IS A FUNCTION THAT DOESN'T EXISTS YET
-          isSavedArray(currentUser, db).then(resp => {
+        }).then(_resources_owned => {
+          getAllSavedResourceByUser(currentUser, db).then(resp => {
             const templateVars = {
-
-              //CHANGED VARIABLE NAME HERE REMEMBER
               user: {
                 loggedin: true,
                 email: user.email,
                 user_id: user.id
               },
-              resources: _resources,
-              saved_array: resp
+
+              resources_owned: _resources_owned,
+
+              resources_saved: resp
             };
             res.render("index", templateVars);
           })
@@ -37,28 +35,33 @@ module.exports = (db) => {
 
 
   router.get("/:id", (req,res) => {
+    const currentUser = req.session.user_id;
     if (currentUser) {
-      getUserByID(db, currentUser).then( resp => {
+      getUserByID(currentUser, db).then( resp => {
+        // res.json(resp);
         return resp;
       }).then( user => {
-        singleResource(db, req.params.id).then(resp => {
+        singleResource(req.params.id, db).then(resp => {
+          res.json(resp);
           return resp;
         }).then(singleResource => {
-
-          //A FUNCTION THAT DOESN'T EXISTS YET
-          ratingsComments(req.params.id, db).then(resp => {
-            const templateVars = {
-
-              //CHANGED VARIABLE NAME HERE REMEMBER
-              user: {
-                loggedin: true,
-                email: user.email,
-                user_id: user.id
-              },
-              resource: singleResource,
-              ratings: resp
-            };
-            res.render("description", templateVars);
+          getCommentRating(req.params.id, db).then(resp => {
+            return resp;
+          }).then( ratings_comments => {
+            isSaved(currentUser, req.params.id, db).then(resp => {
+              const templateVars = {
+                user: {
+                  loggedin: true,
+                  email: user.email,
+                  user_id: user.id
+                },
+                resource: singleResource,
+                ratings: ratings_comments,
+                saved: resp,
+                owner: currentUser === singleResource.owner_id ? true : false
+              };
+              res.render("description", templateVars);
+            })
           })
         }).catch(err => console.log(err));
       })
@@ -71,13 +74,13 @@ module.exports = (db) => {
     //   // TODO: res.render('resources_show', templateVars)
     //   res.json({resource});
     // })
-  })
-    console.log(' ===========>', req.params.id);
-    singleResource(db, req.params.id).then(resource => {
-      // Template vars with current user??
-      // TODO: res.render('resources_show', templateVars)
-      res.json({resource});
-    });
+  // })
+  //   console.log(' ===========>', req.params.id);
+  //   singleResource(db, req.params.id).then(resource => {
+  //     // Template vars with current user??
+  //     // TODO: res.render('resources_show', templateVars)
+  //     res.json({resource});
+  //   });
   });
 
   return router;

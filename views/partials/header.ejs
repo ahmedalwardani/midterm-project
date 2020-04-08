@@ -11,7 +11,7 @@
     </div>
     <div class="user-login">
       <!-- Check if user is NOT logged in -->
-      <% if(!loggedin.loggedin) { %>
+      <% if(!user.loggedin) { %>
       <form class="form-inline" action="/signin" method="GET">
         <button
           type="submit"
@@ -35,7 +35,7 @@
       <form class="form-inline" action="/signout" method="POST">
         <button type="submit" class="btn btn-outline-dark">Logout</button>
         <label for="submit" style="margin-right: 1em;"
-          >Logged in as: <%= loggedin.email %>
+          >Logged in as: <%= user.email %>
         </label>
       </form>
       <% } %>
