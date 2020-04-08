@@ -90,7 +90,7 @@ const editResource = function(resource, field, value, db) {
 
 
 //function resourcesForUser has not connected yet
-const resourcesForUser = function(id, db) {
+const resourcesOwnedByUser = function(id, db) {
   return db
     .query(
       `SELECT resources.*
@@ -126,7 +126,7 @@ module.exports = {
   addResource,
   getUserByID,
   getUserByEmail,
-  resourcesForUser,
+  resourcesOwnedByUser,
   singleResource,
   isSaved,
   getAllResources
