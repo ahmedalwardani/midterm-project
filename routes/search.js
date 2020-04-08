@@ -26,18 +26,28 @@ module.exports = (db) => {
     }
   });
 
-  router.get("/", (req, res) => {
+  router.post("/", (req, res) => {
     const currentUser = req.session.user_id;
     if (currentUser) {
       getUserByID(currentUser, db).then(resp => {
         return resp;
       }).then(user => {
+        //need to change name of function
         getAllResourcesOwnedByUser(currentUser, db).then(resp => {
           return resp;
-        }).then(_resources_owned => {
+
+        //need to change name of function
+      }).then(_resources_owned => {
           getAllSavedResourceByUser(currentUser, db).then(resp => {
             return resp;
           }).then( _resources_saved => {
+
+            //CHECK OPTION AND req.body so things match up ect
+            const options ={
+              title:req.body.title,
+
+            };
+
             searchResources(options, db).then(resp => {
               const templateVars = {
                 user: {

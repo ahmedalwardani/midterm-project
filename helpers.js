@@ -215,24 +215,23 @@ const searchResources = function (options, db) {
   const queryParams = [];
   let queryString = `
 SELECT resources.*
-FROM resources
-`
+FROM resources `;
+
   if (options.title) {
     queryParams.push(`%${options.title}%`);
-    queryString += `WHERE title LIKE $${queryParams.length} AND active = true`; //need to check if this working in combination with other search input
+    queryString += `WHERE active = true AND title LIKE $${queryParams.length} `;
   }
-  if (options.type) {
-    queryParams.push(`%${options.type}%`);
-    queryString += `WHERE type LIKE $${queryParams.length} AND active = true`;
-  }
+
   if (options.description) {
     queryParams.push(`%${options.description}%`);
-    queryString += `WHERE description LIKE $${queryParams.length} AND active = true`;
+    queryString += `OR description LIKE $${queryParams.length} `;
   }
   if (options.categoties) {
     queryParams.push(`%${options.categories}%`);
-    queryString += `WHERE category_id =  $${queryParams.length} AND active = true`;
+    queryString += `AND category_id =  $${queryParams.length} `;
   }
+
+
   return db.query(queryString, queryParams)
     .then(res => res.rows)
     .catch(err => console.error('query error', err.stack));

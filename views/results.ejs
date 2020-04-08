@@ -25,26 +25,29 @@
   <%- include('partials/header') %>
 
   <!-- display resources owned-->
-  <% for (const resource of resources_owned) { %>
+  <% for (const resource of search_results) { %>
   <div class="resource-square">
     <h5><a href="<%= resource.url %>"><%= resource.title %></a></h5>
     <div class="overlay">
       <img style="width: 200px" class="thumbnail" src="<%= resource.thumbnail_url %>" alt="thumbnail url">
       <a class="btn btn-primary" href="<%= `/resources/${resource.id}`%>">More Details</a>
     </div>
+    <% let owner;
+       let saved;
+       if (resources_owned.includes(resource.id)) {
+         owner = true;
+       } else {
+         owner = false;
+       };
+       if (resources_saved.includes(resource.id)) {
+         saved = true;
+       } else {
+         saved = false;
+       };
+       %>
+    <%- include('partials/edit_delete_saved') %>
   </div>
   <% } %>
-
-  <!-- display resources saved-->
-  <% for (const resource of resources_saved) { %>
-    <div class="resource-square">
-      <h5><a href="<%= resource.url %>"><%= resource.title %></a></h5>
-      <div class="overlay">
-        <img style="width: 200px" class="thumbnail" src="<%= resource.thumbnail_url %>" alt="thumbnail url">
-        <a class="btn btn-primary" href="<%= `/resources/${resource.id}`%>">More Details</a>
-      </div>
-    </div>
-    <% } %>
 
   <!-- Bootstracp JS or scripts goes here -->
 </body>
