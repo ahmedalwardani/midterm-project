@@ -213,22 +213,21 @@ const getCategoryNames = db => {
 
 const searchResources = function (options, db) {
   const queryParams = [];
+  queryParams.push(`%${options.keyword}%`);
   let queryString = `
 SELECT resources.*
-FROM resources `;
+FROM resources
+JOIN ratings ON resources.id=ratings.resource_id
+WHERE resources.active = true AND resources.title LIKE $1 OR resources.description LIKE $1 `;
 
-  if (options.title) {
-    queryParams.push(`%${options.title}%`);
-    queryString += `WHERE active = true AND title LIKE $${queryParams.length} `;
+  if (options.categories) {
+    queryParams.push(`${Number(options.categories)}`);
+    queryString += `AND resource.category_id =  $${queryParams.length} `;
   }
 
-  if (options.description) {
-    queryParams.push(`%${options.description}%`);
-    queryString += `OR description LIKE $${queryParams.length} `;
-  }
-  if (options.categoties) {
-    queryParams.push(`%${options.categories}%`);
-    queryString += `AND category_id =  $${queryParams.length} `;
+  if(options.minimum_rating) {
+    queryParams.push(`${Number(options.minimum_rating)}`);
+    queryString += `AND resource.rating >= $${queryParams.length}`
   }
 
 

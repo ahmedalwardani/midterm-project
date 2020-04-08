@@ -36,6 +36,7 @@ module.exports = (db) => {
       description: req.body.description,
       thumbnail_url: req.body.thumbnail_url,
       topic_id: req.body.topic,
+      //CHECK IF TOPIC ID IS CORRECTLY INPUTED IN DATABASE
     }
     addResource(currentUser, resource, db).then(resp => {
       console.log(resp);

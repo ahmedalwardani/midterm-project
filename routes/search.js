@@ -26,7 +26,7 @@ module.exports = (db) => {
     }
   });
 
-  router.post("/", (req, res) => {
+  router.get("/", (req, res) => {
     const currentUser = req.session.user_id;
     if (currentUser) {
       getUserByID(currentUser, db).then(resp => {
@@ -44,7 +44,9 @@ module.exports = (db) => {
 
             //CHECK OPTION AND req.body so things match up ect
             const options ={
-              title:req.body.title,
+              keyword: req.body.keyword,
+              minimum_rating: req.body.min_rating,
+              category_id: req.body.topic
 
             };
 

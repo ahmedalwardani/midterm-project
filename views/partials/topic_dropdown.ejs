@@ -6,3 +6,5 @@
   <% } %>
 
 </select>
+
+SELECT resources.*, avg(ratings.rating) as average_rating FROM resources JOIN ratings ON resources.id=ratings.resource_id WHERE resources.active = true AND resources.title LIKE '%e%' OR resources.description LIKE '%e%' GROUP BY resources.id HAVING avg(ratings.rating) >= 1;
