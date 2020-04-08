@@ -77,19 +77,17 @@ const getAllSavedResourceByUser = (user, db) => {
     .catch(err => console.error("query error", err.stack));
 };
 
-const isSaved = (user, id, db) => {
-  let found = false;
-  getAllSavedResourceIDByUser(db, user)
-    .then(resp => {
-      for (let i = 0; i < resp.length; i++) {
-        if (resp[i].resource_id === id) {
-          found = true;
-          break;
-        }
-      }
-      return found;
-    });
-};
+const isSaved = function(user, id, db) {
+  return db
+    .query(
+      `SELECT id
+      FROM saved_resources
+      WHERE user_id=$1 AND resource_id = $2;
+      `, [user,id])
+    .then(res => res.rows)
+    .catch(err => console.error("query error", err.stack));
+}
+
 
 const addUser = function(user, db) {
   let arr = [user.name, user.email, user.password];
@@ -181,18 +179,20 @@ const getCommentRating = (resourceId, db) => {
     WHERE resource_id = $1;
   `, [resourceId])
     .then(res => {
-      return res.rows[0];
+      return res.rows;
     })
     .catch(err => console.error('query error', err.stack));
 };
 
 //get category names functions
-const getCategoryNames = (db) => {
+const getCategoryNames = db => {
   return db
   .query(
-    ` SELECT *
+    `SELECT DISTINCT name
     FROM categories`
-  )
+  ).then(res => {
+    return res.rows;
+  }).catch(err => console.error('query error', err.stack));
 }
 
 const searchResources = function(options, db){

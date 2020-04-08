@@ -1,8 +1,8 @@
 <select name="topic" id="topic_dropdown">
   <option value="" selected disabled>-- Select Topic --</option>
-  <!-- loop through names of topics as it is structured in tempvars and make it an option MIGHT NEED TO CHANGE LATER -->
-  <% const keys = Object.keys(topics); %>
-  <% for (const topic of keys) { %>
-  <option value="<%= keys.indexOf(topic) %>"><%= topics[topic] %></option>
+
+  <% for (const topic of topics) { %>
+  <option value="<%= topics.indexOf(topic) %>"><%= topic.name %></option>
   <% } %>
+
 </select>

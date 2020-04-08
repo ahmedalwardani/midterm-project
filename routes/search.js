@@ -1,32 +1,28 @@
 const express = require('express');
 const router = express.Router();
-const { users } = require("../helpers");
+const { getUserByID, getCategoryNames} = require("../helpers");
 
-module.exports = () => {
+module.exports = (db) => {
   router.get("/", (req, res) => {
     const currentUser = req.session.user_id;
     if (currentUser) {
+      getUserByID(currentUser, db).then(resp => {
+        return resp;
+      }).then(user => {
+        getCategoryNames(db).then(resp => {
+          let templateVars = {
+            user: {
+              loggedin: true,
+              email: user.email
+            },
+            topics: resp
+          };
+          res.render("search", templateVars);
 
-
-
-      
-      let templateVars = {
-        loggedin: {
-          loggedin: true,
-          //HARDCODING EMAIL
-          email: 'example@gmail.com'
-        },
-
-        //HARD CODING CATEGORY ID *********NEED QUERIES FOR CATEGORY NAME*****************
-        topics: {
-          category_id: "javascript",
-          category_id: "php",
-          category_id: "react"
-        }
-      };
-      res.render("/search", { templateVars });
+        }).catch(err => console.log(err));
+      });
     } else {
-      res.redirect("/signin");
+      res.redirect("/");
     }
   });
 
