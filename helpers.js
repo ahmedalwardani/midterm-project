@@ -28,23 +28,40 @@ const getAllResources = db => {
     .query(
       `SELECT resources.*
     FROM resources;
-    `,)
+    `)
     .then(res => {
       return res.rows;
     })
     .catch(err => console.error('query error', err.stack));
 };
 
-const isSaved = (resourceToCheck, allResources, savedResources) => {         //this will use a for in loop and .index() function as well as the spread (...) operator
-  for (const resourceAll of allResources) {
-    for (const resourceSaved of savedResources) {
-      if (resourceAll.id === resourceSaved.id) {
-        return true;
-      }
-      return false;
-    }
-  }
+const getAllSavedResourcesByUser = (db, user) => {
+  return db
+    .query(
+      `SELECT saved_resources.resource_id
+      FROM resources
+      JOIN saved_resources
+      ON resources.id=saved_resources.resource_id
+      WHERE user_id=$1;
+      `, [user])
+    .then(res => res.rows)
+    .catch(err => console.error("query error", err.stack));
 };
+
+const isSaved = (db, user, id) => {
+  let found = false;
+  getAllSavedResourcesByUser(db, user)
+    .then(resp => {
+      for (let i = 0; i < resp.length; i++) {
+        if (resp[i].resource_id === id) {
+          found = true;
+          break;
+        }
+      }
+      return found;
+    });
+};
+
 
 
 //select resources.id from RESOURCES JOIN saved_resources ON resources.id=saved_resources.resource_id WHERE user.id =
@@ -137,6 +154,7 @@ module.exports = {
   resourcesForUser,
   singleResource,
   isSaved,
-  getAllResources
+  getAllResources,
+  getAllSavedResourcesByUser
 };
 
