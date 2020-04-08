@@ -6,9 +6,9 @@ module.exports = (db) => {
   router.get("/", (req, res) => {
     const currentUser = req.session.user_id;
     if (currentUser) {
-      getUserByID(db, currentUser).then( resp => {
+      getUserByID(db, currentUser).then(resp => {
         return resp;
-      }).then( user => {
+      }).then(user => {
         resourcesForUser(currentUser, db).then(resp => {
           const templateVars = {
             loggedin: {
@@ -20,7 +20,7 @@ module.exports = (db) => {
           res.render("index", templateVars);
 
         }).catch(err => console.log(err));
-      })
+      });
     } else {
       res.send('user not logged in!');
     }
@@ -28,12 +28,12 @@ module.exports = (db) => {
 
   router.get("/:id", (req,res) => {
     console.log(' ===========>', req.params.id);
-    singleResource(db, req.params.id).then( resource => {
+    singleResource(db, req.params.id).then(resource => {
       // Template vars with current user??
       // TODO: res.render('resources_show', templateVars)
       res.json({resource});
-    })
-  })
+    });
+  });
 
   return router;
 };
