@@ -27,8 +27,6 @@ module.exports = (db) => {
           };
           
           searchResources(options, db).then(resp => {
-            res.json(resp);
-
             const templateVars = {
               user: {
                 loggedin: true,
