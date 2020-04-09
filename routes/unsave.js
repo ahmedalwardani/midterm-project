@@ -6,12 +6,12 @@ const { deleteResourceFromSaved } = require("../helpers");
 module.exports = db => {
   router.post("/:id", (req, res) => {
     const currentUser = req.session.user_id;
-    if(currentUser) {
+    if (currentUser) {
       deleteResourceFromSaved(currentUser, req.params.id, db);
       res.redirect("/resources");
     } else {
-      res.redirect("/")
+      res.redirect("/");
     }
   });
   return router;
-}
+};
