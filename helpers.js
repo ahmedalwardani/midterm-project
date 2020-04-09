@@ -210,6 +210,18 @@ const getCommentRating = (resourceId, db) => {
     .catch(err => console.error('query error', err.stack));
 };
 
+const addCommentRating = (commentObject, db) => {
+  return db
+    .query(
+      `INSERT INTO ratings (rating, resource_id, user_id, comment)
+      VALUES($1, $2, $3, $4) RETURNING *;
+    `, [commentObject.rating, commentObject.resourceID, commentObject.userID, commentObject.comment])
+    .then(res => res.rows)
+    .catch(err => console.error('query error', err.stack)
+    );
+}
+
+
 //get category names functions
 const getCategoryNames = db => {
   return db
@@ -244,10 +256,6 @@ const searchResources = function (options, db) {
 }
 
 
-
-
-
-
 module.exports = {
   addUser,
   addResource,
@@ -266,6 +274,7 @@ module.exports = {
   getCategoryNames,
   searchResources,
   getAllResourcesIDOwnedByUser,
-  getCategoryNameFromID
+  getCategoryNameFromID,
+  addCommentRating
 };
 

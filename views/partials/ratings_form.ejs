@@ -1,5 +1,5 @@
 <!-- form to submit rating and comment NEED TO ADD POST ROUTE-->
-<form action="/rate" method="POST">
+<form action="<%= `/rate/${resource.id}`%>" method="POST">
   <select name="rating" id="rating">
     <option value="1">1</option>
     <option value="2">2</option>
