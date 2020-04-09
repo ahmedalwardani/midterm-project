@@ -42,7 +42,7 @@ user email (for display in nav)-->
 
   <section style="margin: 1em;">
     <h3>Add new resource</h3>
-    <form id ="form1" action="/edit" method="POST">
+    <form id="form1" action="/edit" method="POST">
 
       <div class="form-group">
         <label for="title">Title</label>
@@ -60,21 +60,25 @@ user email (for display in nav)-->
       <div class="form-group">
         <!-- DROP DOWN MENU TOPIC NAME -->
         <%- include('partials/topic_dropdown') %>
-        <a id="plus" class="btn btn-outline-dark" href="#" role="button">Add your own topic here</a>
+
       </div>
 
       <!-- Toggle form to add a new topic name -->
-      <div id="drop-form">
 
-        <form id="nested" class="form-inline" action="/new-topic" method="POST" >
-          <label for="topic_name">New Topic:</label>
-          <input  type="text" name="topic_name" form="nested"/>
-          <button type="submit"  form="nested" action="/new-topic">Add topic</button>
-        </form>
 
-      </div>
       <button type="submit" class="btn btn-primary" form="form1" action="/edit">Submit</button>
     </form>
+
+    <p>
+      <a id="plus" class="btn btn-outline-dark" href="#" role="button">You always can create your own topic here</a>
+    </p>
+    <div id="drop-form">
+      <form id="nested" class="form-inline" action="/new-topic" method="POST">
+        <label for="topic_name">New Topic:</label>
+        <input type="text" name="topic_name" form="nested">
+        <button type="submit" form="nested" action="/new-topic">Add topic</button>
+      </form>
+    </div>
   </section>
 
   <!-- Bootstracp JS or scripts goes here -->
