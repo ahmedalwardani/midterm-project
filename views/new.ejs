@@ -9,100 +9,84 @@ user email (for display in nav)-->
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>dogEared</title>
-    <!--Bootstrap-->
+
+<head>
+  <title>dogEared</title>
+  <!--Bootstrap-->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-  integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <!-- Normalization -->
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <!-- Normalization -->
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
 
-    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="/scripts/app.js"></script>
-    <script type="text/javascript" src="/scripts/newButton.js"></script>
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  <script type="text/javascript" src="/scripts/app.js"></script>
+  <script type="text/javascript" src="/scripts/newButton.js"></script>
 
-    <!-- Font import -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;500&display=swap"
-      rel="stylesheet"
-    />
+  <!-- Font import -->
+  <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;500&display=swap" rel="stylesheet" />
 
-    <!-- font awesome icons -->
-    <script
-      src="https://kit.fontawesome.com/948f369b19.js"
-      crossorigin="anonymous"
-    ></script>
+  <!-- font awesome icons -->
+  <script src="https://kit.fontawesome.com/948f369b19.js" crossorigin="anonymous"></script>
 
-    <!-- Styles -->
-  </head>
+  <!-- Styles -->
+</head>
 
-  <body>
-    <%- include('partials/header') %>
+<body>
+  <%- include('partials/header') %>
 
-    <!-- style notes: new page and add button centered, other two fields stack on top in columns, toggle add new topic  -->
-    <main style="margin: 1em;">
-      <h3>Edit Page</h3>
-      <form class="form-inline" action="/edit" method="POST">
-        <div class="input-label-pair">
-          <label for="title">Title:</label>
-          <input
-            class="form-control"
-            type="text"
-            name="title"
-          />
-        </div>
-        <div class="input-label-pair">
-          <label for="url">Page URL:</label>
-          <input
-            class="form-control"
-            type="text"
-            name="url"
+  <!-- style notes: new page and add button centered, other two fields stack on top in columns, toggle add new topic  -->
 
-          />
-        </div>
-        <div class="input-label-pair">
-          <label for="thumbnail_url">Thumbnail URL:</label>
-          <input
-            class="form-control"
-            type="text"
-            name="thumbnail_url"
+  <section style="margin: 1em;">
+    <h3>Add new resource</h3>
+    <form id ="form1" action="/edit" method="POST">
 
-          />
-        </div>
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input class="form-control" type="text" name="title" form="form1">
+      </div>
+      <div class="form-group">
+        <label for="url">Page URL:</label>
+        <input class="form-control" type="text" name="url" form="form1">
+      </div>
+      <div class="form-group">
+        <label class="input-label-pair">Thumbnail URL:</label>
+        <input class="form-control" type="text" name="thumbnail_url" form="form1">
+      </div>
 
-        <div class="input-label-pair topic">
-          <!-- DROP DOWN MENU TOPIC NAME -->
-          <%- include('partials/topic_dropdown') %>
+      <div class="form-group">
+        <!-- DROP DOWN MENU TOPIC NAME -->
+        <%- include('partials/topic_dropdown') %>
+        <a id="plus" class="btn btn-outline-dark" href="#" role="button">Add your own topic here</a>
+      </div>
 
-          <!-- Toggle form to add a new topic name -->
-          <i id="plus" class="fas fa-plus-circle"></i>
-          <div id="drop-form">
-          <form class="form-inline" action="/new-topic" method="POST">
-            <label for="topic_name">New Topic:</label>
-            <input class="form-control" type="text" name="topic_name" />
-            <button type="submit" class="btn">Add</button>
-          </form>
-        </div>
-      </form>
-    </main>
+      <!-- Toggle form to add a new topic name -->
+      <div id="drop-form">
 
+        <form id="nested" class="form-inline" action="/new-topic" method="POST" >
+          <label for="topic_name">New Topic:</label>
+          <input  type="text" name="topic_name" form="nested"/>
+          <button type="submit"  form="nested" action="/new-topic">Add topic</button>
+        </form>
 
-    <!-- Bootstracp JS or scripts goes here -->
+      </div>
+      <button type="submit" class="btn btn-primary" form="form1" action="/edit">Submit</button>
+    </form>
+  </section>
+
+  <!-- Bootstracp JS or scripts goes here -->
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-  integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-  crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-  integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-  crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-  integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-  crossorigin="anonymous"></script>
-  </body>
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+</body>
+
 </html>
