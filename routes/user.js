@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const { deleteUser } = require("../helpers");
+const { deleteUser, editUser, getPasswordForUser} = require("../helpers");
+const bcrypt = require("bcrypt");
 
 module.exports = db => {
   router.get("/", (req, res) => {
@@ -14,8 +15,26 @@ module.exports = db => {
   });
 
 
-  router.put("/", (req, res) => {
-    res.status(400).end();
+  router.post("/", (req, res) => {
+    console.log("starting post");
+    const currentUser = req.session.user_id;
+    if (currentUser) {
+      getPasswordForUser(currentUser, db).then(resp => {
+        return resp;
+      }).then(currentPassword => {
+        if (bcrypt.compareSync(req.body.password, currentPassword)) {
+          console.log("reached line 28");
+          editUser(currentUser, {nameValue: req.body.name, emailValue: req.body.email, passwordValue: bcrypt.hashSync(req.body.newPassword, 10)}, db);
+          res.status(200).end();
+          console.log("edited");
+        } else {
+          res.status(500);
+          console.log("can't edit sorry");
+        }
+      })
+        .catch(err => console.log(err));
+    }
+    res.redirect("/");
   });
 
 

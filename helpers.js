@@ -206,13 +206,28 @@ const deleteUser = (user, db) => {
 };
 
 
-// const editUser = (user, fieldToEdit, db) => {
-//   return db
-//     .query(
-//       `UPDATE FROM users
-//       `)
-// }
+const editUser = (user, editObject, db) => {
+  return db
+    .query(
+      `UPDATE users SET name=$1, email=$2, password=$3
+      WHERE id=${user}
+      `, [editObject.nameValue, editObject.emailValue, editObject.passwordValue])
+    .then(res=>res.rows)
+    .catch(err => console.error('query error', err.stack));
+};
 
+
+const getPasswordForUser = (userID, db) => {
+  return db
+    .query(
+      `SELECT password FROM users
+      WHERE id=$1
+      `, [userID])
+    .then(res=> {
+      return res.rows[0].password;
+    })
+    .catch(err => console.error('query error', err.stack));
+};
 
 const getCommentRating = (resourceId, db) => {
   return db
@@ -303,6 +318,8 @@ module.exports = {
   getCategoryNameFromID,
   addCommentRating,
   addCategory,
-  deleteUser
+  deleteUser,
+  editUser,
+  getPasswordForUser
 };
 
