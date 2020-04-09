@@ -18,7 +18,8 @@
   <!-- font awesome icons -->
   <script src="https://kit.fontawesome.com/948f369b19.js" crossorigin="anonymous"></script>
 
-  <!-- Styles -->
+   <!-- Styles -->
+   <link rel="stylesheet" href="/css/main.css" type="text/css" />
 </head>
 
 <body>
@@ -49,7 +50,6 @@
        %>
 
     <% if (owner) { %>
-    <!-- NEED TO CHECK ROUTES -->
     <form action="<%= `/delete/${resource.id}`%>" method=" POST">
       <button type="submit" class="btn btn-primary">Delete</button>
     </form>
