@@ -54,7 +54,7 @@ const searchRoutes = require("./routes/search");
 const signoutRoutes = require("./routes/signout");
 //const descriptionRoutes = require("./routes/description");
 const testRoutes = require("./routes/test");
-const newTopicRout = require("./public/scripts/addnewtopic")
+//const newTopicRout = require("./public/scripts/addnewtopic")
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 //app.use("/api/users", usersRoutes(db));
@@ -68,7 +68,7 @@ app.use("/search", searchRoutes(db));
 app.use("/signout", signoutRoutes(db));
 //app.use("/description", descriptionRoutes(db));
 app.use("/test", testRoutes(db));
-app.use("/new-topic", newTopicRout(db));
+//app.use("/new-topic", newTopicRout(db));
 
 
 
