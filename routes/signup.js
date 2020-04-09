@@ -30,7 +30,7 @@ module.exports = (db) => {
           res.send("Error: The e-mail address you entered is already taken. Please enter another e-mail!");
         } else {
           const _password = bcrypt.hashSync(req.body.password, 10);
-          user = {
+          const user = {
             name: req.body.name,
             email: req.body.email,
             password: _password
