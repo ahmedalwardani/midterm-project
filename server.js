@@ -55,7 +55,10 @@ const searchRoutes = require("./routes/search");
 const signoutRoutes = require("./routes/signout");
 const testRoutes = require("./routes/test");
 const userRoutes = require("./routes/users");
-const searchResultsRoutes = require("./routes/search_results")
+const searchResultsRoutes = require("./routes/search_results");
+const saveRoutes = require("./routes/save");
+const unsaveRoutes = require("./routes/unsave");
+const deleteRoutes = require("./routes/delete");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -71,6 +74,9 @@ app.use("/search", searchRoutes(db));
 app.use("/signout", signoutRoutes(db));
 app.use("/test", testRoutes(db));
 app.use("/search_results", searchResultsRoutes(db));
+app.use("/save", saveRoutes(db));
+app.use("/unsave", unsaveRoutes(db));
+app.use("/delete", deleteRoutes(db));
 
 
 
@@ -84,9 +90,8 @@ app.use("/search_results", searchResultsRoutes(db));
 
 
 app.get("/", (req, res) => {
-  // if logged in => render home page else redirect to login or something
   const currentUser = users[req.session.user_id];
-  let templateVars = { user: currentUser };//???
+  let templateVars = { user: currentUser };
   if (currentUser) {
     res.render("index", templateVars);
   } else {

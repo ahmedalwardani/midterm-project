@@ -1,18 +1,18 @@
 <!-- show editing and deleting capabilities if user is resoure is owner and if resources is already saved -->
 <% if (owner) { %>
-  <!-- NEED TO CHECK ROUTES -->
-  <form action="/delete" method="POST">
-    <button type="submit" class="btn btn-primary">Delete</button>
-  </form>
-  <!-- show save resource option if not owner -->
-  <% } else {
+<!-- NEED TO CHECK ROUTES -->
+<form action="<%= `/delete/${resource.id}`%>" method="POST">
+  <button type="submit" class="btn btn-primary">Delete</button>
+</form>
+<!-- show save resource option if not owner -->
+<% } else {
      if(saved) { %>
-  <form action="/unsave" method="POST">
-    <button type="submit" class="btn btn-primary">Unsave</button>
-  </form>
-  <% } else { %>
-  <form action="/save" method="POST">
-    <button type="submit" class="btn btn-primary">Save</button>
-  </form>
-  <%   }
+<form action="<%= `/unsave/${resource.id}`%>" method="POST">
+  <button type="submit" class="btn btn-primary">Unsave</button>
+</form>
+<% } else { %>
+<form action="<%= `/save/${resource.id}`%>" method="POST">
+  <button type="submit" class="btn btn-primary">Save</button>
+</form>
+<%   }
     } %>

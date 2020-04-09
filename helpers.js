@@ -56,7 +56,7 @@ const getAllSavedResourceIDByUser = (user, db) => {
 const getAllSavedResourceByUser = (user, db) => {
   return db
     .query(
-      `SELECT *
+      `SELECT resources.*
       FROM resources
       JOIN saved_resources
       ON resources.id=saved_resources.resource_id
@@ -90,7 +90,16 @@ const getAllResourcesOwnedByUser = (user, db) => {
 };
 
 
-
+const getCategoryNameFromID = (resourceID, db) => {
+  return db
+    .query(
+      `SELECT categories.name FROM categories
+      JOIN resources ON categories.id=resources.category_id
+      WHERE resources.id=$1
+      `, [resourceID])
+      .then(res => res.rows)
+      .catch(err => console.error("query error", err.stack));
+};
 
 const isSaved = function (user, id, db) {
   return db
@@ -136,7 +145,7 @@ const addResource = function (user, resource, db) {
 
 
 const deleteResource = function (resource, db) {
-  return db //just deleting from users as we don't use it
+  return db 
     .query(
       `UPDATE resources SET active=false
       WHERE resources.id=${resource}
@@ -171,6 +180,7 @@ const saveResource = function (user, resource, db) {
     .catch(err => console.error('query error', err.stack));
 };
 
+
 // delete resource from saved!!
 const deleteResourceFromSaved = function (user, resource, db) {
   return db
@@ -204,7 +214,7 @@ const getCommentRating = (resourceId, db) => {
 const getCategoryNames = db => {
   return db
     .query(
-      `SELECT DISTINCT name
+      `SELECT DISTINCT name, id
     FROM categories`
     ).then(res => {
       return res.rows;
@@ -255,6 +265,7 @@ module.exports = {
   getCommentRating,
   getCategoryNames,
   searchResources,
-  getAllResourcesIDOwnedByUser
+  getAllResourcesIDOwnedByUser,
+  getCategoryNameFromID
 };
 

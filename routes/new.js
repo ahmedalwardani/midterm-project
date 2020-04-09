@@ -39,7 +39,8 @@ module.exports = (db) => {
       //CHECK IF TOPIC ID IS CORRECTLY INPUTED IN DATABASE
     }
     addResource(currentUser, resource, db).then(resp => {
-      console.log(resp);
+      console.log("resource", resource);
+      console.log("resp", resp);
       if (resp) {
         console.log("added");
         res.redirect("/resources");

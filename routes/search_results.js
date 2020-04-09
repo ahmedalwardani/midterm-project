@@ -12,11 +12,12 @@ module.exports = (db) => {
     }).then(user => {
       //need to change name of function
       getAllResourcesIDOwnedByUser(currentUser, db).then(resp => {
+       // res.json(resp);
         return resp;
       //need to change name of function
     }).then(_resources_owned => {
       getAllSavedResourceIDByUser(currentUser, db).then(resp => {
-        
+
           return resp;
         }).then( _resources_saved => {
           //CHECK OPTION AND req.body so things match up ect

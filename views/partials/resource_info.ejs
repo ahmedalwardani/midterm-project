@@ -1,4 +1,3 @@
-
 <!-- title linked to the external resource -->
 <h2><a href="<%= resource.url %>"><%= resource.title %></a></h2>
 
@@ -7,7 +6,7 @@
 
 <div class="input-label-pair">
   <h5>Topic:</h5>
-  <p><%= resource.category_name %> </p>
+  <p><%= category_name[0].name %> </p>
 </div>
 
 <div class="input-label-pair">
@@ -19,5 +18,3 @@
   <h5>Description:</h5>
   <p><%= resource.description %> </p>
 </div>
-
-

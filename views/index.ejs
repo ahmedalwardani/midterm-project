@@ -25,7 +25,8 @@
   <%- include('partials/header') %>
 
   <!-- display resources owned-->
-  <% for (const resource of resources_owned) { %>
+  <% for (const resource of resources_owned) { 
+    if(resource.active){ %>
   <div class="resource-square">
     <h5><a href="<%= resource.url %>"><%= resource.title %></a></h5>
     <div class="overlay">
@@ -33,20 +34,18 @@
       <a class="btn btn-primary" href="<%= `/resources/${resource.id}`%>">More Details</a>
     </div>
   </div>
-  <% } %>
+  <% }} %>
 
-  <!-- display resources saved-->
-  <% for (const resource of resources_saved) { %>
-    <div class="resource-square">
-      <h5><a href="<%= resource.url %>"><%= resource.title %></a></h5>
-      <div class="overlay">
-        <img style="width: 200px" class="thumbnail" src="<%= resource.thumbnail_url %>" alt="thumbnail url">
-        <a class="btn btn-primary" href="<%= `/resources/${resource.id}`%>">More Details</a>
-      </div>
+  <% for (const resource of resources_saved) { 
+    if(resource.active){ %>
+  <div class="resource-square">
+    <h5><a href="<%= resource.url %>"><%= resource.title %></a></h5>
+    <div class="overlay">
+      <img style="width: 200px" class="thumbnail" src="<%= resource.thumbnail_url %>" alt="thumbnail url">
+      <a class="btn btn-primary" href="<%= `/resources/${resource.id}`%>">More Details</a>
     </div>
-    <% } %>
-
-  <!-- Bootstracp JS or scripts goes here -->
+  </div>
+  <% }} %>
 </body>
 
 </html>
