@@ -1,21 +1,21 @@
 <header>
   <nav class="navbar">
+
     <div class="logo-search">
 
       <!-- <div><img src="../../styles/assets/logo.png" alt="dogEared logo" /></div>
       action needs to point to search form -->
       <form class="form-inline" action="/resources" method="GET">
-        <button type="submit" class="">
-          <h4>dogEared</h4>
-        </button>
+        <button type="submit" class="btn btn-outline-light"><h4>dogEared</h4></button>
       </form>
       <form class="form-inline" action="/search" method="GET">
-        <button type="submit" class=""><i class="fas fa-search"></i></button>
+        <button type="submit" class="btn btn-outline-light"><i class="fas fa-search"></i></button>
       </form>
       <form class="form-inline" action="/new" method="GET">
-        <button type="submit" class=""><i class="fas fa-plus-circle"></i></button>
+        <button type="submit" class="btn btn-outline-light"><i class="fas fa-plus-circle"></i></button>
       </form>
     </div>
+
     <div class="user-login">
       <!-- Check if user is NOT logged in -->
       <% if(!user.loggedin) { %>
