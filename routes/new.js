@@ -25,38 +25,22 @@ module.exports = (db) => {
     } else {
       res.redirect("/");
     }
-
-
-
-
-    // const currentUser = req.session.user_id;
-    // if (currentUser) {
-    //   let templateVars = {
-    //     loggedin: {
-    //       loggedin: true,
-    //       //HARDCODING EMAIL
-    //       email: 'example@gmail.com'
-    //     },
-
-    //     //HARD CODING CATEGORY ID *********NEED QUERIES FOR CATEGORY NAME*****************
-    //     topics: {
-    //       category_id: "javascript",
-    //       category_id: "php",
-    //       category_id: "react"
-    //     }
-    //   };
-    //   res.render("new", templateVars);
-    // } else {
-    //   res.redirect("/signin");
-    // }
   });
 
-  //what the heck is this?????
   router.post("/", (req, res) => {
-    console.log("reached");
+
     const currentUser = req.session.user_id;
-    addResource(currentUser, req.body, db).then(resp => {
-      console.log(resp);
+    const resource = {
+      title: req.body.title,
+      url: req.body.url,
+      description: req.body.description,
+      thumbnail_url: req.body.thumbnail_url,
+      topic_id: req.body.topic,
+      //CHECK IF TOPIC ID IS CORRECTLY INPUTED IN DATABASE
+    }
+    addResource(currentUser, resource, db).then(resp => {
+      console.log("resource", resource);
+      console.log("resp", resp);
       if (resp) {
         console.log("added");
         res.redirect("/resources");

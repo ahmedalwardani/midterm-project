@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>dogEared</title>
+  <!-- Normalization -->
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  <script type="text/javascript" src="/scripts/app.js"></script>
+
+  <!-- Font import -->
+  <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;500&display=swap" rel="stylesheet" />
+
+  <!-- font awesome icons -->
+  <script src="https://kit.fontawesome.com/948f369b19.js" crossorigin="anonymous"></script>
+
+  <!-- Styles -->
+</head>
+
+<body>
+  <%- include('partials/header') %>
+
+  <!-- display resources owned-->
+  <% for (const resource of search_results) { %>
+  <div class="resource-square">
+    <h5><a href="<%= resource.url %>"><%= resource.title %></a></h5>
+    <div class="overlay">
+      <img style="width: 200px" class="thumbnail" src="<%= resource.thumbnail_url %>" alt="thumbnail url">
+      <a class="btn btn-primary" href="<%= `/resources/${resource.id}`%>">More Details</a>
+    </div>
+    <% let owner = false;
+       let saved = false;
+
+       for (const _id of resources_owned) {
+         if(_id.id === resource.id) {
+           owner = true;
+         }
+       }
+
+       for (const _id of resources_saved) {
+         if(_id.resource_id === resource.id) {
+            saved = true;
+         }
+       }
+       %>
+
+    <% if (owner) { %>
+    <!-- NEED TO CHECK ROUTES -->
+    <form action="<%= `/delete/${resource.id}`%>" method=" POST">
+      <button type="submit" class="btn btn-primary">Delete</button>
+    </form>
+    <!-- show save resource option if not owner -->
+    <% } else {
+       if(saved) { %>
+    <form action="<%= `/unsave/${resource.id}`%>" method="POST">
+      <button type="submit" class="btn btn-primary">Unsave</button>
+    </form>
+    <% } else { %>
+    <form action="<%= `/save/${resource.id}`%>" method="POST">
+      <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+    <%   }
+      } %>
+  </div>
+  <% } %>
+
+  <!-- Bootstracp JS or scripts goes here -->
+</body>
+
+</html>

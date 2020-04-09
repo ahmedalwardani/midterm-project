@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { getUserByID, getCategoryNames} = require("../helpers");
+const { getUserByID, getCategoryNames, searchResources, isSaved} = require("../helpers");
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
@@ -25,7 +25,7 @@ module.exports = (db) => {
       res.redirect("/");
     }
   });
-
-  //NEED TO WRITE POST REQUEST GET THE LIST OF RESOURCES BACK THAT MATCHES THE SEARCH AND PASS IT TO INDEX.EJS
   return router;
 };
+
+

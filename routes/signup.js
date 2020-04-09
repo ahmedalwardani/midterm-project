@@ -22,18 +22,21 @@ module.exports = (db) => {
       res.send("Error: Please provide a valid username/password");
     }
 
+    //NEEED HELP WITH THIS SECTION!!!!!!!
     getUserByEmail(req.body.email, db)
       .then(resp => {
         if (resp) {
           res.statusCode = 400;
           res.send("Error: The e-mail address you entered is already taken. Please enter another e-mail!");
         } else {
-          const name = req.params.name;
-          const email = req.body.email;
-          const password = bcrypt.hashSync(req.body.password, 10);
-          addUser({ name, email, password }, db)
-            .then(user => {
-              //req.session.user_id = user.id;
+          const _password = bcrypt.hashSync(req.body.password, 10);
+          user = {
+            name: req.body.name,
+            email: req.body.email,
+            password: _password
+          }
+          addUser(user, db)
+            .then(resp => {
               res.redirect("/");
             });
         }

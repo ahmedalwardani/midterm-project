@@ -29,7 +29,8 @@
   <%- include('partials/header') %>
 
   <!-- display resources owned-->
-  <% for (const resource of resources_owned) { %>
+  <% for (const resource of resources_owned) {
+    if(resource.active){ %>
   <div class="resource-square">
     <h5><a href="<%= resource.url %>"><%= resource.title %></a></h5>
     <div class="overlay">
@@ -37,10 +38,11 @@
       <a class="btn btn-primary" href="<%= `/resources/${resource.id}`%>">More Details</a>
     </div>
   </div>
-  <% } %>
 
-  <!-- display resources saved-->
-  <% for (const resource of resources_saved) { %>
+  <% }} %>
+
+  <% for (const resource of resources_saved) {
+    if(resource.active){ %>
   <div class="resource-square">
     <h5><a href="<%= resource.url %>"><%= resource.title %></a></h5>
     <div class="overlay">
@@ -48,9 +50,9 @@
       <a class="btn btn-primary" href="<%= `/resources/${resource.id}`%>">More Details</a>
     </div>
   </div>
-  <% } %>
+  <% }} %>
 
-  <!-- Bootstracp JS or scripts goes here -->
+
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
     integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
     crossorigin="anonymous"></script>
