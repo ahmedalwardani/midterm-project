@@ -81,16 +81,16 @@ user email (for display in nav)-->
         <div class="input-label-pair topic">
           <!-- DROP DOWN MENU TOPIC NAME -->
           <%- include('partials/topic_dropdown') %>
-
-          <!-- Toggle form to add a new topic name -->
-          <i class="fas fa-plus-circle"></i>
-          <form class="form-inline" action="/new-topic" method="POST">
-            <label for="topic_name">New Topic:</label>
-            <input class="form-control" type="text" name="topic_name" />
-            <button type="submit" class="btn">Add</button>
-          </form>
         </div>
+        <!-- Toggle form to add a new topic name -->
+        <button type="submit" class="btn">Add Resource</button>
       </form>
+      <i class="fas fa-plus-circle"></i>
+        <form class="form-inline" action="/topic" method="POST">
+          <label for="topic_name">New Topic:</label>
+          <input class="form-control" type="text" name="topic_name" />
+          <button type="submit" class="btn">Add Topic</button>
+        </form>
     </main>
 
     <!-- Bootstracp JS or scripts goes here -->

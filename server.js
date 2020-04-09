@@ -60,6 +60,8 @@ const saveRoutes = require("./routes/save");
 const unsaveRoutes = require("./routes/unsave");
 const deleteRoutes = require("./routes/delete");
 const rateRoutes = require("./routes/rate");
+const topicRoutes = require("./routes/topic");
+
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -79,6 +81,7 @@ app.use("/save", saveRoutes(db));
 app.use("/unsave", unsaveRoutes(db));
 app.use("/delete", deleteRoutes(db));
 app.use("/rate", rateRoutes(db));
+app.use("/topic", topicRoutes(db));
 
 
 

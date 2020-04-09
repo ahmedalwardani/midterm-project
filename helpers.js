@@ -145,7 +145,7 @@ const addResource = function (user, resource, db) {
 
 
 const deleteResource = function (resource, db) {
-  return db 
+  return db
     .query(
       `UPDATE resources SET active=false
       WHERE resources.id=${resource}
@@ -220,7 +220,16 @@ const addCommentRating = (commentObject, db) => {
     .catch(err => console.error('query error', err.stack)
     );
 }
-
+const addCategory = (name, db) => {
+  return db
+    .query(
+      `INSERT INTO categories (name)
+      VALUES($1) RETURNING *;
+    `, [name])
+    .then(res => res.rows)
+    .catch(err => console.error('query error', err.stack)
+    );
+}
 
 //get category names functions
 const getCategoryNames = db => {
@@ -275,6 +284,7 @@ module.exports = {
   searchResources,
   getAllResourcesIDOwnedByUser,
   getCategoryNameFromID,
-  addCommentRating
+  addCommentRating,
+  addCategory
 };
 

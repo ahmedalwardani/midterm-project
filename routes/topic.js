@@ -1,14 +1,15 @@
 const express = require('express');
 const router = express.Router();
-const { saveResource } = require("../helpers");
+const { addCategory } = require("../helpers");
 
 
 module.exports = db => {
-router.post("/:id", (req, res) => {
+router.post("/", (req, res) => {
   const currentUser = req.session.user_id;
   if(currentUser) {
-    saveResource(currentUser, req.params.id, db);
-    res.redirect("/resources");
+    addCategory(req.body.topic_name, db).then(resp => {
+      res.redirect("/new");
+    });
   } else {
     res.redirect("/")
   }
