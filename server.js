@@ -58,6 +58,7 @@ const unsaveRoutes = require("./routes/unsave");
 const deleteRoutes = require("./routes/delete");
 const rateRoutes = require("./routes/rate");
 const topicRoutes = require("./routes/topic");
+const userRoutes = require("./routes/user");
 
 
 
@@ -77,6 +78,7 @@ app.use("/unsave", unsaveRoutes(db));
 app.use("/delete", deleteRoutes(db));
 app.use("/rate", rateRoutes(db));
 app.use("/topic", topicRoutes(db));
+app.use("/user", userRoutes(db));
 
 
 

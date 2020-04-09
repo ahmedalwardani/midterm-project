@@ -13,7 +13,7 @@ module.exports = (db) => {
         email: null
       }
     };
-    res.render("signup", templateVars)
+    res.render("signup", templateVars);
   });
 
   router.post("/", (req, res) => {
@@ -30,11 +30,11 @@ module.exports = (db) => {
           res.send("Error: The e-mail address you entered is already taken. Please enter another e-mail!");
         } else {
           const _password = bcrypt.hashSync(req.body.password, 10);
-          user = {
+          const user = {
             name: req.body.name,
             email: req.body.email,
             password: _password
-          }
+          };
           addUser(user, db)
             .then(resp => {
               res.redirect("/");

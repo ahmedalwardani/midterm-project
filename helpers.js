@@ -195,8 +195,25 @@ const deleteResourceFromSaved = function(user, resource, db) {
 };
 
 
+const deleteUser = (user, db) => {
+  return db
+    .query(
+      `DELETE FROM users
+      WHERE id=$1
+    `, [user])
+    .then(res => res.rows)
+    .catch(err => console.error('query error', err.stack));
+};
 
-// comments and ratings for resource
+
+// const editUser = (user, fieldToEdit, db) => {
+//   return db
+//     .query(
+//       `UPDATE FROM users
+//       `)
+// }
+
+
 const getCommentRating = (resourceId, db) => {
   return db
     .query(
@@ -285,6 +302,7 @@ module.exports = {
   getAllResourcesIDOwnedByUser,
   getCategoryNameFromID,
   addCommentRating,
-  addCategory
+  addCategory,
+  deleteUser
 };
 
