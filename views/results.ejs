@@ -19,18 +19,20 @@
 
 </head>
 
-<body class="index-layout">
+<body>
   <%- include('partials/header') %>
+  <div class="wrapper">
+    <section class="index-layout">
 
-  <!-- display resources owned-->
-  <% for (const resource of search_results) { %>
-  <div class="resource-square">
-    <h5><a href="<%= resource.url %>"><%= resource.title %></a></h5>
-    <div class="overlay">
-      <img style="width: 200px" class="thumbnail" src="<%= resource.thumbnail_url %>" alt="thumbnail url">
-      <a class="btn btn-primary" href="<%= `/resources/${resource.id}`%>">More Details</a>
-    </div>
-    <% let owner = false;
+      <!-- display resources owned-->
+      <% for (const resource of search_results) { %>
+      <div class="resource-square">
+        <h5><a href="<%= resource.url %>"><%= resource.title %></a></h5>
+        <div class="overlay">
+          <img style="width: 200px" class="thumbnail" src="<%= resource.thumbnail_url %>" alt="thumbnail url">
+          <a class="btn btn-primary" href="<%= `/resources/${resource.id}`%>">More Details</a>
+        </div>
+        <% let owner = false;
        let saved = false;
 
        for (const _id of resources_owned) {
@@ -46,25 +48,26 @@
        }
        %>
 
-    <% if (owner) { %>
-    <form action="<%= `/delete/${resource.id}`%>" method=" POST">
-      <button type="submit" class="btn btn-primary">Delete</button>
-    </form>
-    <!-- show save resource option if not owner -->
-    <% } else {
+        <% if (owner) { %>
+        <form action="<%= `/delete/${resource.id}`%>" method=" POST">
+          <button type="submit" class="btn btn-primary">Delete</button>
+        </form>
+        <!-- show save resource option if not owner -->
+        <% } else {
        if(saved) { %>
-    <form action="<%= `/unsave/${resource.id}`%>" method="POST">
-      <button type="submit" class="btn btn-primary">Unsave</button>
-    </form>
-    <% } else { %>
-    <form action="<%= `/save/${resource.id}`%>" method="POST">
-      <button type="submit" class="btn btn-primary">Save</button>
-    </form>
-    <%   }
+        <form action="<%= `/unsave/${resource.id}`%>" method="POST">
+          <button type="submit" class="btn btn-primary">Unsave</button>
+        </form>
+        <% } else { %>
+        <form action="<%= `/save/${resource.id}`%>" method="POST">
+          <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+        <%   }
       } %>
+      </div>
+      <% } %>
+    </section>
   </div>
-  <% } %>
-
   <!-- Bootstracp JS or scripts goes here -->
 </body>
 
