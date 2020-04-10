@@ -1,8 +1,6 @@
-<select name="topic" id="topic_dropdown">
+<select class="form-control" name="topic" id="topic_dropdown">
   <option value="" selected disabled>-- Select Topic --</option>
-
   <% for (const topic of topics) { %>
   <option value="<%= topic.id %>"><%= topic.name %></option>
   <% } %>
-
 </select>

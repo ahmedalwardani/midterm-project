@@ -1,12 +1,3 @@
-<!-- INFO NEEDED FOR THIS PAGE
-log in- or not
-the user ID
-user email (for display in nav)-->
-
-<!-- INFO OUT GOING:
-
- -->
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,64 +7,42 @@ user email (for display in nav)-->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-  <!-- Normalization -->
-  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-
-  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-  <script type="text/javascript" src="/scripts/app.js"></script>
-  <script type="text/javascript" src="/scripts/newButton.js"></script>
-
   <!-- Font import -->
-  <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@600;700&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;500&display=swap" rel="stylesheet">
 
   <!-- font awesome icons -->
   <script src="https://kit.fontawesome.com/948f369b19.js" crossorigin="anonymous"></script>
 
   <!-- Styles -->
   <link rel="stylesheet" href="css/main.css" type="text/css" />
+
 </head>
 
 <body>
   <%- include('partials/header') %>
 
   <!-- style notes: new page and add button centered, other two fields stack on top in columns, toggle add new topic  -->
-  <main style="margin: 1em;">
-    <h3>Add Page</h3>
-    <form class="form-inline" action="/new" method="POST">
-      <div class="input-label-pair">
-        <label for="title">Title:</label>
-        <input class="form-control" type="text" name="title" />
-      </div>
-      <div class="input-label-pair">
-        <label for="url">Page URL:</label>
-        <input class="form-control" type="text" name="url" />
-      </div>
-      <div class="input-label-pair">
-        <label for="thumbnail_url">Thumbnail URL:</label>
-        <input class="form-control" type="text" name="thumbnail_url" />
-      </div>
-      <div class="input-label-pair">
-        <label for="thumbnail_url">Description:</label>
-        <input class="form-control" type="text" name="description" />
-      </div>
+  <main>
+    <h1 class="form-title">Add New Resource</h1>
 
-      <div class="input-label-pair topic">
-        <!-- DROP DOWN MENU TOPIC NAME -->
-        <%- include('partials/topic_dropdown') %>
-      </div>
-      <button type="submit" class="btn">Add Resource</button>
+    <form class="form" action="/new" method="POST">
+      <input class="form-control" type="text" name="title" placeholder="Title"/>
+      <input class="form-control" type="text" name="url" value="https://"/>
+      <input class="form-control" type="text" name="thumbnail_url" placeholder="thumbnail_url"/>
+      <input class="form-control" type="text" name="description" placeholder="Description" />
+      <%- include('partials/topic_dropdown') %>
+      <button type="submit" class="btn btn-outline-light">Add Resource</button>
     </form>
 
     <!-- Toggle form to add a new topic name -->
-    <i class="fas fa-plus-circle"></i>
-    <form class="form-inline" action="/topic" method="POST">
-      <label for="topic_name">New Topic:</label>
-      <input class="form-control" type="text" name="topic_name" />
-      <button type="submit" class="btn">Add Topic</button>
+    <!-- <i class="fas fa-plus-circle"></i> -->
+    <h4 class="new-topic-title">Add New Topic</h4>
+    <form class="form" action="/topic" method="POST">
+      <input class="form-control" type="text" name="topic_name"placeholder="New Topic Name" />
+      <button type="submit" class="btn btn-outline-light">Add Topic</button>
     </form>
+
   </main>
 
 

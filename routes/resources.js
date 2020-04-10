@@ -67,7 +67,6 @@ module.exports = (db) => {
                   saved: _saved,
                   owner: currentUser === singleResource.owner_id ? true : false
                 };
-                console.log(templateVars.category_name);
                 res.render("description", templateVars);
               })
             })
