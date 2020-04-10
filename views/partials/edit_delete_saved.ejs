@@ -1,17 +1,17 @@
 <% if (owner) { %>
 <!-- NEED TO CHECK ROUTES -->
 <form action="<%= `/delete/${resource.id}`%>" method="POST">
-  <button type="submit" class="btn btn-primary">Delete</button>
+  <button type="submit" class="btn btn-outline-light">Delete</button>
 </form>
 <!-- show save resource option if not owner -->
 <% } else {
      if(saved) { %>
 <form action="<%= `/unsave/${resource.id}`%>" method="POST">
-  <button type="submit" class="btn btn-primary">Unsave</button>
+  <button type="submit" class="btn btn-outline-light">Unsave</button>
 </form>
 <% } else { %>
 <form action="<%= `/save/${resource.id}`%>" method="POST">
-  <button type="submit" class="btn btn-primary">Save</button>
+  <button type="submit" class="btn btn-outline-light">Save</button>
 </form>
 <%   }
     } %>

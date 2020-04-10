@@ -78,7 +78,8 @@ app.use("/rate", rateRoutes(db));
 app.use("/topic", topicRoutes(db));
 app.use("/user", userRoutes(db));
 
-
+//to fix route when /:id is selected and stylesheet doesn't link properly
+app.use('/static', express.static("midterm_project" + "/public"))
 
 // Note: mount other resources here, using the same pattern above
 

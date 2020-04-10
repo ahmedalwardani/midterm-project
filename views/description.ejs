@@ -15,7 +15,7 @@
   <script src="https://kit.fontawesome.com/948f369b19.js" crossorigin="anonymous"></script>
 
   <!-- Styles -->
-  <link rel="stylesheet" href="css/main.css" type="text/css" media="screen"/>
+  <link rel="stylesheet" href="/css/main.css" type="text/css" media="screen" />
 
 </head>
 
@@ -23,15 +23,17 @@
   <%- include('partials/header') %>
 
   <main>
-    <section class="resource-info">
-      <!-- information about resource -->
-      <%- include('partials/resource_info') %>
-      <%- include('partials/edit_delete_saved') %>
-    </section>
-    <section class="ratings">
-      <%- include('partials/ratings_form') %>
-      <%- include('partials/ratings_comments') %>
-    </section>
+    <div class="wrapper description">
+      <section class="resource-info">
+        <!-- information about resource -->
+        <%- include('partials/resource_info') %>
+        <%- include('partials/edit_delete_saved') %>
+      </section>
+      <section class="ratings">
+        <%- include('partials/ratings_form') %>
+        <%- include('partials/ratings_comments') %>
+      </section>
+    </div>
   </main>
 </body>
 

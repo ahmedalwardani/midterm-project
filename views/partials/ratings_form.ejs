@@ -1,13 +1,20 @@
 <!-- form to submit rating and comment NEED TO ADD POST ROUTE-->
-<form class="form"
-action="<%= `/rate/${resource.id}`%>" method="POST">
-  <select name="rating" id="rating">
+
+<form class="form form-inline" action="<%= `/rate/${resource.id}`%>" method="POST">
+  <h4>
+    Add your rating:
+  </h4>
+  <select class="form-control" name="rating" id="rating">
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
     <option value="4">4</option>
     <option value="5">5</option>
   </select>
-  <input class="comment_form" type="text" name="comment" />
-  <button type="submit" class="btn btn-primary">Submit</button>
+
+  <input class="form-control" type="text" name="comment" id="comment" placeholder="comments, questions, concerns" />
+
+  <button type="submit" class="btn btn-outline-light">Submit</button>
+
+
 </form>
