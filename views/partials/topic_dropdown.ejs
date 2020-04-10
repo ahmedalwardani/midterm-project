@@ -1,8 +1,7 @@
-<select name="topic" id="topic_dropdown">
+<select name="topic" id="topic_dropdown" type="dropdown">
   <option value="" selected disabled>Select Topic</option>
-
   <% for (const topic of topics) { %>
-  <option value="<%= topics.indexOf(topic) %>"><%= topic.name %></option>
+    <%console.log(topic)%>
+  <option value="<%= topic.id %> "><%= topic.name %></option>
   <% } %>
-
 </select>

@@ -188,7 +188,7 @@ const getCommentRating = (resourceId, db) => {
 const getCategoryNames = db => {
   return db
   .query(
-    `SELECT DISTINCT name
+    `SELECT *
     FROM categories`
   ).then(res => {
     return res.rows;

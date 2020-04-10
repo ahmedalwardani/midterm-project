@@ -57,22 +57,19 @@ user email (for display in nav)-->
         <input class="form-control" type="text" name="thumbnail_url" form="form1">
       </div>
 
+
       <div id="drop-menu" class="form-group">
         <!-- DROP DOWN MENU TOPIC NAME -->
         <%- include('partials/topic_dropdown') %>
-
       </div>
 
       <!-- Toggle form to add a new topic name -->
       <p>
         <a id="plus" class="btn btn-outline-dark" href="#" role="button">Or can create your own topic here</a>
       </p>
-      <div id="drop-form">
-        <form id="nested" class="form-inline" action="/new-topic" method="POST">
+      <div id="input-drop-form">
           <label for="topic_name">New Topic:</label>
-          <input type="text" name="topic_name" form="nested">
-          <!-- <button type="submit" form="nested" action="/new-topic">Add topic</button> -->
-        </form>
+          <input id="input-drop-form" type="text" name="topic_name">
       </div>
 
       <button type="submit" class="btn btn-primary" form="form1" action="/edit">Submit</button>

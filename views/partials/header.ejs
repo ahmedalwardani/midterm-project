@@ -1,44 +1,30 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
     <a class="navbar-brand" href="#">
       <img src="/docs/4.0/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top"
         alt="">
       dogEared
     </a>
+
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-
         </li>
         <li class="nav-item">
           <form class="form-inline my-2 my-lg-0" action="/search" method="GET">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
           </form>
-
         </li>
-        <li class="nav-item dropdown">
-
-
-        </li>
-
       </ul>
 
 
-      <!-- <div class="logo-search">
-      <!-- asked Ahmed if href is correct -->
-      <!--  -<h4>dogEared</h4>
-      <div><img src="../../styles/assets/logo.png" alt="dogEared logo" /></div>
-
-      <!-- action needs to point to search form -->
-      <!-- <form class="form-inline" action="/search" method="GET">
-        <button type="submit" class="btn btn-outline-primary">SEARCH</button>
-      </form>
-    </div> -->
 
       <div class="user-login">
         <!-- Check if user is NOT logged in -->
@@ -55,11 +41,17 @@
         </form>
         <!-- if user is loggedin -->
         <% } else { %>
+          <form class="form-inline" action="/new" method="GET">
+            <button type="submit" class="btn btn-outline-dark">Add new resource</button>
+
+            </label>
+          </form>
         <form class="form-inline" action="/signout" method="POST">
           <button type="submit" class="btn btn-outline-dark">Logout</button>
           <label for="submit" style="margin-right: 1em;">Logged in as: <%= user.email %>
           </label>
         </form>
+
         <% } %>
       </div>
   </nav>
