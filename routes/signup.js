@@ -6,6 +6,7 @@ const { addUser, getUserByEmail } = require("../helpers");
 
 
 module.exports = (db) => {
+  //Render sign up page
   router.get("/", (req, res) => {
     const templateVars = {
       user: {
@@ -16,13 +17,13 @@ module.exports = (db) => {
     res.render("signup", templateVars);
   });
 
+  //Send a sign up post request
   router.post("/", (req, res) => {
     if (req.body.email === "" || req.body.password === "") {
       res.statusCode = 400;
       res.send("Error: Please provide a valid username/password");
     }
 
-    //NEEED HELP WITH THIS SECTION!!!!!!!
     getUserByEmail(req.body.email, db)
       .then(resp => {
         if (resp) {

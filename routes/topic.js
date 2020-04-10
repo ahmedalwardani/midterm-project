@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { addCategory } = require("../helpers");
 
-
+//Add a new topic route
 module.exports = db => {
   router.post("/", (req, res) => {
     const currentUser = req.session.user_id;

@@ -1,5 +1,5 @@
 
-//Returns an object corresponding to a provided string, otherwise returns undefined
+//Return all user details using a provided e-mail
 const getUserByEmail = (email, db) => {
   return db.query(`
     SELECT *
@@ -12,6 +12,7 @@ const getUserByEmail = (email, db) => {
     .catch(err => console.error('query error', err.stack));
 };
 
+//Return all user details using a provided user id
 const getUserByID = (id, db) => {
   return db.query(`
     SELECT *
@@ -24,7 +25,7 @@ const getUserByID = (id, db) => {
     .catch(err => console.error('query error', err.stack));
 };
 
-
+//Get all resources in database
 const getAllResources = (db) => {
   return db
     .query(
@@ -37,8 +38,7 @@ const getAllResources = (db) => {
     .catch(err => console.error('query error', err.stack));
 };
 
-
-
+//Get all saved resources id's for a given user
 const getAllSavedResourceIDByUser = (user, db) => {
   return db
     .query(
@@ -52,7 +52,7 @@ const getAllSavedResourceIDByUser = (user, db) => {
     .catch(err => console.error("query error", err.stack));
 };
 
-
+//Get all saved resources details for a given user
 const getAllSavedResourceByUser = (user, db) => {
   return db
     .query(
@@ -66,7 +66,7 @@ const getAllSavedResourceByUser = (user, db) => {
     .catch(err => console.error("query error", err.stack));
 };
 
-
+//Get all resources id's owned by a given user
 const getAllResourcesIDOwnedByUser = (user, db) => {
   return db
     .query(
@@ -78,6 +78,7 @@ const getAllResourcesIDOwnedByUser = (user, db) => {
     .catch(err => console.error("query error", err.stack));
 };
 
+//Get all resources owned by a given user
 const getAllResourcesOwnedByUser = (user, db) => {
   return db
     .query(
@@ -89,7 +90,7 @@ const getAllResourcesOwnedByUser = (user, db) => {
     .catch(err => console.error("query error", err.stack));
 };
 
-
+//Get category name given a resource id
 const getCategoryNameFromID = (resourceID, db) => {
   return db
     .query(
@@ -101,6 +102,7 @@ const getCategoryNameFromID = (resourceID, db) => {
     .catch(err => console.error("query error", err.stack));
 };
 
+//Check whether a user saved a given resource
 const isSaved = function(user, id, db) {
   return db
     .query(
@@ -112,7 +114,7 @@ const isSaved = function(user, id, db) {
     .catch(err => console.error("query error", err.stack));
 };
 
-
+//Add a new user to the database
 const addUser = function(user, db) {
   let arr = [user.name, user.email, user.password];
   return db
@@ -126,9 +128,8 @@ const addUser = function(user, db) {
     .catch(err => console.error('query error', err.stack));
 };
 
-//this might need to change
+//Add a new resource to the database
 const addResource = function(user, resource, db) {
-
   return db
     .query(
       `INSERT INTO resources (
@@ -141,7 +142,7 @@ const addResource = function(user, resource, db) {
     .catch(err => console.error('query error', err.stack));
 };
 
-
+//Delete a resource from the database
 const deleteResource = function(resource, db) {
   return db
     .query(
@@ -153,7 +154,7 @@ const deleteResource = function(resource, db) {
 };
 
 
-//this is suppose to get a a single resource where id is the id of the resource not the owner id
+//Get all details about a single resouce given its id
 const singleResource = function(id, db) {
   return db.query(
     `
@@ -164,8 +165,7 @@ const singleResource = function(id, db) {
     .catch(err => console.error('query error', err.stack));
 };
 
-//add resource to saved
-//insert into saved_resources table user_id and resource_id
+//Save a resource to a user
 const saveResource = function(user, resource, db) {
   return db
     .query(
@@ -179,7 +179,7 @@ const saveResource = function(user, resource, db) {
 };
 
 
-// delete resource from saved!!
+//Delete a saved resource from a user's list of saved resources
 const deleteResourceFromSaved = function(user, resource, db) {
   return db
     .query(
@@ -192,7 +192,7 @@ const deleteResourceFromSaved = function(user, resource, db) {
     .catch(err => console.error('query error', err.stack));
 };
 
-
+//Delete a user from the database
 const deleteUser = (user, db) => {
   return db
     .query(
@@ -203,7 +203,7 @@ const deleteUser = (user, db) => {
     .catch(err => console.error('query error', err.stack));
 };
 
-
+//Edit user information
 const editUser = (user, editObject, db) => {
   return db
     .query(
@@ -214,7 +214,7 @@ const editUser = (user, editObject, db) => {
     .catch(err => console.error('query error', err.stack));
 };
 
-
+//Get a user's password, used with editUser() when changing a user's password
 const getPasswordForUser = (userID, db) => {
   return db
     .query(
@@ -227,6 +227,7 @@ const getPasswordForUser = (userID, db) => {
     .catch(err => console.error('query error', err.stack));
 };
 
+//Select all comments and ratings for a particular resource
 const getCommentRating = (resourceId, db) => {
   return db
     .query(
@@ -240,6 +241,7 @@ const getCommentRating = (resourceId, db) => {
     .catch(err => console.error('query error', err.stack));
 };
 
+//Add a rating and comment to a resource
 const addCommentRating = (commentObject, db) => {
   return db
     .query(
@@ -250,6 +252,8 @@ const addCommentRating = (commentObject, db) => {
     .catch(err => console.error('query error', err.stack)
     );
 };
+
+//Insert new category
 const addCategory = (name, db) => {
   return db
     .query(
@@ -261,7 +265,7 @@ const addCategory = (name, db) => {
     );
 };
 
-//get category names functions
+//Get all category names
 const getCategoryNames = db => {
   return db
     .query(
@@ -272,6 +276,7 @@ const getCategoryNames = db => {
     }).catch(err => console.error('query error', err.stack));
 };
 
+//Get search results based on provided search parameters
 const searchResources = function(options, db) {
   const queryParams = [];
   queryParams.push(`%${options.keyword}%`);

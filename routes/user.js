@@ -4,6 +4,7 @@ const { deleteUser, editUser, getPasswordForUser} = require("../helpers");
 const bcrypt = require("bcrypt");
 
 module.exports = db => {
+  //Get user edit account information page
   router.get("/", (req, res) => {
     const templateVars = {
       user: {
@@ -14,16 +15,15 @@ module.exports = db => {
     res.render("user", templateVars);
   });
 
-
+  //Update user password route
   router.post("/", (req, res) => {
-    console.log("starting post");
     const currentUser = req.session.user_id;
     if (currentUser) {
       getPasswordForUser(currentUser, db).then(resp => {
         return resp;
       }).then(currentPassword => {
         if (bcrypt.compareSync(req.body.password, currentPassword)) {
-          console.log("reached line 28");
+          console.log("reached line 27");
           editUser(currentUser, {nameValue: req.body.name, emailValue: req.body.email, passwordValue: bcrypt.hashSync(req.body.newPassword, 10)}, db);
           res.status(200).end();
           console.log("edited");
@@ -37,8 +37,9 @@ module.exports = db => {
     res.redirect("/");
   });
 
-
+  //Delete a user route
   router.delete("/", (req, res) => {
+    console.log("inside delete route");
     const currentUser = req.session.user_id;
     if (currentUser) {
       deleteUser(currentUser, db);
