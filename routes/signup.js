@@ -4,6 +4,7 @@ const bcrypt = require("bcrypt");
 const { addUser, getUserByEmail } = require("../helpers");
 
 
+
 module.exports = (db) => {
   router.get("/", (req, res) => {
     const templateVars = {
@@ -20,7 +21,7 @@ module.exports = (db) => {
       res.statusCode = 400;
       res.send("Error: Please provide a valid username/password");
     }
-    ​
+
     //NEEED HELP WITH THIS SECTION!!!!!!!
     getUserByEmail(req.body.email, db)
       .then(resp => {
@@ -44,7 +45,4 @@ module.exports = (db) => {
   });
   return router;
 };
-​
-
-
 

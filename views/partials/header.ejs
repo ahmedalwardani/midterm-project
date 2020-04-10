@@ -22,18 +22,26 @@
       <!-- Check if user is NOT logged in -->
       <% if(!user.loggedin) { %>
       <form class="form-inline" action="/signin" method="GET">
-        <button type="submit" class="btn btn-outline-light"><h4>Login</h4></button>
+        <button type="submit" class="btn btn-outline-light">
+          <h4>Login</h4>
+        </button>
       </form>
       <form class="form-inline" action="/signup" method="GET">
-        <button type="submit" class="btn btn-outline-light"><h4>Register</h4></button>
+        <button type="submit" class="btn btn-outline-light">
+          <h4>Register</h4>
+        </button>
       </form>
       <!-- if user is loggedin -->
       <% } else { %>
+      <form class="form-inline" action="/user" method="GET">
+        <button type="submit" class="btn btn-outline-light">
+          <h4>My Account</h4>
+        </button>
+      </form>
       <form class="form-inline" action="/signout" method="POST">
-        <!-- <p>
-          Logged in as: <%= user.email %>
-        </p> -->
-        <button type="submit" class="btn btn-outline-light"><h4>Logout</h4></button>
+        <button type="submit" class="btn btn-outline-light">
+          <h4>Logout</h4>
+        </button>
       </form>
       <% } %>
     </div>
