@@ -10,11 +10,8 @@ module.exports = (db) => {
     getUserByID(currentUser, db).then(resp => {
       return resp;
     }).then(user => {
-      //need to change name of function
       getAllResourcesIDOwnedByUser(currentUser, db).then(resp => {
-       // res.json(resp);
         return resp;
-      //need to change name of function
     }).then(_resources_owned => {
       getAllSavedResourceIDByUser(currentUser, db).then(resp => {
 
@@ -26,7 +23,7 @@ module.exports = (db) => {
             minimum_rating: req.body.min_rating,
             category_id: req.body.topic
           };
-          
+
           searchResources(options, db).then(resp => {
             const templateVars = {
               user: {

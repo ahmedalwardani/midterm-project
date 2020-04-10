@@ -128,8 +128,6 @@ const addUser = function(user, db) {
 
 //this might need to change
 const addResource = function(user, resource, db) {
-  console.log(user, "user inside addResources");
-  console.log(resource, "resources inside addResources");
 
   return db
     .query(
