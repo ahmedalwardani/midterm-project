@@ -21,7 +21,7 @@ module.exports = (db) => {
             const options = {
               keyword: req.body.keyword,
               minimum_rating: req.body.min_rating,
-              category_id: req.body.topic
+              category_id: req.body.topic_dropdown
             };
 
             searchResources(options, db).then(resp => {

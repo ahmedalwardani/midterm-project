@@ -158,8 +158,7 @@ const deleteResource = function(resource, db) {
 const singleResource = function(id, db) {
   return db.query(
     `
-    SELECT * FROM resources
-    WHERE resources.id = $1;
+    SELECT resources.*, ROUND(avg(ratings.rating), 2) as average_rating FROM resources JOIN ratings ON resources.id=ratings.resource_id WHERE resources.id = $1 GROUP BY resources.id;
     `, [Number(id)])
     .then(resp => resp.rows[0])
     .catch(err => console.error('query error', err.stack));
@@ -264,6 +263,7 @@ const addCategory = (name, db) => {
     .catch(err => console.error('query error', err.stack)
     );
 };
+
 
 //Get all category names
 const getCategoryNames = db => {

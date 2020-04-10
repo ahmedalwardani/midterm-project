@@ -21,7 +21,7 @@ module.exports = (db) => {
                 user_id: user.id
               },
               resources_owned: _resources_owned,
-              resources_saved: resp
+              resources_saved: resp,
             };
             res.render("index", templateVars);
           });
@@ -46,7 +46,6 @@ module.exports = (db) => {
             return resp;
           }).then(ratings_comments => {
             getCategoryNameFromID(req.params.id, db).then(resp => {
-              // res.json(resp);
               return resp;
             }).then(_category => {
               isSaved(currentUser, req.params.id, db).then(resp => {
@@ -64,7 +63,7 @@ module.exports = (db) => {
                   resource: singleResource,
                   ratings: ratings_comments,
                   saved: _saved,
-                  owner: currentUser === singleResource.owner_id ? true : false
+                  owner: currentUser === singleResource.owner_id ? true : false,
                 };
                 res.render("description", templateVars);
               });
