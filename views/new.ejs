@@ -25,10 +25,12 @@
   <!-- style notes: new page and add button centered, other two fields stack on top in columns, toggle add new topic  -->
   <main style="margin: 1em;">
     <h3>Add Page</h3>
-    <form class="form-inline" action="/new" method="POST">
+    <form class="form" action="/new" method="POST">
+      <label for="title">Title:</label>
+
+      <input class="form-control" type="text" name="title" />
       <div class="input-label-pair">
-        <label for="title">Title:</label>
-        <input class="form-control" type="text" name="title" />
+
       </div>
       <div class="input-label-pair">
         <label for="url">Page URL:</label>

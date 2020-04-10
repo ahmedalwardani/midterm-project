@@ -34,9 +34,8 @@ module.exports = (db) => {
       title: req.body.title,
       url: req.body.url,
       description: req.body.description,
-      thumbnail_url: req.body.thumbnail_url,
+      thumbnail_url: req.body.thumbnail_url || "./public/assets/logo.png",
       topic_id: req.body.topic,
-      //CHECK IF TOPIC ID IS CORRECTLY INPUTED IN DATABASE
     }
     addResource(currentUser, resource, db).then(resp => {
       if (resp) {
