@@ -29,11 +29,12 @@
         if(resource.active){ %>
 
     <div class="resource-square">
-      <h5><a href="<%= resource.url %>"><%= resource.title %></a></h5>
+      <h2 class="thumbnail-title"><a href="<%= resource.url %>"><%= resource.title %></a></h2>
       <div class="overlay">
-        <img style="width: 200px" class="thumbnail" src="<%= resource.thumbnail_url %>" alt="thumbnail url">
-        <a class="btn btn-primary" href="<%= `/resources/${resource.id}`%>">More Details</a>
+        <img  class="thumbnail" src="<%= resource.thumbnail_url %>" alt="thumbnail url">
+        <a class="more-details"  href="<%= `/resources/${resource.id}`%>">More Details</a>
       </div>
+
     </div>
 
     <% }}
@@ -41,10 +42,10 @@
         if(resource.active){ %>
 
     <div class="resource-square">
-      <h5><a href="<%= resource.url %>"><%= resource.title %></a></h5>
+      <h2 class="thumbnail-title"><a href="<%= resource.url %>"><%= resource.title %></a></h2>
       <div class="overlay">
-        <img style="width: 200px" class="thumbnail" src="<%= resource.thumbnail_url %>" alt="thumbnail url">
-        <a class="btn btn-primary" href="<%= `/resources/${resource.id}`%>">More Details</a>
+        <img class="thumbnail" src="<%= resource.thumbnail_url %>" alt="thumbnail url">
+        <a class="more-details" href="<%= `/resources/${resource.id}`%>">More Details</a>
       </div>
     </div>
 
