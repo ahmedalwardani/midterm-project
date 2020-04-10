@@ -1,54 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <title>dogEared</title>
+    <!--Bootstrap-->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"
+    ></script>
 
-<head>
-  <title>dogEared</title>
-  <!--Bootstrap-->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="/scripts/user-update.js" type="module"></script>
 
-  <!-- Font import -->
-  <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@600;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;500&display=swap" rel="stylesheet">
+    <!-- Font import -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;500&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- font awesome icons -->
-  <script src="https://kit.fontawesome.com/948f369b19.js" crossorigin="anonymous"></script>
+    <!-- font awesome icons -->
+    <script
+      src="https://kit.fontawesome.com/948f369b19.js"
+      crossorigin="anonymous"
+    ></script>
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="css/main.css" type="text/css" />
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/main.css" type="text/css" />
+  </head>
 
-</head>
+  <body>
+    <%- include('partials/header') %>
+    <main>
+      <h2>Update Account Details</h2>
+      <div class="text-center">
+        <form class="form" action="/user" method="POST">
+          <h6>please fill in all fields</h6>
+          <input
+            class="form-control"
+            type="text"
+            name="new-name"
+            placeholder="new name"
+          />
+          <input
+            class="form-control"
+            type="email"
+            name="new-email"
+            placeholder="new email"
+          />
+          <input
+            class="form-control"
+            type="password"
+            name="current-password"
+            placeholder="current password"
+          />
+          <input
+            class="form-control"
+            type="password"
+            name="new-password"
+            placeholder="new password"
+          />
+          <input
+            class="form-control"
+            type="password"
+            name="confirm-new-password"
+            placeholder="confirm new password"
+          />
+          <button type="button" class="btn btn-outline-light update-user-info">
+            Update Account
+          </button>
+          <button type="button" class="btn btn-outline-light delete-account">
+            Delete Account
+          </button>
+        </form>
+      </div>
+    </main>
 
-<body>
-  <%- include('partials/header') %>
-  <main>
-    <h2>Update Account Details</h2>
-    <div class="text-center">
-
-          <form class="form" action="/user" method="POST">
-            <h6>please fill in all fields</h6>
-            <input class="form-control" type="text" name="new-name" placeholder="new name">
-            <input class="form-control" type="email" name="new-email" placeholder="new email">
-            <input class="form-control" type="password" name="current-password" placeholder="current password">
-            <input class="form-control" type="password" name="new-password" placeholder="new password">
-            <input class="form-control" type="password" name="confirm-new-password" placeholder="confirm new password">
-            <button type="submit" class="btn btn-outline-light update-user-info">Update Account</button>
-            <button type="button" class="btn btn-outline-light delete-account">Delete Account</button>
-          </form>
-    </div>
-  </main>
-  <!-- NEED ILLUSTRATION TO GO HERE -->
-
-  <!-- Bootstracp JS or scripts goes here -->
-  <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-    crossorigin="anonymous"></script> -->
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-    crossorigin="anonymous"></script>
-</body>
-
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>

@@ -4,6 +4,7 @@ const { addResource, getUserByID, getCategoryNames } = require("../helpers");
 
 
 module.exports = (db) => {
+  //Render a page to enter new resource
   router.get("/", (req, res) => {
     const currentUser = req.session.user_id;
     if (currentUser) {
@@ -28,7 +29,7 @@ module.exports = (db) => {
   });
 
   router.post("/", (req, res) => {
-
+    //Route for adding a new resource
     const currentUser = req.session.user_id;
     const resource = {
       title: req.body.title,
@@ -36,7 +37,7 @@ module.exports = (db) => {
       description: req.body.description,
       thumbnail_url: req.body.thumbnail_url || "/assets/logo.png",
       topic_id: req.body.topic,
-    }
+    };
     addResource(currentUser, resource, db).then(resp => {
       if (resp) {
         res.redirect("/resources");

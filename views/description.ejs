@@ -1,38 +1,394 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <title>dogEared</title>
+    <!--Bootstrap-->
 
-<head>
-  <title>dogEared</title>
-  <!--Bootstrap-->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- Font import -->
+    <style>
+      html {
+        line-height: 1.15;
+        -ms-text-size-adjust: 100%;
+        -webkit-text-size-adjust: 100%;
+      }
+      body {
+        margin: 0;
+      }
+      article,
+      aside,
+      footer,
+      header,
+      nav,
+      section {
+        display: block;
+      }
+      h1 {
+        font-size: 2em;
+        margin: 0.67em 0;
+      }
+      figcaption,
+      figure,
+      main {
+        display: block;
+      }
+      figure {
+        margin: 1em 40px;
+      }
+      hr {
+        box-sizing: content-box;
+        height: 0;
+        overflow: visible;
+      }
+      pre {
+        font-family: monospace, monospace;
+        font-size: 1em;
+      }
+      a {
+        background-color: transparent;
+        -webkit-text-decoration-skip: objects;
+      }
+      abbr[title] {
+        border-bottom: none;
+        text-decoration: underline;
+        -webkit-text-decoration: underline dotted;
+        text-decoration: underline dotted;
+      }
+      b,
+      strong {
+        font-weight: inherit;
+      }
+      b,
+      strong {
+        font-weight: bolder;
+      }
+      code,
+      kbd,
+      samp {
+        font-family: monospace, monospace;
+        font-size: 1em;
+      }
+      dfn {
+        font-style: italic;
+      }
+      mark {
+        background-color: #ff0;
+        color: #000;
+      }
+      small {
+        font-size: 80%;
+      }
+      sub,
+      sup {
+        font-size: 75%;
+        line-height: 0;
+        position: relative;
+        vertical-align: baseline;
+      }
+      sub {
+        bottom: -0.25em;
+      }
+      sup {
+        top: -0.5em;
+      }
+      audio,
+      video {
+        display: inline-block;
+      }
+      audio:not([controls]) {
+        display: none;
+        height: 0;
+      }
+      img {
+        border-style: none;
+      }
+      svg:not(:root) {
+        overflow: hidden;
+      }
+      button,
+      input,
+      optgroup,
+      select,
+      textarea {
+        font-family: sans-serif;
+        font-size: 100%;
+        line-height: 1.15;
+        margin: 0;
+      }
+      button,
+      input {
+        overflow: visible;
+      }
+      button,
+      select {
+        text-transform: none;
+      }
+      [type="reset"],
+      [type="submit"],
+      button,
+      html [type="button"] {
+        -webkit-appearance: button;
+      }
+      [type="button"]::-moz-focus-inner,
+      [type="reset"]::-moz-focus-inner,
+      [type="submit"]::-moz-focus-inner,
+      button::-moz-focus-inner {
+        border-style: none;
+        padding: 0;
+      }
+      [type="button"]:-moz-focusring,
+      [type="reset"]:-moz-focusring,
+      [type="submit"]:-moz-focusring,
+      button:-moz-focusring {
+        outline: 1px dotted ButtonText;
+      }
+      fieldset {
+        padding: 0.35em 0.75em 0.625em;
+      }
+      legend {
+        box-sizing: border-box;
+        color: inherit;
+        display: table;
+        max-width: 100%;
+        padding: 0;
+        white-space: normal;
+      }
+      progress {
+        display: inline-block;
+        vertical-align: baseline;
+      }
+      textarea {
+        overflow: auto;
+      }
+      [type="checkbox"],
+      [type="radio"] {
+        box-sizing: border-box;
+        padding: 0;
+      }
+      [type="number"]::-webkit-inner-spin-button,
+      [type="number"]::-webkit-outer-spin-button {
+        height: auto;
+      }
+      [type="search"] {
+        -webkit-appearance: textfield;
+        outline-offset: -2px;
+      }
+      [type="search"]::-webkit-search-cancel-button,
+      [type="search"]::-webkit-search-decoration {
+        -webkit-appearance: none;
+      }
+      ::-webkit-file-upload-button {
+        -webkit-appearance: button;
+        font: inherit;
+      }
+      details,
+      menu {
+        display: block;
+      }
+      summary {
+        display: list-item;
+      }
+      canvas {
+        display: inline-block;
+      }
+      template {
+        display: none;
+      }
+      [hidden] {
+        display: none;
+      }
+      .clearfix:after {
+        visibility: hidden;
+        display: block;
+        font-size: 0;
+        content: "";
+        clear: both;
+        height: 0;
+      }
+      html {
+        box-sizing: border-box;
+      }
+      *,
+      :after,
+      :before {
+        box-sizing: inherit;
+      }
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        border: 0;
+        padding: 0;
+        white-space: nowrap;
+        -webkit-clip-path: inset(100%);
+        clip-path: inset(100%);
+        clip: rect(0 0 0 0);
+        overflow: hidden;
+      }
+      body {
+        background-repeat: 0;
+        background-image: linear-gradient(-90deg, #1c3334, #376e6f);
+        color: snow;
+        text-align: center;
+      }
+      h1,
+      h2 {
+        font-family: "Titilium Web", sans-serif;
+        font-weight: 700;
+      }
+      h3,
+      h4 {
+        font-family: "Titilium Web", sans-serif;
+        font-weight: 600;
+        margin-bottom: 0;
+      }
+      h5,
+      h6,
+      p {
+        font-family: "Fira Sans";
+        font-weight: 400;
+      }
+      .btn,
+      a,
+      i {
+        font-family: "Fira Sans";
+        font-weight: 500;
+        color: snow;
+      }
+      main {
+        margin: 5% 10% 0 10%;
+      }
+      nav {
+        display: flex;
+        justify-content: space-between;
+      }
+      nav form {
+        margin-right: 5%;
+      }
+      nav .logo-search {
+        display: flex;
+        justify-content: flex-start;
+      }
+      nav .user-login {
+        display: flex;
+        justify-content: flex-end;
+      }
+      header {
+        padding: 30px;
+        background-color: #1c3334;
+      }
+      .landing-page h1 {
+        width: 100%;
+      }
+      .landing-page .title {
+        margin-top: 10%;
+        margin-bottom: 10%;
+      }
+      .landing-page .landing-page-btn {
+        width: 20%;
+        min-width: 70px;
+        border: #1c3334 5px solid;
+        border-radius: 5px;
+        background-color: #2e151b;
+        margin-right: 5%;
+        margin-left: 5%;
+      }
+      .landing-page .landing-page-btn a {
+        color: #da7b93;
+      }
+      .landing-page .inline-pair {
+        display: flex;
+        justify-content: center;
+      }
+      .index-layout {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        margin: 5% 10% 0 10%;
+      }
+      .index-layout .resource-square {
+        width: 350px;
+        height: 350px;
+        padding: 30px;
+        margin: 30px;
+        display: flex;
+        flex-direction: column;
+      }
+      .index-layout .resource-square .overlay {
+        width: 100%;
+        height: 100%;
+        min-height: 300px;
+        background-color: #1c3334;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .index-layout .resource-square .thumbnail {
+        height: 180px;
+        width: 180px;
+      }
+      .index-layout .resource-square .thumbnail-title a {
+        color: snow;
+      }
+      .index-layout .resource-square .more-details {
+        position: absolute;
+        bottom: 10px;
+      }
+      .form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .form #min_rating,
+      .form #topic_dropdown,
+      .form input {
+        width: 60%;
+        margin-top: 20px;
+      }
+      .form button {
+        width: auto;
+        margin-top: 20px;
+        background-color: #da7b93;
+      }
+      .new-topic-title {
+        margin-top: 50px;
+      }
+      h6 {
+        color: #da7b93;
+      }
+    </style>
 
-  <!-- Font import -->
-  <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@600;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;500&display=swap" rel="stylesheet">
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
 
-  <!-- font awesome icons -->
-  <script src="https://kit.fontawesome.com/948f369b19.js" crossorigin="anonymous"></script>
+    <!-- font awesome icons -->
+    <script
+      src="https://kit.fontawesome.com/948f369b19.js"
+      crossorigin="anonymous"
+    ></script>
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="css/main.css" type="text/css" media="screen"/>
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/main.css" type="text/css" media="screen" />
+  </head>
 
-</head>
+  <body>
+    <%- include('partials/header') %>
 
-<body>
-  <%- include('partials/header') %>
-
-  <main>
-    <section class="resource-info">
-      <!-- information about resource -->
-      <%- include('partials/resource_info') %>
-      <%- include('partials/edit_delete_saved') %>
-    </section>
-    <section class="ratings">
-      <%- include('partials/ratings_form') %>
-      <%- include('partials/ratings_comments') %>
-    </section>
-  </main>
-</body>
-
+    <main>
+      <section class="resource-info">
+        <!-- information about resource -->
+        <%- include('partials/resource_info') %> <%-
+        include('partials/edit_delete_saved') %>
+      </section>
+      <section class="ratings">
+        <%- include('partials/ratings_form') %> <%-
+        include('partials/ratings_comments') %>
+      </section>
+    </main>
+  </body>
 </html>

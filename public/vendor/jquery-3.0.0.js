@@ -1,9 +1,3 @@
-
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -39,10 +33,10 @@
     <meta property="og:image" content="https://avatars3.githubusercontent.com/u/5753105?s=400&amp;v=4" /><meta property="og:site_name" content="GitHub" /><meta property="og:type" content="object" /><meta property="og:title" content="lighthouse-labs/node-skeleton" /><meta property="og:url" content="https://github.com/lighthouse-labs/node-skeleton" /><meta property="og:description" content="Starter skeleton for Node applications. Contribute to lighthouse-labs/node-skeleton development by creating an account on GitHub." />
 
   <link rel="assets" href="https://github.githubassets.com/">
-  <link rel="web-socket" href="wss://live.github.com/_sockets/VjI6NTA2MDgwOTQ1OjMzYmYxZTNhZjQ2OTNhODkxY2M4NDlkYjU5NmJkOThmZGZmZmU3ODVkNzJmNTY4ODkyODBjZjVhNGM2MjE0M2E=--a3104fbfd0436767deff9428c62590ca140f0a4b">
+  <link rel="web-socket" href="wss://live.github.com/_sockets/VjI6NTA2MDgwOTQ1OmQxNmEyNjI2YWM4MjMwMGRkODhjN2E4ZWIxODlkMDZmZTg0NzFhNzM2OTE4MWYwY2E2Nzg2ZWViM2Y2Zjg1ZmU=--ff6b97a3b1ffa3c2652bc4df1d04cbd465da2db8">
   <link rel="sudo-modal" href="/sessions/sudo_modal">
 
-  <meta name="request-id" content="D63F:062F:96F7A0:FA2022:5E8F643D" data-pjax-transient="true" /><meta name="html-safe-nonce" content="651c0ae8916c8c404fae02b4253c4e9012468aa9" data-pjax-transient="true" /><meta name="visitor-payload" content="eyJyZWZlcnJlciI6Imh0dHBzOi8vZ2l0aHViLmNvbS9saWdodGhvdXNlLWxhYnMvbm9kZS1za2VsZXRvbi90cmVlL21hc3Rlci9wdWJsaWMvdmVuZG9yIiwicmVxdWVzdF9pZCI6IkQ2M0Y6MDYyRjo5NkY3QTA6RkEyMDIyOjVFOEY2NDNEIiwidmlzaXRvcl9pZCI6IjMzMTY0OTk5MjU2NDM2Mjk5MjciLCJyZWdpb25fZWRnZSI6ImlhZCIsInJlZ2lvbl9yZW5kZXIiOiJpYWQifQ==" data-pjax-transient="true" /><meta name="visitor-hmac" content="1bfa4ed10526e6b3519cfe10c63333506471517c9c8132b1d90ae6a3e43ce5a8" data-pjax-transient="true" />
+  <meta name="request-id" content="E2AC:33D8:60D278:AE9F1F:5E907901" data-pjax-transient="true" /><meta name="html-safe-nonce" content="651c0ae8916c8c404fae02b4253c4e9012468aa9" data-pjax-transient="true" /><meta name="visitor-payload" content="eyJyZWZlcnJlciI6Imh0dHBzOi8vZ2l0aHViLmNvbS9saWdodGhvdXNlLWxhYnMvbm9kZS1za2VsZXRvbi90cmVlL21hc3Rlci9wdWJsaWMvdmVuZG9yIiwicmVxdWVzdF9pZCI6IkUyQUM6MzNEODo2MEQyNzg6QUU5RjFGOjVFOTA3OTAxIiwidmlzaXRvcl9pZCI6IjMzMTY0OTk5MjU2NDM2Mjk5MjciLCJyZWdpb25fZWRnZSI6ImlhZCIsInJlZ2lvbl9yZW5kZXIiOiJpYWQifQ==" data-pjax-transient="true" /><meta name="visitor-hmac" content="3a3c94835401d197816407dd4fca20f99e7b89c8ee18a8c65bec372d3b412367" data-pjax-transient="true" />
 
 
 
@@ -76,7 +70,7 @@
 
       <meta name="expected-hostname" content="github.com">
 
-      <meta name="js-proxy-site-detection-payload" content="ZTQ4YWI0ZmY5MjUyODAzM2JjZGM0NWY4NjU0YmVjNjI2YzVlYzUzMzU3MTA2MGM1ZjMwNzk4YzU4Y2Y5OGIyOXx7InJlbW90ZV9hZGRyZXNzIjoiNzIuMTQwLjQwLjE4IiwicmVxdWVzdF9pZCI6IkQ2M0Y6MDYyRjo5NkY3QTA6RkEyMDIyOjVFOEY2NDNEIiwidGltZXN0YW1wIjoxNTg2NDU1NjE4LCJob3N0IjoiZ2l0aHViLmNvbSJ9">
+      <meta name="js-proxy-site-detection-payload" content="MDg4MTk0YzM0MTQ3YzI4MzZkZmY3ZjhjMTJhYTU3YTE4MDM5ZjgwNTBhMmU5YTY5YjNhYzczNzBkZmE1ZmQ2ZXx7InJlbW90ZV9hZGRyZXNzIjoiNzIuMTQwLjQwLjE4IiwicmVxdWVzdF9pZCI6IkUyQUM6MzNEODo2MEQyNzg6QUU5RjFGOjVFOTA3OTAxIiwidGltZXN0YW1wIjoxNTg2NTI2NDg1LCJob3N0IjoiZ2l0aHViLmNvbSJ9">
 
     <meta name="enabled-features" content="MARKETPLACE_INVOICED_BILLING,MARKETPLACE_SOCIAL_PROOF_CUSTOMERS,MARKETPLACE_TRENDING_SOCIAL_PROOF,MARKETPLACE_RECOMMENDATIONS,MARKETPLACE_PENDING_INSTALLATIONS,RELATED_ISSUES,GHE_CLOUD_TRIAL,PAGE_STALE_CHECK">
 
@@ -165,7 +159,7 @@
           spellcheck="false"
           autocomplete="off"
           >
-          <input type="hidden" value="RKhM0h5Yf/GS80baP4lfoM+o3PvaLfPWvzpr9Au7UsV+d57Ye8IUlT/mf0lH1AwGQICR/P5puFB0MJBAaD0CHg==" data-csrf="true" class="js-data-jump-to-suggestions-path-csrf" />
+          <input type="hidden" value="0zyfoBWvbuVyf9SRdJnuF2tYC2u5FVHj+bwwEJlaSNTp402qcDUFgd9q7QIMxL2x5HBGbJ1RGmUytsuk+twYDw==" data-csrf="true" class="js-data-jump-to-suggestions-path-csrf" />
           <input type="hidden" class="js-site-search-type-field" name="type" >
             <img src="https://github.githubassets.com/images/search-key-slash.svg" alt="" class="mr-2 header-search-key-slash">
 
@@ -316,7 +310,7 @@
       <img class="avatar" height="20" width="20" alt="@ahmedalwardani" src="https://avatars0.githubusercontent.com/u/29851646?s=60&amp;u=dc65251d1dfcd9810691c2a9a46c370e6b19a344&amp;v=4" />
       ahmedalwardani
 </a>
-    <!-- '"` --><!-- </textarea></xmp> --></option></form><form action="/logout" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="EAUlfzJbh5ugUKaJ6ABmYNTG8kKX2Bw2aiXduViRgwYdKN1y4OT6kDs/TBS9QdsPcOtvrE4CPHKdYAnCs8hmeQ==" />
+    <!-- '"` --><!-- </textarea></xmp> --></option></form><form action="/logout" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="nhoaE/i+vR6FR4gFRyEkkZwiyibcf62dZLRZrH6+prCTN+IeKgHAFR4oYpgSYJn+OA9XyAWljdmT8Y3XledDzw==" />
       <button type="submit" class="Header-link mr-0 mr-lg-3 py-2 py-lg-0 border-top border-lg-top-0 border-white-fade-15 d-lg-none btn-link d-block width-full text-left" data-ga-click="Header, sign out, icon:logout" style="padding-left: 2px;">
         <svg class="octicon octicon-sign-out v-align-middle" viewBox="0 0 16 17" version="1.1" width="16" height="17" aria-hidden="true"><path fill-rule="evenodd" d="M12 9V7H8V5h4V3l4 3-4 3zm-2 3H6V3L2 1h8v3h1V1c0-.55-.45-1-1-1H1C.45 0 0 .45 0 1v11.38c0 .39.22.73.55.91L6 16.01V13h4c.55 0 1-.45 1-1V8h-1v4z"></path></svg>
         Sign out
@@ -437,7 +431,7 @@
       </div>
     </summary>
     <details-dialog class="details-dialog rounded-1 anim-fade-in fast Box Box--overlay" role="dialog" tabindex="-1">
-      <!-- '"` --><!-- </textarea></xmp> --></option></form><form class="position-relative flex-auto js-user-status-form" action="/users/status?compact=1&amp;link_mentions=0&amp;truncate=1" accept-charset="UTF-8" method="post"><input type="hidden" name="_method" value="put" /><input type="hidden" name="authenticity_token" value="XewHuienStLxyWJwVd9HR3e61w7wsuquovzkh2wLUj3YwhTf45yKRXNG12IL91/AkUVudEQTUFP9zrnbj3JU5A==" />
+      <!-- '"` --><!-- </textarea></xmp> --></option></form><form class="position-relative flex-auto js-user-status-form" action="/users/status?compact=1&amp;link_mentions=0&amp;truncate=1" accept-charset="UTF-8" method="post"><input type="hidden" name="_method" value="put" /><input type="hidden" name="authenticity_token" value="227MGWF12bUnLJx1qVayYC6AnrL0dp1+JOdxpP7sjAZeQN98pU4ZIqWjKWf3fqrnyH8nyEDXJ4N71Sz4HZWK3w==" />
         <div class="Box-header bg-gray border-bottom p-3">
           <button class="Box-btn-octicon js-toggle-user-status-edit btn-octicon float-right" type="reset" aria-label="Close dialog" data-close-dialog>
             <svg class="octicon octicon-x" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z"></path></svg>
@@ -555,22 +549,22 @@
       </li>
       <li class="dropdown-divider" role="none"></li>
         <li>
-          <button type="button" class="btn-link dropdown-item ws-normal js-user-status-expire-button" title="in 30 minutes" value="2020-04-09T14:36:58-04:00">
+          <button type="button" class="btn-link dropdown-item ws-normal js-user-status-expire-button" title="in 30 minutes" value="2020-04-10T10:18:05-04:00">
             in 30 minutes
           </button>
         </li>
         <li>
-          <button type="button" class="btn-link dropdown-item ws-normal js-user-status-expire-button" title="in 1 hour" value="2020-04-09T15:06:58-04:00">
+          <button type="button" class="btn-link dropdown-item ws-normal js-user-status-expire-button" title="in 1 hour" value="2020-04-10T10:48:05-04:00">
             in 1 hour
           </button>
         </li>
         <li>
-          <button type="button" class="btn-link dropdown-item ws-normal js-user-status-expire-button" title="in 4 hours" value="2020-04-09T18:06:58-04:00">
+          <button type="button" class="btn-link dropdown-item ws-normal js-user-status-expire-button" title="in 4 hours" value="2020-04-10T13:48:05-04:00">
             in 4 hours
           </button>
         </li>
         <li>
-          <button type="button" class="btn-link dropdown-item ws-normal js-user-status-expire-button" title="today" value="2020-04-09T23:59:59-04:00">
+          <button type="button" class="btn-link dropdown-item ws-normal js-user-status-expire-button" title="today" value="2020-04-10T23:59:59-04:00">
             today
           </button>
         </li>
@@ -634,12 +628,12 @@
 
     <a role="menuitem" class="dropdown-item" href="https://help.github.com" data-ga-click="Header, go to help, text:help">Help</a>
     <a role="menuitem" class="dropdown-item" href="/settings/profile" data-ga-click="Header, go to settings, icon:settings">Settings</a>
-    <!-- '"` --><!-- </textarea></xmp> --></option></form><form class="logout-form" action="/logout" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="lRMY119QWC/be/+EMPAEzAW7QF0QS+lramWQPOmxLCaYPuDaje8lJEAUFRllsbmjoZbds8mRyS+dIERHAujJWQ==" />
+    <!-- '"` --><!-- </textarea></xmp> --></option></form><form class="logout-form" action="/logout" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="0Vj6ESnMkhS+CnhZKMlktGUB4Fk3MYzIMktgI2YqQ8XcdQIc+3PvHyVlksR9iNnbwSx9t+7rrIzFDrRYjXOmug==" />
       
       <button type="submit" class="dropdown-item dropdown-signout" data-ga-click="Header, sign out, icon:logout" role="menuitem">
         Sign out
       </button>
-      <input type="text" name="required_field_e85f" hidden="hidden" class="form-control" /><input type="hidden" name="timestamp" value="1586455618194" class="form-control" /><input type="hidden" name="timestamp_secret" value="deea9a95f7e30cce7a4fbf8d7f1a511f85e433d07d43e59004533a36c5031f02" class="form-control" />
+      <input type="text" name="required_field_158c" hidden="hidden" class="form-control" /><input type="hidden" name="timestamp" value="1586526485818" class="form-control" /><input type="hidden" name="timestamp_secret" value="03796b5f13caa60e1ad40f1cc5fdf5990a2e0f673eb1dfbbcc6e7af3e7d44556" class="form-control" />
 </form>  </details-menu>
 </details>
 
@@ -726,7 +720,7 @@
 
   <li>
     
-    <!-- '"` --><!-- </textarea></xmp> --></option></form><form data-remote="true" class="clearfix js-social-form js-social-container" action="/notifications/subscribe" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="k3F4rCYcfgpGwEsPE/6QWA1etRQy6dqrf9nboKfsZ3kO3kvvLD81u6g0Eb34ETnNJ3DjkqKso7DBHedG7MPQFQ==" />      <input type="hidden" name="repository_id" value="63214868">
+    <!-- '"` --><!-- </textarea></xmp> --></option></form><form data-remote="true" class="clearfix js-social-form js-social-container" action="/notifications/subscribe" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="mgSV/0qnVPf4/eEu5uf3jILQI5R4DCxLh1mmrvaw1x8Hq6a8QIQfRhYJu5wNCF4ZqP51EuhJVVA5nZpIvZ9gcw==" />      <input type="hidden" name="repository_id" value="63214868">
 
       <details class="details-reset details-overlay select-menu float-left">
         <summary class="select-menu-button float-left btn btn-sm btn-with-count" data-hydro-click="{&quot;event_type&quot;:&quot;repository.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;WATCH_BUTTON&quot;,&quot;repository_id&quot;:63214868,&quot;originating_url&quot;:&quot;https://github.com/lighthouse-labs/node-skeleton/blob/master/public/vendor/jquery-3.0.0.js&quot;,&quot;user_id&quot;:29851646}}" data-hydro-click-hmac="6d3459d2dcd4af4851c11c31f18b036238f20602fafd02eb4f8f4fc34b045b2e" data-ga-click="Repository, click Watch settings, action:blob#show">          <span data-menu-button>
@@ -800,7 +794,7 @@
 
   <li>
       <div class="js-toggler-container js-social-container starring-container ">
-    <form class="starred js-social-form" action="/lighthouse-labs/node-skeleton/unstar" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="TNrO0iilgGfIubc+GxeTpcyI4R3y+lvPepC+0d4z1t+HICZgxvrvs0mKE8ubmg7sAgh7pfVxSrxm0RnY7X1U+g==" />
+    <form class="starred js-social-form" action="/lighthouse-labs/node-skeleton/unstar" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="C1WiikSZSPecY3F8cRoa2LwbOPqDdX1rVQBZH8sngMHAr0o4qsYnIx1Q1Ynxl4eRcpuiQoT+bBhJQf4W+GkC5A==" />
       <input type="hidden" name="context" value="repository"></input>
       <button type="submit" class="btn btn-sm btn-with-count js-toggler-target" aria-label="Unstar this repository" title="Unstar lighthouse-labs/node-skeleton" data-hydro-click="{&quot;event_type&quot;:&quot;repository.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;UNSTAR_BUTTON&quot;,&quot;repository_id&quot;:63214868,&quot;originating_url&quot;:&quot;https://github.com/lighthouse-labs/node-skeleton/blob/master/public/vendor/jquery-3.0.0.js&quot;,&quot;user_id&quot;:29851646}}" data-hydro-click-hmac="7aff725d6fbf23f09cabc044c4e1800ffb8788c9920eafaf8d54919d74805ecd" data-ga-click="Repository, click unstar button, action:blob#show; text:Unstar">        <svg height="16" class="octicon octicon-star v-align-text-bottom" vertical_align="text_bottom" viewBox="0 0 14 16" version="1.1" width="14" aria-hidden="true"><path fill-rule="evenodd" d="M14 6l-4.9-.64L7 1 4.9 5.36 0 6l3.6 3.26L2.67 14 7 11.67 11.33 14l-.93-4.74L14 6z"></path></svg>
 
@@ -810,7 +804,7 @@
            12
         </a>
 </form>
-    <form class="unstarred js-social-form" action="/lighthouse-labs/node-skeleton/star" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="kYnf1huHKWxFsXJ7pMU1bmz3KeLWdpTtXfpSr/M5O8CMa6kXt2r2GhwDzDHYHRo6+9HmogE7GIbCFBKORwLJKw==" />
+    <form class="unstarred js-social-form" action="/lighthouse-labs/node-skeleton/star" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="q6GBKxdLjgJyFfQajehnGLaiQROOPK4d98UtUQ8dwIS2Q/fqu6ZRdCunSlDxMEhMIYSOU1lxInZoK21wuyYybw==" />
       <input type="hidden" name="context" value="repository"></input>
       <button type="submit" class="btn btn-sm btn-with-count js-toggler-target" aria-label="Unstar this repository" title="Star lighthouse-labs/node-skeleton" data-hydro-click="{&quot;event_type&quot;:&quot;repository.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;STAR_BUTTON&quot;,&quot;repository_id&quot;:63214868,&quot;originating_url&quot;:&quot;https://github.com/lighthouse-labs/node-skeleton/blob/master/public/vendor/jquery-3.0.0.js&quot;,&quot;user_id&quot;:29851646}}" data-hydro-click-hmac="90e3133e941819e2d6b2d789e7a702c1e59808931d38af4ddcab388a3d544922" data-ga-click="Repository, click star button, action:blob#show; text:Star">        <svg height="16" class="octicon octicon-star v-align-text-bottom" vertical_align="text_bottom" viewBox="0 0 14 16" version="1.1" width="14" aria-hidden="true"><path fill-rule="evenodd" d="M14 6l-4.9-.64L7 1 4.9 5.36 0 6l3.6 3.26L2.67 14 7 11.67 11.33 14l-.93-4.74L14 6z"></path></svg>
 
@@ -1171,13 +1165,13 @@
               <svg class="octicon octicon-device-desktop" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M15 2H1c-.55 0-1 .45-1 1v9c0 .55.45 1 1 1h5.34c-.25.61-.86 1.39-2.34 2h8c-1.48-.61-2.09-1.39-2.34-2H15c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1zm0 9H1V3h14v8z"></path></svg>
           </a>
 
-          <!-- '"` --><!-- </textarea></xmp> --></option></form><form class="inline-form js-update-url-with-hash" action="/lighthouse-labs/node-skeleton/edit/master/public/vendor/jquery-3.0.0.js" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="vhujk7iUAMFSNDnfZjZUM2EuCdfynVAjnQC7ZBsXpX0zRab+jxvCpViIoTo1sC1TzSfYhtZrciInYH4Hu25oKQ==" />
+          <!-- '"` --><!-- </textarea></xmp> --></option></form><form class="inline-form js-update-url-with-hash" action="/lighthouse-labs/node-skeleton/edit/master/public/vendor/jquery-3.0.0.js" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="uNqN9hgBUFipFgVtQyf5uScX5IYqwkVDoD2A8Bpnpm41hIibL46SPKOqnYgQoYDZix411w40Z0IaXUWTuh5rOg==" />
             <button class="btn-octicon tooltipped tooltipped-nw" type="submit"
               aria-label="Fork this project and edit the file" data-hotkey="e" data-disable-with>
               <svg class="octicon octicon-pencil" viewBox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M0 12v3h3l8-8-3-3-8 8zm3 2H1v-2h1v1h1v1zm10.3-9.3L12 6 9 3l1.3-1.3a.996.996 0 011.41 0l1.59 1.59c.39.39.39 1.02 0 1.41z"></path></svg>
             </button>
 </form>
-          <!-- '"` --><!-- </textarea></xmp> --></option></form><form class="inline-form" action="/lighthouse-labs/node-skeleton/delete/master/public/vendor/jquery-3.0.0.js" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="5mFpEHXzk1Glcw6oYqQ92famHgPM82ZndlRyVdyCKoZ15UgM9MFxBTNNCA5B9VoIBjKSZkfVOVhEUn32uSRYlw==" />
+          <!-- '"` --><!-- </textarea></xmp> --></option></form><form class="inline-form" action="/lighthouse-labs/node-skeleton/delete/master/public/vendor/jquery-3.0.0.js" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="TqOVMWpMAO1GR9WqGuUl7eOz1QVArq3/WJMym3Cwoi7dJ7Qt637iudB50ww5tEI8EydZYMuI8sBqlT04FRbQPw==" />
             <button class="btn-octicon btn-octicon-danger tooltipped tooltipped-nw" type="submit"
               aria-label="Fork this project and delete the file" data-disable-with>
               <svg class="octicon octicon-trashcan" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M11 2H9c0-.55-.45-1-1-1H5c-.55 0-1 .45-1 1H2c-.55 0-1 .45-1 1v1c0 .55.45 1 1 1v9c0 .55.45 1 1 1h7c.55 0 1-.45 1-1V5c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1zm-1 12H3V5h1v8h1V5h1v8h1V5h1v8h1V5h1v9zm1-10H2V3h9v1z"></path></svg>
@@ -1199,7 +1193,7 @@
               </p>
             </div>
             <div class="col-6 p-2 text-right code-navigation-banner-illo">
-              <!-- '"` --><!-- </textarea></xmp> --></option></form><form class="js-notice-dismiss" action="/settings/dismiss-notice/aleph_code_navigation_banner" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="Fzd90lWFQaHH7Lmhg+O3cSi9BJUtbngRvH99RtyEvd1tFrnYFiM2A/fYeNN090ODaVDZt9QR1ikfFWBbT4XGCA==" />
+              <!-- '"` --><!-- </textarea></xmp> --></option></form><form class="js-notice-dismiss" action="/settings/dismiss-notice/aleph_code_navigation_banner" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="03SbnhquaMH1yS102HZpS41EianHANwJMe6SJg0BB52pVV+UWQgfY8X97AYvYp25zKlUiz5/cjGShI87ngB8SA==" />
                 <button name="button" type="submit" class="btn-link link-gray" aria-label="Dismiss">
                   <svg width="20" height="20" class="octicon octicon-x" viewBox="0 0 12 16" version="1.1" aria-hidden="true"><path fill-rule="evenodd" d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z"></path></svg>
 </button></form>            </div>

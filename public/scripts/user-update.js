@@ -1,6 +1,7 @@
 $(document).ready(() => {
-
+  //Update user info ajax call
   $(".update-user-info").on("click", function(e) {
+    console.log("update clicked");
     e.preventDefault();
     const name = $("[name*='new-name']").val();
     const email = $("[name*='new-email']").val();
@@ -8,13 +9,14 @@ $(document).ready(() => {
     const newPassword = $("[name*='new-password']").val();
     const confirmNewPassword = $("[name*='confirm-new-password']").val();
 
+    console.log(name, email, password, newPassword, confirmNewPassword);
+
     if (newPassword === confirmNewPassword && name.length !== 0 && email.length !== 0 & password.length !== 0 && newPassword.length !== 0 && confirmNewPassword.length !== 0) {
       $.ajax({method: "POST",
         url: "/user",
         data: {name, email, password, newPassword, confirmNewPassword}
       })
         .then((resp) => {
-          console.log(resp);
           window.location.replace("/");
         }).catch(err => {
           console.log(err);
@@ -22,10 +24,11 @@ $(document).ready(() => {
     }
   });
 
-
+  console.log($(".delete-account"));
+  //Delete user ajax call
   $(".delete-account").on("click", function(e) {
+    console.log("inside delete accout jquery");
     e.preventDefault();
-    console.log("clicked");
     $.ajax({
       method: "DELETE",
       url: "/user",

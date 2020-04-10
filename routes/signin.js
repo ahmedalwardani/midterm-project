@@ -5,6 +5,7 @@ const { getUserByEmail } = require("../helpers");
 
 
 module.exports = (db) => {
+  //Render sign in page route
   router.get("/", (req, res) => {
     const templateVars = {
       user: {
@@ -15,6 +16,7 @@ module.exports = (db) => {
     res.render("signin", templateVars);
   });
 
+  //Send a sign in post request
   router.post("/", (req, res) => {
     let password = req.body.password;
     let email = req.body.email;

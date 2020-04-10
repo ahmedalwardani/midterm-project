@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { getUserByID, singleResource, getAllResourcesOwnedByUser, getAllSavedResourceByUser, getCommentRating, isSaved, getCategoryNameFromID } = require("../helpers");
 
+//Display all resources route
 module.exports = (db) => {
   router.get("/", (req, res) => {
     const currentUser = req.session.user_id;
@@ -13,19 +14,17 @@ module.exports = (db) => {
           return resp;
         }).then(_resources_owned => {
           getAllSavedResourceByUser(currentUser, db).then(resp => {
-            //res.json(resp);
             const templateVars = {
               user: {
                 loggedin: true,
                 email: user.email,
                 user_id: user.id
               },
-
               resources_owned: _resources_owned,
               resources_saved: resp
             };
             res.render("index", templateVars);
-          })
+          });
         }).catch(err => console.log(err));
       });
     } else {
@@ -52,7 +51,7 @@ module.exports = (db) => {
             }).then(_category => {
               isSaved(currentUser, req.params.id, db).then(resp => {
                 let _saved = true;
-                if(resp.length === 0) {
+                if (resp.length === 0) {
                   _saved = false;
                 }
                 const templateVars = {
@@ -68,10 +67,10 @@ module.exports = (db) => {
                   owner: currentUser === singleResource.owner_id ? true : false
                 };
                 res.render("description", templateVars);
-              })
-            })
-          })
-        })
+              });
+            });
+          });
+        });
       }).catch(err => console.log(err));
     } else {
       res.redirect("/");
