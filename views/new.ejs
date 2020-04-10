@@ -36,12 +36,11 @@
     </form>
 
     <!-- Toggle form to add a new topic name -->
-    <i class="fas fa-plus-circle"></i>
-    <h4>Optional: Add New Topic</h4>
-    <form class="form-inline" action="/topic" method="POST">
-      <label for="topic_name">New Topic:</label>
-      <input class="form-control" type="text" name="topic_name" />
-      <button type="submit" class="btn">Add Topic</button>
+    <!-- <i class="fas fa-plus-circle"></i> -->
+    <h4 class="new-topic-title">Add New Topic</h4>
+    <form class="form" action="/topic" method="POST">
+      <input class="form-control" type="text" name="topic_name"placeholder="New Topic Name" />
+      <button type="submit" class="btn btn-outline-light">Add Topic</button>
     </form>
 
   </main>

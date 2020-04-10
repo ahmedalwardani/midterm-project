@@ -24,14 +24,15 @@
   <main>
     <div class="card-footer text-center">
       <h2>Update Account Details<h2>
-          <form class="form-inline" action="/user" method="POST">
+          <form class="form" action="/user" method="POST">
+            <h6>please fill in all fields</h6>
             <input class="form-control" type="text" name="new-name" placeholder="new name">
             <input class="form-control" type="email" name="new-email" placeholder="new email">
             <input class="form-control" type="password" name="current-password" placeholder="current password">
             <input class="form-control" type="password" name="new-password" placeholder="new password">
             <input class="form-control" type="password" name="confirm-new-password" placeholder="confirm new password">
-            <button type="submit" class="btn btn-success update-user-info">Update</button>
-            <button type="button" class="btn btn-danger delete-account">Delete Account</button>
+            <button type="submit" class="btn btn-outline-light update-user-info">Update Account</button>
+            <button type="button" class="btn btn-outline-light delete-account">Delete Account</button>
           </form>
     </div>
   </main>
