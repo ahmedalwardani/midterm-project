@@ -42,9 +42,7 @@ app.use(cookieSession({
   maxAge: 60 * 60 * 1000
 }));
 
-// Separated Routes for each Resource
-// Note: Feel free to replace the example routes below with your own
-// const usersRoutes = require("./routes/users");
+
 const widgetsRoutes = require("./routes/widgets");
 const usersRoutes = require("./routes/users");
 const signupRoutes = require("./routes/signup");
@@ -54,17 +52,15 @@ const newResourceRoutes = require("./routes/new");
 const searchRoutes = require("./routes/search");
 const signoutRoutes = require("./routes/signout");
 const testRoutes = require("./routes/test");
-const userRoutes = require("./routes/users");
 const searchResultsRoutes = require("./routes/search_results");
 const saveRoutes = require("./routes/save");
 const unsaveRoutes = require("./routes/unsave");
 const deleteRoutes = require("./routes/delete");
 const rateRoutes = require("./routes/rate");
 const topicRoutes = require("./routes/topic");
+const userRoutes = require("./routes/user");
 
 
-// Mount all resource routes
-// Note: Feel free to replace the example routes below with your own
 
 app.use("/api/widgets", widgetsRoutes(db));
 app.use("/api/users", usersRoutes(db));
@@ -82,6 +78,7 @@ app.use("/unsave", unsaveRoutes(db));
 app.use("/delete", deleteRoutes(db));
 app.use("/rate", rateRoutes(db));
 app.use("/topic", topicRoutes(db));
+app.use("/user", userRoutes(db));
 
 
 

@@ -97,11 +97,11 @@ const getCategoryNameFromID = (resourceID, db) => {
       JOIN resources ON categories.id=resources.category_id
       WHERE resources.id=$1
       `, [resourceID])
-      .then(res => res.rows)
-      .catch(err => console.error("query error", err.stack));
+    .then(res => res.rows)
+    .catch(err => console.error("query error", err.stack));
 };
 
-const isSaved = function (user, id, db) {
+const isSaved = function(user, id, db) {
   return db
     .query(
       `SELECT id
@@ -110,10 +110,10 @@ const isSaved = function (user, id, db) {
       `, [user, id])
     .then(res => res.rows)
     .catch(err => console.error("query error", err.stack));
-}
+};
 
 
-const addUser = function (user, db) {
+const addUser = function(user, db) {
   let arr = [user.name, user.email, user.password];
   return db
     .query(`
@@ -127,9 +127,9 @@ const addUser = function (user, db) {
 };
 
 //this might need to change
-const addResource = function (user, resource, db) {
-  console.log(user, "user inside addResources" );
-  console.log(resource, "resources inside addResources" );
+const addResource = function(user, resource, db) {
+  console.log(user, "user inside addResources");
+  console.log(resource, "resources inside addResources");
 
   return db
     .query(
@@ -144,7 +144,7 @@ const addResource = function (user, resource, db) {
 };
 
 
-const deleteResource = function (resource, db) {
+const deleteResource = function(resource, db) {
   return db
     .query(
       `UPDATE resources SET active=false
@@ -156,7 +156,7 @@ const deleteResource = function (resource, db) {
 
 
 //this is suppose to get a a single resource where id is the id of the resource not the owner id
-const singleResource = function (id, db) {
+const singleResource = function(id, db) {
   return db.query(
     `
     SELECT * FROM resources
@@ -168,7 +168,7 @@ const singleResource = function (id, db) {
 
 //add resource to saved
 //insert into saved_resources table user_id and resource_id
-const saveResource = function (user, resource, db) {
+const saveResource = function(user, resource, db) {
   return db
     .query(
       `INSERT INTO saved_resources (user_id, resource_id)
@@ -182,7 +182,7 @@ const saveResource = function (user, resource, db) {
 
 
 // delete resource from saved!!
-const deleteResourceFromSaved = function (user, resource, db) {
+const deleteResourceFromSaved = function(user, resource, db) {
   return db
     .query(
       `DELETE FROM saved_resources
@@ -195,8 +195,40 @@ const deleteResourceFromSaved = function (user, resource, db) {
 };
 
 
+const deleteUser = (user, db) => {
+  return db
+    .query(
+      `DELETE FROM users
+      WHERE id=$1
+    `, [user])
+    .then(res => res.rows)
+    .catch(err => console.error('query error', err.stack));
+};
 
-// comments and ratings for resource
+
+const editUser = (user, editObject, db) => {
+  return db
+    .query(
+      `UPDATE users SET name=$1, email=$2, password=$3
+      WHERE id=${user}
+      `, [editObject.nameValue, editObject.emailValue, editObject.passwordValue])
+    .then(res=>res.rows)
+    .catch(err => console.error('query error', err.stack));
+};
+
+
+const getPasswordForUser = (userID, db) => {
+  return db
+    .query(
+      `SELECT password FROM users
+      WHERE id=$1
+      `, [userID])
+    .then(res=> {
+      return res.rows[0].password;
+    })
+    .catch(err => console.error('query error', err.stack));
+};
+
 const getCommentRating = (resourceId, db) => {
   return db
     .query(
@@ -219,7 +251,7 @@ const addCommentRating = (commentObject, db) => {
     .then(res => res.rows)
     .catch(err => console.error('query error', err.stack)
     );
-}
+};
 const addCategory = (name, db) => {
   return db
     .query(
@@ -229,7 +261,7 @@ const addCategory = (name, db) => {
     .then(res => res.rows)
     .catch(err => console.error('query error', err.stack)
     );
-}
+};
 
 //get category names functions
 const getCategoryNames = db => {
@@ -240,9 +272,9 @@ const getCategoryNames = db => {
     ).then(res => {
       return res.rows;
     }).catch(err => console.error('query error', err.stack));
-}
+};
 
-const searchResources = function (options, db) {
+const searchResources = function(options, db) {
   const queryParams = [];
   queryParams.push(`%${options.keyword}%`);
   let queryString = `
@@ -255,14 +287,14 @@ const searchResources = function (options, db) {
 
   queryString += ` GROUP BY resources.id`;
 
-  if(options.minimum_rating) {
+  if (options.minimum_rating) {
     queryParams.push(`${options.minimum_rating}`);
-    queryString += ` HAVING avg(ratings.rating) >= $${queryParams.length}`
+    queryString += ` HAVING avg(ratings.rating) >= $${queryParams.length}`;
   }
   return db.query(queryString, queryParams)
     .then(res => res.rows)
     .catch(err => console.error('query error', err.stack));
-}
+};
 
 
 module.exports = {
@@ -285,6 +317,9 @@ module.exports = {
   getAllResourcesIDOwnedByUser,
   getCategoryNameFromID,
   addCommentRating,
-  addCategory
+  addCategory,
+  deleteUser,
+  editUser,
+  getPasswordForUser
 };
 

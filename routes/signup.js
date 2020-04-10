@@ -13,7 +13,7 @@ module.exports = (db) => {
         email: null
       }
     };
-    res.render("signup", templateVars)
+    res.render("signup", templateVars);
   });
 
   router.post("/", (req, res) => {
@@ -34,7 +34,7 @@ module.exports = (db) => {
             name: req.body.name,
             email: req.body.email,
             password: _password
-          }
+          };
           addUser(user, db)
             .then(resp => {
               res.redirect("/");
