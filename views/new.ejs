@@ -23,42 +23,27 @@
   <%- include('partials/header') %>
 
   <!-- style notes: new page and add button centered, other two fields stack on top in columns, toggle add new topic  -->
-  <main style="margin: 1em;">
-    <h3>Add Page</h3>
+  <main>
+    <h1 class="form-title">Add New Resource</h1>
+
     <form class="form" action="/new" method="POST">
-      <label for="title">Title:</label>
-
-      <input class="form-control" type="text" name="title" />
-      <div class="input-label-pair">
-
-      </div>
-      <div class="input-label-pair">
-        <label for="url">Page URL:</label>
-        <input class="form-control" type="text" name="url" />
-      </div>
-      <div class="input-label-pair">
-        <label for="thumbnail_url">Thumbnail URL:</label>
-        <input class="form-control" type="text" name="thumbnail_url" />
-      </div>
-      <div class="input-label-pair">
-        <label for="thumbnail_url">Description:</label>
-        <input class="form-control" type="text" name="description" />
-      </div>
-
-      <div class="input-label-pair topic">
-        <!-- DROP DOWN MENU TOPIC NAME -->
-        <%- include('partials/topic_dropdown') %>
-      </div>
-      <button type="submit" class="btn">Add Resource</button>
+      <input class="form-control" type="text" name="title" placeholder="Title"/>
+      <input class="form-control" type="text" name="url" value="https://"/>
+      <input class="form-control" type="text" name="thumbnail_url" placeholder="thumbnail_url"/>
+      <input class="form-control" type="text" name="description" placeholder="Description" />
+      <%- include('partials/topic_dropdown') %>
+      <button type="submit" class="btn btn-outline-light">Add Resource</button>
     </form>
 
     <!-- Toggle form to add a new topic name -->
     <i class="fas fa-plus-circle"></i>
+    <h4>Optional: Add New Topic</h4>
     <form class="form-inline" action="/topic" method="POST">
       <label for="topic_name">New Topic:</label>
       <input class="form-control" type="text" name="topic_name" />
       <button type="submit" class="btn">Add Topic</button>
     </form>
+
   </main>
 
 

@@ -34,7 +34,7 @@ module.exports = (db) => {
       title: req.body.title,
       url: req.body.url,
       description: req.body.description,
-      thumbnail_url: req.body.thumbnail_url || "./public/assets/logo.png",
+      thumbnail_url: req.body.thumbnail_url || "/assets/logo.png",
       topic_id: req.body.topic,
     }
     addResource(currentUser, resource, db).then(resp => {

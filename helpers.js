@@ -134,7 +134,7 @@ const addResource = function(user, resource, db) {
       `INSERT INTO resources (
     owner_id, title, url, description, thumbnail_url, category_id )
     VALUES($1, $2, $3, $4, $5, $6) RETURNING *;
-  `, [Number(user), resource.title, resource.url, resource.description, `https://api.faviconkit.com/${resource.thumbnail_url}`, Number(resource.topic_id)])
+  `, [Number(user), resource.title, resource.url, resource.description, `https://api.faviconkit.com/${resource.url}`, Number(resource.topic_id)])
     .then(res => {
       return res.rows;
     })
