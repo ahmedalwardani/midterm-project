@@ -12,7 +12,7 @@ module.exports = (db) => {
         email: null
       }
     };
-    res.render("signin", templateVars)
+    res.render("signin", templateVars);
   });
 
   router.post("/", (req, res) => {
