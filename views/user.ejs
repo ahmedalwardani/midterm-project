@@ -1,27 +1,11 @@
-<!-- INFO NEEDED FOR THIS PAGE
-log in- or not -->
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-<meta charset="utf-8" />
-
   <title>dogEared</title>
   <!--Bootstrap-->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <!-- Normalization -->
-  <!-- <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/layout.css" type="text/css" /> -->
-
-  <!-- <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script> -->
-  <script
-  type="text/javascript"
-  src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"
-></script>
-  <script type="text/javascript" src="/scripts/app.js"></script>
 
   <!-- Font import -->
   <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@600;700&display=swap" rel="stylesheet">
@@ -31,9 +15,7 @@ log in- or not -->
   <script src="https://kit.fontawesome.com/948f369b19.js" crossorigin="anonymous"></script>
 
   <!-- Styles -->
-  <link rel="stylesheet" href="/css/main.css" type="text/css" />
-
-  <script src="/scripts/user-update.js" type="module"></script>
+  <link rel="stylesheet" href="css/main.css" type="text/css" />
 
 </head>
 
@@ -42,15 +24,16 @@ log in- or not -->
   <main>
     <div class="card-footer text-center">
       <h2>Update Account Details<h2>
-      <form class="form-inline" action="/user" method="POST">
-        <input class="form-control" type="text" name="new-name" placeholder="new name">
-        <input class="form-control" type="email" name="new-email" placeholder="new email">
-        <input class="form-control" type="password" name="current-password" placeholder="current password">
-        <input class="form-control" type="password" name="new-password" placeholder="new password">
-        <input class="form-control" type="password" name="confirm-new-password" placeholder="confirm new password">
-        <button type="submit" class="btn btn-success update-user-info">Update</button>
-        <button type="button" class="btn btn-danger delete-account">Delete Account</button>
-      </form>
+          <form class="form" action="/user" method="POST">
+            <h6>please fill in all fields</h6>
+            <input class="form-control" type="text" name="new-name" placeholder="new name">
+            <input class="form-control" type="email" name="new-email" placeholder="new email">
+            <input class="form-control" type="password" name="current-password" placeholder="current password">
+            <input class="form-control" type="password" name="new-password" placeholder="new password">
+            <input class="form-control" type="password" name="confirm-new-password" placeholder="confirm new password">
+            <button type="submit" class="btn btn-outline-light update-user-info">Update Account</button>
+            <button type="button" class="btn btn-outline-light delete-account">Delete Account</button>
+          </form>
     </div>
   </main>
   <!-- NEED ILLUSTRATION TO GO HERE -->

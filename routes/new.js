@@ -34,15 +34,11 @@ module.exports = (db) => {
       title: req.body.title,
       url: req.body.url,
       description: req.body.description,
-      thumbnail_url: req.body.thumbnail_url,
+      thumbnail_url: req.body.thumbnail_url || "/assets/logo.png",
       topic_id: req.body.topic,
-      //CHECK IF TOPIC ID IS CORRECTLY INPUTED IN DATABASE
     }
     addResource(currentUser, resource, db).then(resp => {
-      console.log("resource", resource);
-      console.log("resp", resp);
       if (resp) {
-        console.log("added");
         res.redirect("/resources");
       } else {
         console.log("cannot add");

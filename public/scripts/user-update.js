@@ -8,7 +8,7 @@ $(document).ready(() => {
     const newPassword = $("[name*='new-password']").val();
     const confirmNewPassword = $("[name*='confirm-new-password']").val();
 
-    if (newPassword === confirmNewPassword) {
+    if (newPassword === confirmNewPassword && name.length !== 0 && email.length !== 0 & password.length !== 0 && newPassword.length !== 0 && confirmNewPassword.length !== 0) {
       $.ajax({method: "POST",
         url: "/user",
         data: {name, email, password, newPassword, confirmNewPassword}

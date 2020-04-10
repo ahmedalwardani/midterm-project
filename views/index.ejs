@@ -15,7 +15,7 @@
   <script src="https://kit.fontawesome.com/948f369b19.js" crossorigin="anonymous"></script>
 
   <!-- Styles -->
-  <link rel="stylesheet" href="css/main.css" type="text/css" />
+  <link rel="stylesheet" href="css/main.css" type="text/css" media="screen"/>
 
 </head>
 
@@ -32,7 +32,7 @@
       <h2 class="thumbnail-title"><a href="<%= resource.url %>"><%= resource.title %></a></h2>
       <div class="overlay">
         <img  class="thumbnail" src="<%= resource.thumbnail_url %>" alt="thumbnail url">
-        <a class="more-details"  href="<%= `/resources/${resource.id}`%>">More Details</a>
+        <a target="_blank" class="more-details"  href="<%= `/resources/${resource.id}`%>">More Details</a>
       </div>
 
     </div>
