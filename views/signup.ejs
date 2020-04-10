@@ -25,7 +25,7 @@ log in- or not -->
   <script src="https://kit.fontawesome.com/948f369b19.js" crossorigin="anonymous"></script>
 
   <!-- Styles -->
-  <link rel="stylesheet" href="/css/main.css" type="text/css" />
+  <link rel="stylesheet" href="css/main.css" type="text/css" />
 
 </head>
 
@@ -33,12 +33,12 @@ log in- or not -->
   <%- include('partials/header') %>
   <main>
     <div class="card-footer text-center">
-      <h2>Register New Account<h2>
-      <form class="form-inline" action="/signup" method="POST">
-        <input class="form-control" type="text" name="name" placeholder="name">
-        <input class="form-control" type="email" name="email" placeholder="email">
-        <input class="form-control" type="password" name="password" placeholder="password">
-        <button type="submit" class="btn btn-success">Register</button>
+      <h2>Make an account<h2>
+      <form class="form" action="/signup" method="POST">
+        <input class="form-control center" type="text" name="name" placeholder="name">
+        <input class="form-control center" type="email" name="email" placeholder="email">
+        <input class="form-control center" type="password" name="password" placeholder="password">
+        <button type="submit" class="btn btn-outline-light"><h4>Register</h4></button>
       </form>
     </div>
   </main>
