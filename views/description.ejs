@@ -372,12 +372,28 @@
       crossorigin="anonymous"
     ></script>
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="css/main.css" type="text/css" media="screen" />
-  </head>
+  <!-- Styles -->
+  <link rel="stylesheet" href="/css/main.css" type="text/css" media="screen" />
 
-  <body>
-    <%- include('partials/header') %>
+</head>
+
+<body>
+  <%- include('partials/header') %>
+
+  <main>
+    <div class="wrapper description">
+      <section class="resource-info">
+        <!-- information about resource -->
+        <%- include('partials/resource_info') %>
+        <%- include('partials/edit_delete_saved') %>
+      </section>
+      <section class="ratings">
+        <%- include('partials/ratings_form') %>
+        <%- include('partials/ratings_comments') %>
+      </section>
+    </div>
+  </main>
+</body>
 
     <main>
       <section class="resource-info">

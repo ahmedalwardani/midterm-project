@@ -1,20 +1,14 @@
 <!-- title linked to the external resource -->
-<h2><a target="_blank" href="<%= resource.url %>"><%= resource.title %></a></h2>
+<h1><a href="<%= resource.url %>"><%= resource.title %></a></h1>
 
 <!-- image -->
-<img src="<%= resource.thumbnail_url %>" alt="resource thumbnail" />
-
-<div class="input-label-pair">
-  <h5>Topic:</h5>
-  <p><%= category_name[0].name %></p>
-</div>
-
-<div class="input-label-pair">
-  <h5>Average Rating:</h5>
-  <p><%= resource.average_rating %></p>
-</div>
-
-<div class="input-label-pair">
-  <h5>Description:</h5>
-  <p><%= resource.description %></p>
+<img
+  class="thumbnail"
+  src="<%= resource.thumbnail_url %>"
+  alt="resource thumbnail"
+/>
+<div class="text">
+  <p>Topic: <%= category_name[0].name %></p>
+  <p>Average rating: <%= resource.average_rating %></p>
+  <p>Description: <%= resource.description %></p>
 </div>

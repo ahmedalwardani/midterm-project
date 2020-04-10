@@ -9,7 +9,6 @@ $(document).ready(() => {
     const newPassword = $("[name*='new-password']").val();
     const confirmNewPassword = $("[name*='confirm-new-password']").val();
 
-    console.log(name, email, password, newPassword, confirmNewPassword);
 
     if (newPassword === confirmNewPassword && name.length !== 0 && email.length !== 0 & password.length !== 0 && newPassword.length !== 0 && confirmNewPassword.length !== 0) {
       $.ajax({method: "POST",
@@ -25,9 +24,7 @@ $(document).ready(() => {
   });
 
   console.log($(".delete-account"));
-  //Delete user ajax call
   $(".delete-account").on("click", function(e) {
-    console.log("inside delete accout jquery");
     e.preventDefault();
     $.ajax({
       method: "DELETE",

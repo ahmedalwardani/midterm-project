@@ -31,8 +31,8 @@
         <div class="overlay">
           <img style="width: 200px" class="thumbnail" src="<%= resource.thumbnail_url %>" alt="thumbnail url">
           <a class="more-details" href="<%= `/resources/${resource.id}`%>">More Details</a>
-        </div>
-        <% let owner = false;
+
+          <% let owner = false;
        let saved = false;
 
        for (const _id of resources_owned) {
@@ -47,25 +47,23 @@
          }
        }
        %>
-
-        <% if (owner) { %>
-
-
-        <form class="save" action="<%= `/delete/${resource.id}`%>" method=" POST">
-          <button type="submit" class="btn btn-primary">Delete</button>
-        </form>
-        <!-- show save resource option if not owner -->
-        <% } else {
+          <% if (owner) { %>
+          <form class="save" action="<%= `/delete/${resource.id}`%>" method=" POST">
+            <button type="submit" class="btn btn-outline-light">Delete</button>
+          </form>
+          <!-- show save resource option if not owner -->
+          <% } else {
        if(saved) { %>
-        <form action="<%= `/unsave/${resource.id}`%>" method="POST">
-          <button type="submit" class="btn btn-outline-light">Unsave</button>
-        </form>
-        <% } else { %>
-        <form class="save" action="<%= `/save/${resource.id}`%>" method="POST">
-          <button type="submit" class="btn btn-outline-light">Save</button>
-        </form>
-        <%   }
+          <form  class="save" action="<%= `/unsave/${resource.id}`%>" method="POST">
+            <button type="submit" class="btn btn-outline-light">Unsave</button>
+          </form>
+          <% } else { %>
+          <form  class="save" class="save" action="<%= `/save/${resource.id}`%>" method="POST">
+            <button type="submit" class="btn btn-outline-light">Save</button>
+          </form>
+          <%   }
       } %>
+        </div>
       </div>
       <% } %>
     </section>
